@@ -1,11 +1,11 @@
 <?php
-$url = "localhost:8889/new/";
+$url = "http://localhost:8889/PSB/";
 
 $db['default'] = array(
-    'host' => '192.168.1.21',
-    'user' => 'sysdev',
-    'password' => 'pass@word',
-    'dbname' => 'restobackup',
+    'host' => 'localhost',
+    'user' => 'root',
+    'password' => '',
+    'dbname' => 'psb',
     'port' => '',
     'charset' => ''
 );

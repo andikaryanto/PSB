@@ -1,66 +1,26 @@
 <?php
-namespace Database;
+global $conn;
+$conn = mysqli_connect($db['default']['host'], $db['default']['user'], $db['default']['password'], $db['default']['dbname']) or die('Database connection error');
 
-class Koneksi {
-    protected $conn = false;
-    protected $sql= "";
-    protected $statement;
-    
-    public function __construct(){
-        include "Config.php";
-
-        if (!$this->conn) {
-            $this->conn = mysqli_connect($db['default']['host'], $db['default']['user'], $db['default']['password'], $db['default']['dbname']) or die('Database connection error');
-        } 
-
+function database_select($sql){
+    global $conn;
+    $result = mysqli_query($conn, $sql);
+    $data = [];
+    while($row = mysqli_fetch_assoc($result)){
+        $data[] = $row;
     }
 
-    public function koneksi(){
-        return $this->conn;
+    if(count($data) == 1){
+        return $data[0];
     }
 
-    public function query($sql){
-        $this->sql = $sql;
+    return $data;
 
-        $this->statement = mysqli_query($this->conn, $this->sql);
-        
-        if (! $this->statement) {
+}
 
-            $arr = [
-                'errCode' => $this->errno(),
-                'errMessage' => $this->error(),
-                'errQuery' => $this->sql
-            ];
-            
-            return $arr; 
-
-        }
-        return $this;
-    }
-
-    public function ambil(){
-
-        $list = array();
-        if($this->statement){
-            while ($row = mysqli_fetch_assoc($this->statement)){
-                $list[] = $row;
-
-            }
-        }
-        mysqli_free_result($this->statement);
-        $this->tutupKoneksi();
-        if(count($list) == 1){
-            return $list[0];
-        }
-        return $list;
-    }
-
-    public function eksekusi(){
-        $this->tutupKoneksi();
-    }
-
-    public function tutupKoneksi(){
-        mysqli_close($this->conn);
-    }
+function database_simpan($sql){
+    global $conn;
+    mysqli_query($conn, $sql);
+    return mysqli_insert_id($conn);
 
 }
