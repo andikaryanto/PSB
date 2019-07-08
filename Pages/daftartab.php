@@ -1,6 +1,14 @@
 <?php 
     include 'header.php';
     // include 'daftar.php'
+    $key = "";
+    $peserta;
+    if(isset($_GET['key'])){
+        $key = $_GET['key'];
+        $decrypt = decrypt($key);
+        $noregister = explode(".", $decrypt)[2];
+        $peserta = ambilpeserta("WHERE NoDaftar = '{$noregister}'");
+    }
 ?>
 
 <div class="container">

@@ -43,9 +43,9 @@ DROP TABLE IF EXISTS `matapelajaran`;
 
 CREATE TABLE `matapelajaran` (
   `Id` int(11) NOT NULL AUTO_INCREMENT,
-  `NamaMapel` int(11) NOT NULL,
+  `NamaMapel` varchar(100) NOT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 /*Table structure for table `nilaiujian` */
 
@@ -61,7 +61,7 @@ CREATE TABLE `nilaiujian` (
   KEY `nilaiujian_Mapel_Id_fk` (`Mapel_Id`),
   CONSTRAINT `nilaiujian_Mapel_Id_fk` FOREIGN KEY (`Mapel_Id`) REFERENCES `matapelajaran` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `nilaiujian_Peserta_Id_fk` FOREIGN KEY (`Peserta_Id`) REFERENCES `peserta` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=193 DEFAULT CHARSET=utf8;
 
 /*Table structure for table `orangtua` */
 
@@ -72,7 +72,7 @@ CREATE TABLE `orangtua` (
   `Peserta_Id` int(11) NOT NULL,
   `NamaLengkap` varchar(300) NOT NULL,
   `Pekerjaan` varchar(300) NOT NULL,
-  `Agama` enum('Islam','Katolik','Kristen','Hindu','Budha') NOT NULL,
+  `Agama` enum('Islam','Katolik','Kristen','Hindu','Budha','Konghucu') NOT NULL,
   `Alamat` varchar(1000) NOT NULL,
   `NamaWali` varchar(100) DEFAULT NULL,
   `PekerjaanWali` varchar(300) DEFAULT NULL,
@@ -86,7 +86,7 @@ CREATE TABLE `orangtua` (
   PRIMARY KEY (`Id`),
   KEY `orangtua_Peserta_Id_fk` (`Peserta_Id`),
   CONSTRAINT `orangtua_Peserta_Id_fk` FOREIGN KEY (`Peserta_Id`) REFERENCES `peserta` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=66 DEFAULT CHARSET=utf8;
 
 /*Table structure for table `pengaturan` */
 
@@ -126,7 +126,7 @@ CREATE TABLE `peserta` (
   `JenisKelamin` enum('Laki - laki','Perempuan') NOT NULL,
   `TempatLahir` varchar(100) NOT NULL,
   `TglLahir` date NOT NULL,
-  `Agama` enum('Islam','Katolik','Kristen','Hindu','Budha') NOT NULL,
+  `Agama` enum('Islam','Katolik','Kristen','Hindu','Budha','Konghucu') NOT NULL,
   `Alamat` varchar(1000) NOT NULL,
   `RT` varchar(5) NOT NULL,
   `RW` varchar(5) NOT NULL,
@@ -137,11 +137,11 @@ CREATE TABLE `peserta` (
   `NoTelp` varchar(15) NOT NULL,
   `AsalSekolah` varchar(100) DEFAULT NULL,
   `AlamatSekolah` varchar(300) DEFAULT NULL,
-  `StatusSekolah` varchar(300) DEFAULT NULL,
+  `StatusSekolah` enum('Negeri','Swasta') DEFAULT NULL,
   `KartuMiskin` tinyint(1) DEFAULT NULL,
   `Status` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=76 DEFAULT CHARSET=utf8;
 
 /*Table structure for table `prestasi` */
 
@@ -155,7 +155,7 @@ CREATE TABLE `prestasi` (
   PRIMARY KEY (`Id`),
   KEY `prestasi_Peserta_Id_fk` (`Peserta_Id`),
   CONSTRAINT `prestasi_Peserta_Id_fk` FOREIGN KEY (`Peserta_Id`) REFERENCES `peserta` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=64 DEFAULT CHARSET=utf8;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
