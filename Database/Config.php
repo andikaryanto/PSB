@@ -30,4 +30,4 @@ $reg['sekuens'] = "0000"; // 4 digit nomor setelah REG, ganti sesuai keinginan a
 /**
  * qr code name regiatrasi
  */
-$qrcode['registrasi'] = "RegistQrCode.jpg";
+$qrcode['registrasi'] = "RegistQrCode.JPEG";

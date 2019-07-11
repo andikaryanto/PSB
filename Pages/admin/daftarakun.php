@@ -1,24 +1,6 @@
 <?php
-session_start();
+include APP_PATH.'Pages/header.php';
 ?>
-<!DOCTYPE>
-<html>
-<head>
-<title>Sekretariat PSB Online MUSATI</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link media="all" type="text/css" rel="stylesheet" href="../assets/css/bootstrap.min.css">
-<link media="all" type="text/css" rel="stylesheet" href="../assets/css/style.css">
-</head>
-<body>
-	<div class="top">
-		<div class="container">
-			<center><img src="../assets/images/logomusati.png" style="width: 10%"></center>
-			<h3 align="center">SEKRETARIAT PENDAFTARAN SISWA BARU ONLINE</h3>
-			<h4 align="center">SMP MUHAMMADIYAH 1 MLATI</h4>
-			<h5 align="center">Jl. Magelang Km 7,5 Sendangadi, Mlati, Sleman, Yogyakarta</h5>
-			<h5 align="center">Telp. ( 0274 ) 869879</h5>
-		</div>
-	</div>
 	<div class="container">
 		<div class="row">
 			<div class="col-md-8">

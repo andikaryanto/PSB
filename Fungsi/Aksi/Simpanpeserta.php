@@ -17,7 +17,7 @@
     $noreg = buatnoreg($idpeserta);
 
     $content = $url."pages/daftartab.php?key=".encrypt("edit.".$kuncirahasia.".".$noreg);
-    $text = generateQR($url, $content, $qrcode['registrasi']);
+    $text = generateQR($url, $content, $noreg.$qrcode['registrasi']);
     $enctext = encrypt($text);
     header("Location: $url"."pages/daftarberhasil.php?idpeserta={$idpeserta}&content={$enctext}");
 ?>

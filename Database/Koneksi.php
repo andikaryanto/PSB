@@ -7,6 +7,18 @@ function database_query($sql){
     $result = mysqli_query($conn, $sql);
 }
 
+function database_select_daftar($sql){
+    global $conn;
+    $result = mysqli_query($conn, $sql);
+    $data = [];
+    while($row = mysqli_fetch_assoc($result)){
+        $data[] = $row;
+    }
+
+    return $data;
+
+}
+
 function database_select($sql){
     global $conn;
     $result = mysqli_query($conn, $sql);

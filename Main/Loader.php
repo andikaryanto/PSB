@@ -1,18 +1,20 @@
 <?php
 
-$load = [
-    'Database' => [ 'Config', 'Koneksi' ],
-    'Fungsi/Tabel' => ['Peserta', 'Orangtua', 'Nilaiujian', 'Prestasi'],
-    'Fungsi/Global' => ['QR', 'Encrypt']
-];
-
 /**
  * include smua file yang d butuhkan
  */
-
 include APP_PATH."3rdParty/phpqrcode/qrlib.php";
 // include APP_PATH."3rdParty/fpdf/fpdf.php";
 include APP_PATH."3rdParty/TCPDF/tcpdf.php";
+
+$load = [
+    'Database' => [ 'Config', 'Koneksi' ],
+    'Fungsi/Tabel' => ['Peserta', 'Orangtua', 'Nilaiujian', 'Prestasi', 'Pengguna'],
+    'Fungsi/Global' => ['QR', 'Encrypt'],
+    // 'Classes' => ['PDF']
+];
+
+
 foreach($load as $key => $value){
     foreach ($value as $v){
         // echo APP_PATH.$key."\\".$v.".php";
