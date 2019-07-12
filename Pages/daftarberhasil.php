@@ -2,7 +2,7 @@
     include 'header.php';
     // include 'daftar.php'
 
-    $peserta = ambilpeserta("WHERE Id = {$_GET['idpeserta']}");
+    $peserta = ambilhanyapeserta("WHERE Id = {$_GET['idpeserta']}");
     $content = decrypt($_GET['content']);
 ?>
 

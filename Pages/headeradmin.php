@@ -52,19 +52,29 @@
                         <i class="fa fa-dashboard"></i> <span>DASHBOARD</span>
                     </a>                   
                 </li>
+				<li class="treeview">
+                    <a href="<?= $url ?>/Pages/admin/pengaturan/pengaturan.php">
+                        <i class="fa fa-user"></i> <span>PENGATURAN</span>
+                    </a>                   
+                </li>
                 <li class="treeview">
-                    <a href="index.php?halaman=datasiswa">
+                    <a href="<?= $url ?>/Pages/admin/peserta/daftar.php?halaman=semuasiswa">
                         <i class="fa fa-user"></i> <span>DATA SISWA</span>
                     </a>                   
                 </li>
                 <li class="treeview">
-                    <a href="index.php?halaman=datasiswaditerima">
+                    <a href="<?= $url ?>/Pages/admin/peserta/daftar.php?halaman=siswaditerima">
                         <i class="fa fa-user"></i> <span>DATA SISWA DITERIMA</span>
                     </a>                   
                 </li>
                 <li class="treeview">
-                    <a href="<?= $url ?>/Pages/admin/pengguna/daftarpengguna.php">
+                    <a href="<?= $url ?>/Pages/admin/peserta/daftar.php?halaman=siswaditolak">
                         <i class="fa fa-user"></i> <span>DATA SISWA DITOLAK</span>
+                    </a>                   
+                </li>
+				<li class="treeview">
+                    <a href="<?= $url ?>/Pages/admin/tahunajaran/daftar.php">
+                        <i class="fa fa-user"></i> <span>TAHUN AJARAN</span>
                     </a>                   
                 </li>
 				<li class="treeview">

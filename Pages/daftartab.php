@@ -1,13 +1,23 @@
 <?php 
     include 'header.php';
-    // include 'daftar.php'
     $key = "";
     $peserta;
+
+    $pengaturan = ambilpengaturan();
+
+    if(date_create(tanggalSekarang()) >= date_create($pengaturan['TglMulaiPendaftaran']) && 
+        date_create(tanggalSekarang()) <= date_create($pengaturan['TglSelesaiPendaftaran'])){
+            // include 'header.php';
+
+    }
+    else 
+        die("Pendaftaran Belum dibuka");
+    
     if(isset($_GET['key'])){
         $key = $_GET['key'];
         $decrypt = decrypt($key);
         $noregister = explode(".", $decrypt)[2];
-        $peserta = ambilpeserta("WHERE NoDaftar = '{$noregister}'");
+        $peserta = ambilhanyapeserta("WHERE NoDaftar = '{$noregister}'");
     }
 ?>
 
@@ -18,16 +28,16 @@
                     <!-- Custom Tabs -->
                     <div class="nav-tabs-custom">
                         <ul class="nav nav-tabs">
-                            <li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="true">Peserta</a></li>
-                            <li class=""><a href="#tab_2" data-toggle="tab" aria-expanded="false">Orang Tua</a></li>
-                            <li class=""><a href="#tab_3" data-toggle="tab" aria-expanded="false">Sekolah Asal</a></li>
-                            <li class=""><a href="#tab_4" data-toggle="tab" aria-expanded="false">Nilai Ujian</a></li>
-                            <li class=""><a href="#tab_5" data-toggle="tab" aria-expanded="false">Prestasi</a></li>
-                            <li class=""><a href="#tab_6" data-toggle="tab" aria-expanded="false">Kartu Miskin</a></li>
+                            <li class="active"><a href="#tab_1" data-toggle="tab">Peserta</a></li>
+                            <li class=""><a href="#tab_2" data-toggle="tab">Orang Tua</a></li>
+                            <li class=""><a href="#tab_3" data-toggle="tab">Sekolah Asal</a></li>
+                            <li class=""><a href="#tab_4" data-toggle="tab">Nilai Ujian</a></li>
+                            <li class=""><a href="#tab_5" data-toggle="tab">Prestasi</a></li>
+                            <li class=""><a href="#tab_6" data-toggle="tab">Kartu Miskin</a></li>
                             
                             
                         </ul>
-                        <form method="POST" action="../Fungsi/Aksi/Simpanpeserta.php" novalidate>
+                        <form method="POST" action="../Fungsi/Aksi/Peserta_simpan.php" novalidate>
                             <div class="tab-content">
                             
                                 <div class="tab-pane active" id="tab_1">
@@ -36,7 +46,6 @@
                                 </div>
                                 <!-- /.tab-pane -->
                                 <div class="tab-pane" id="tab_2">
-                                    <form method="POST" action="#">
                                     <?php include 'dataortuwali.php'?>
                                 </div>
                                 <!-- /.tab-pane -->
@@ -56,7 +65,7 @@
                                     <?php include 'konfirmasikkm.php'?>
                                 </div>
                         <!-- /.tab-pane -->
-                        </div>
+                            </div>
                             
                         </form>
                         <!-- /.tab-content -->

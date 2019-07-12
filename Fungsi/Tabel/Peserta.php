@@ -1,8 +1,27 @@
 <?php
 
 global $reg;
+function ambilhanyapeserta($where = ""){
+    $cond = "";
+    $tahunajaran = ambilhanyatahunajaran("WHERE Aktif = 1");
+    if(!empty($where))
+        $cond = "AND Tahunajaran_Id = ".$tahunajaran['Id']; 
+    else 
+        $cond = "WHERE Tahunajaran_Id = ".$tahunajaran['Id'];
+
+    $peserta = database_select("SELECT * FROM peserta {$where} $cond");
+    return $peserta;
+}
+
 function ambilpeserta($where = ""){
-    $peserta = database_select("SELECT * FROM peserta {$where}");
+    $cond = "";
+    $tahunajaran = ambilhanyatahunajaran("WHERE Aktif = 1");
+    if(!empty($where))
+        $cond = "AND Tahunajaran_Id = ".$tahunajaran['Id']; 
+    else 
+        $cond = "WHERE Tahunajaran_Id = ".$tahunajaran['Id'];
+
+    $peserta = database_select_daftar("SELECT * FROM peserta {$where} $cond");
     return $peserta;
 }
 
@@ -10,6 +29,7 @@ function simpanpeseta($id, $nodaftar, $nisn, $namalengkap, $jenkel, $tempatlahir
                     $agama, $alamat, $rt, $rw, $kelurahan, $kecamatan, $kodepos,
                     $domisili, $notelp, $asalsekolah, $alamatsekolah, $statussekolah, 
                     $kartumiskin = 0, $status = 0){
+        $tahunajaran = ambilhanyatahunajaran("WHERE Aktif = 1");
         if($id){
             database_query("UPDATE peserta SET NISN = '{$nisn}',
                                                 NamaLengkap = '{$namalengkap}',
@@ -32,7 +52,7 @@ function simpanpeseta($id, $nodaftar, $nisn, $namalengkap, $jenkel, $tempatlahir
             return database_simpan("INSERT INTO peserta VALUES (null, null, '{$nisn}', '{$namalengkap}', '{$jenkel}', 
                     '{$tempatlahir}', '{$tgllahir}', '{$agama}', '{$alamat}', '{$rt}', '{$rw}', '{$kelurahan}',
                     '{$kecamatan}', '{$kodepos}', '$domisili', '{$notelp}', '{$asalsekolah}', '{$alamatsekolah}',
-                    '{$statussekolah}', {$kartumiskin}, {$status})");
+                    '{$statussekolah}', {$kartumiskin}, {$status}, {$tahunajaran['Id']})");
         }
         
 }
@@ -47,6 +67,54 @@ function buatnoreg($idpeserta){
     database_query("UPDATE peserta SET NoDaftar = '{$noregbaru}' WHERE Id = {$idpeserta}");
     return $noregbaru;
     
+}
+
+function pesertaditerima(){
+    $pengaturan = ambilpengaturan();
+    $tahunajaran = ambilhanyatahunajaran("WHERE Aktif = 1");
+    if(date_create(tanggalSekarang())>= date_create($pengaturan['TglPengumuman'])){
+
+        $qry = " SELECT *, b.Nilai + c.Nilai
+        FROM peserta a
+        INNER JOIN (
+            SELECT Peserta_Id, SUM(Nilai) Nilai
+            FROM nilaiujian 
+            GROUP BY Peserta_Id
+        ) b ON a.Id = b.Peserta_Id
+        INNER JOIN prestasi c ON c.Peserta_Id = a.Id
+        WHERE a.Tahunajaran_Id = {$tahunajaran['Id']}
+        ORDER BY b.Nilai + c.Nilai DESC
+        LIMIT 0, 1";
+
+        return database_select_daftar($qry);
+    }
+
+    return array();
+        
+}
+
+function pesertaditolak(){
+    $pengaturan = ambilpengaturan();
+    $tahunajaran = ambilhanyatahunajaran("WHERE Aktif = 1");
+    if(date_create(tanggalSekarang())>= date_create($pengaturan['TglPengumuman'])){
+
+        $qry = " SELECT *, b.Nilai + c.Nilai
+        FROM peserta a
+        INNER JOIN (
+            SELECT Peserta_Id, SUM(Nilai) Nilai
+            FROM nilaiujian 
+            GROUP BY Peserta_Id
+        ) b ON a.Id = b.Peserta_Id
+        INNER JOIN prestasi c ON c.Peserta_Id = a.Id
+        WHERE a.Tahunajaran_Id = {$tahunajaran['Id']}
+        ORDER BY b.Nilai + c.Nilai DESC
+        LIMIT 1, 1";
+
+        return database_select_daftar($qry);
+    }
+
+    return array();
+        
 }
 
 

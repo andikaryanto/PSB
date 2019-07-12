@@ -8,7 +8,7 @@
 <link href= "<?= $url?>assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
 <link href="<?= $url?>assets/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 <link href="<?= $url?>assets/css/ionicons.min.css" rel="stylesheet" type="text/css">
-<link href="<?= $url?>assets/css/admin-lte.min.css" rel="stylesheet" type="text/css">
+<link href="<?= $url?>assets/css/admin-lte.css" rel="stylesheet" type="text/css">
 <link href="<?= $url?>assets/css/admin-skin.min.css" rel="stylesheet" type="text/css">
 <link href="<?= $url?>assets/css/admin.css" rel="stylesheet" type="text/css">
 </head>
