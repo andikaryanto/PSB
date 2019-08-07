@@ -52,7 +52,7 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <a href = "laporan/cetakformulir.php?content=<?= $_GET['content'] ?>" type="button" class="btn btn-block btn-primary btn-lg">Cetak Formulir</a>
+                        <a href = "laporan/cetakformulir.php?pesertaid=<?=$_GET['idpeserta']?>&content=<?= $_GET['content'] ?>" type="button" class="btn btn-block btn-primary btn-lg">Cetak Formulir</a>
                     </div>
                 </div>
             </div>
