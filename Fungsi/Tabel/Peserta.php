@@ -69,22 +69,46 @@ function buatnoreg($idpeserta){
     
 }
 
+function cekpesertaditerima($nodaftar){
+    $pengaturan = ambilpengaturan();
+    $tahunajaran = ambilhanyatahunajaran("WHERE Aktif = 1");
+    if(date_create(tanggalSekarang())>= date_create($pengaturan['TglPengumuman'])){
+
+        $qry = "SELECT * FROM 
+        (	
+            SELECT a.*, b.Nilai
+            FROM peserta a
+            INNER JOIN (
+                SELECT Peserta_Id, SUM(Nilai) Nilai
+                FROM nilaiujian 
+                GROUP BY Peserta_Id
+            ) b ON a.Id = b.Peserta_Id
+            WHERE a.Tahunajaran_Id = {$tahunajaran['Id']}
+            ORDER BY b.Nilai  DESC
+            LIMIT 0, {$pengaturan['JumlahDiterima']}
+        ) A WHERE NoDaftar = '{$nodaftar}'";
+        // echo $qry;
+        return database_select_daftar($qry);
+    }
+
+    return null;
+}
+
 function pesertaditerima(){
     $pengaturan = ambilpengaturan();
     $tahunajaran = ambilhanyatahunajaran("WHERE Aktif = 1");
     if(date_create(tanggalSekarang())>= date_create($pengaturan['TglPengumuman'])){
 
-        $qry = " SELECT *, b.Nilai + c.Nilai
+        $qry = " SELECT *, b.Nilai
         FROM peserta a
         INNER JOIN (
             SELECT Peserta_Id, SUM(Nilai) Nilai
             FROM nilaiujian 
             GROUP BY Peserta_Id
         ) b ON a.Id = b.Peserta_Id
-        INNER JOIN prestasi c ON c.Peserta_Id = a.Id
         WHERE a.Tahunajaran_Id = {$tahunajaran['Id']}
-        ORDER BY b.Nilai + c.Nilai DESC
-        LIMIT 0, 1";
+        ORDER BY b.Nilai  DESC
+        LIMIT 0, {$pengaturan['JumlahDiterima']}";
 
         return database_select_daftar($qry);
     }
@@ -96,19 +120,19 @@ function pesertaditerima(){
 function pesertaditolak(){
     $pengaturan = ambilpengaturan();
     $tahunajaran = ambilhanyatahunajaran("WHERE Aktif = 1");
+    $limit = 1 * $pengaturan['JumlahDiterima'];
     if(date_create(tanggalSekarang())>= date_create($pengaturan['TglPengumuman'])){
 
-        $qry = " SELECT *, b.Nilai + c.Nilai
+        $qry = " SELECT *, b.Nilai
         FROM peserta a
         INNER JOIN (
             SELECT Peserta_Id, SUM(Nilai) Nilai
             FROM nilaiujian 
             GROUP BY Peserta_Id
         ) b ON a.Id = b.Peserta_Id
-        INNER JOIN prestasi c ON c.Peserta_Id = a.Id
         WHERE a.Tahunajaran_Id = {$tahunajaran['Id']}
-        ORDER BY b.Nilai + c.Nilai DESC
-        LIMIT 1, 1";
+        ORDER BY b.Nilai DESC
+        LIMIT $limit, {$pengaturan['JumlahDiterima']}";
 
         return database_select_daftar($qry);
     }

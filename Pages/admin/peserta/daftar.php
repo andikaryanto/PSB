@@ -21,13 +21,8 @@
         <div class="col-xs-12">
             <div class="box box-primary">
                 <div class="box-header with-border">
-                    <h3 class="box-title">Daftar Tahun Ajaran</h3>
+                    <h3 class="box-title">Daftar Peserta</h3>
               
-                    <div class="row">
-                        <div class="col-xs-12 text-right">
-                            <a href = "<?= $url?>Pages/admin/tahunajaran/tambah.php" class = "btn btn-primary">+</a>
-                        </div>
-                    </div>
                 </div>
             <!-- /.box-header -->
                 <div class="box-body">
@@ -41,6 +36,7 @@
                                 <th>JenKel</th>
                                 <th>No Telp</th>
                                 <th>Asal Sekolah</th>
+                                <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody> 
@@ -76,6 +72,7 @@
                                 <td><?= $p['JenisKelamin'] ?></td>
                                 <td><?= $p['NoTelp'] ?></td>
                                 <td><?= $p['AsalSekolah'] ?></td>
+                                <td><a href="<?= $url."Pages/admin/peserta/detail.php?NoRegist={$p['NoDaftar']}"?>"><i class = "fa fa-info"></i></a></td>
                             </tr>
                             <?php
                                 }
