@@ -3,6 +3,8 @@
                 $_POST['agama'], $_POST['alamatasal'], $_POST['rt'], $_POST['rw'], $_POST['kelurahan'], $_POST['kecamatan'],
                 $_POST['kodepos'],$_POST['alamatdiy'],$_POST['nohpsiswa'],$_POST['namasekolahasal'],$_POST['alamatasalsekolah'],
                 $_POST['statussekolah'], $_POST['kartumiskin']);
+    
+    simpanpendaftaran($idpeserta);
 
     simpanorangtua($idpeserta, $_POST['namaortu'],$_POST['pekerjaan'],$_POST['agamaortu'],$_POST['alamatasalortu'], $_POST['namawali'],
                 $_POST['rtwali'], $_POST['rwwali'], $_POST['kelurahanwali'], $_POST['kecamatanwali'],

@@ -9,7 +9,7 @@ include APP_PATH."3rdParty/TCPDF/tcpdf.php";
 
 $load = [
     'Database' => [ 'Config', 'Koneksi' ],
-    'Fungsi/Tabel' => ['Peserta', 'Orangtua', 'Nilaiujian', 'Prestasi', 'Pengguna', 'Tahunajaran', 'Pengaturan'],
+    'Fungsi/Tabel' => ['Daftarulang','Siswa','Peserta', 'Orangtua', 'Nilaiujian', 'Prestasi', 'Pengguna', 'Tahunajaran', 'Pengaturan', 'Pendaftaran', 'Pengumuman'],
     'Fungsi/Global' => ['QR', 'Encrypt', 'Helper'],
     // 'Classes' => ['PDF']
 ];

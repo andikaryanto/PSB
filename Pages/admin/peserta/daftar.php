@@ -36,6 +36,9 @@
                                 <th>JenKel</th>
                                 <th>No Telp</th>
                                 <th>Asal Sekolah</th>
+                                <?php if(isset($_GET['halaman']) && $_GET['halaman'] == "siswaditerima"){
+                                    echo "<th>Daftar Ulang?</th>";
+                                }?>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
@@ -72,6 +75,13 @@
                                 <td><?= $p['JenisKelamin'] ?></td>
                                 <td><?= $p['NoTelp'] ?></td>
                                 <td><?= $p['AsalSekolah'] ?></td>
+                                <?php if(isset($_GET['halaman']) && $_GET['halaman'] == "siswaditerima"){
+                                    // echo "<th>{$p['Daftarulang']}</th>";
+                                    if( $p['Daftarulang'] == 1)
+                                        echo "<td><input id='{$p['Id']}' type='checkbox' class='minimal' checked></td>";
+                                    else 
+                                        echo "<td><input id='{$p['Id']}' type='checkbox' class='minimal'></td>";
+                                }?>
                                 <td><a href="<?= $url."Pages/admin/peserta/detail.php?NoRegist={$p['NoDaftar']}"?>"><i class = "fa fa-info"></i></a></td>
                             </tr>
                             <?php
@@ -81,9 +91,15 @@
                         </tbody>
                         <tfoot>
                             <tr>
-                                <th>Nama</th>
-                                <th>Deskripsi</th>
-                                <th>Aktif</th>
+                            <th>No Daftar</th>
+                                <th>NISN</th>
+                                <th>Nama Lengkap</th>
+                                <th>JenKel</th>
+                                <th>No Telp</th>
+                                <th>Asal Sekolah</th>
+                                <?php if(isset($_GET['halaman']) && $_GET['halaman'] == "siswaditerima"){
+                                    echo "<th>Daftar Ulang?</th>";
+                                }?>
                                 <th class = "disabled-sorting text-right">Aksi</th>
                             </tr>
                         </tfoot>
@@ -108,6 +124,29 @@
             }
         ],
     }); 
+
+    $(':checkbox').change(function() {
+    // this will contain a reference to the checkbox   
+    if (this.checked) {
+        console.log(this.checked);
+    
+    } else {
+        console.log(this.checked);
+    }
+
+    $.ajax({
+        url: '<?= $url."Fungsi/Aksi/Daftarulang.php" ?>',
+        type : "POST",
+        data : {
+            Id : this.id,
+            Selected : this.checked
+        },
+        success : function(result){
+            var res = JSON.parse(result)
+            console.log(res);
+        }
+    })
+});
 
     // }
 </script>

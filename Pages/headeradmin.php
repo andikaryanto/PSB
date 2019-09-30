@@ -59,17 +59,17 @@
                 </li>
                 <li class="treeview">
                     <a href="<?= $url ?>/Pages/admin/peserta/daftar.php?halaman=semuasiswa">
-                        <i class="fa fa-user"></i> <span>DATA SISWA</span>
+                        <i class="fa fa-user"></i> <span>DATA PESERTA</span>
                     </a>                   
                 </li>
                 <li class="treeview">
                     <a href="<?= $url ?>/Pages/admin/peserta/daftar.php?halaman=siswaditerima">
-                        <i class="fa fa-user"></i> <span>DATA SISWA DITERIMA</span>
+                        <i class="fa fa-user"></i> <span>DATA PESERTA DITERIMA</span>
                     </a>                   
                 </li>
                 <li class="treeview">
                     <a href="<?= $url ?>/Pages/admin/peserta/daftar.php?halaman=siswaditolak">
-                        <i class="fa fa-user"></i> <span>DATA SISWA DITOLAK</span>
+                        <i class="fa fa-user"></i> <span>DATA PESERTA DITOLAK</span>
                     </a>                   
                 </li>
 				<li class="treeview">
@@ -80,6 +80,11 @@
 				<li class="treeview">
                     <a href="<?= $url ?>/Pages/admin/pengguna/daftar.php">
                         <i class="fa fa-user"></i> <span>PENGGUNA</span>
+                    </a>                   
+                </li>
+                <li class="treeview">
+                    <a href="<?= $url ?>/Pages/admin/aksi/pengumuman.php">
+                        <i class="fa fa-user"></i> <span>PENGUMUMAN</span>
                     </a>                   
                 </li>
 				<li class="treeview">

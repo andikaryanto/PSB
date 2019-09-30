@@ -12,6 +12,21 @@ MySQL - 10.1.33-MariaDB : Database - psb
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+/*Table structure for table `daftarulang` */
+
+DROP TABLE IF EXISTS `daftarulang`;
+
+CREATE TABLE `daftarulang` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `Peserta_Id` int(11) NOT NULL,
+  `TahunAjaran_Id` int(11) NOT NULL,
+  PRIMARY KEY (`Id`),
+  KEY `daftarulang_Peserta_Id_fk` (`Peserta_Id`),
+  KEY `daftarulang_TahunAjaran_Id_fk` (`TahunAjaran_Id`),
+  CONSTRAINT `daftarulang_Peserta_Id_fk` FOREIGN KEY (`Peserta_Id`) REFERENCES `peserta` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `daftarulang_TahunAjaran_Id_fk` FOREIGN KEY (`TahunAjaran_Id`) REFERENCES `tahunajaran` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+
 /*Table structure for table `matapelajaran` */
 
 DROP TABLE IF EXISTS `matapelajaran`;
@@ -31,7 +46,7 @@ CREATE TABLE `migrations` (
   `Version` varchar(50) DEFAULT NULL,
   `ExecutedAt` datetime DEFAULT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
 
 /*Table structure for table `nilaiujian` */
 
@@ -74,6 +89,19 @@ CREATE TABLE `orangtua` (
   CONSTRAINT `orangtua_Peserta_Id_fk` FOREIGN KEY (`Peserta_Id`) REFERENCES `peserta` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
+/*Table structure for table `pendaftaran` */
+
+DROP TABLE IF EXISTS `pendaftaran`;
+
+CREATE TABLE `pendaftaran` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `TglDaftar` datetime NOT NULL,
+  `Peserta_Id` int(11) NOT NULL,
+  PRIMARY KEY (`Id`),
+  KEY `pendaftaran_Peserta_Id_fk` (`Peserta_Id`),
+  CONSTRAINT `pendaftaran_Peserta_Id_fk` FOREIGN KEY (`Peserta_Id`) REFERENCES `peserta` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 /*Table structure for table `pengaturan` */
 
 DROP TABLE IF EXISTS `pengaturan`;
@@ -100,6 +128,19 @@ CREATE TABLE `pengguna` (
   `Level` smallint(11) NOT NULL,
   PRIMARY KEY (`Id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+/*Table structure for table `pengumuman` */
+
+DROP TABLE IF EXISTS `pengumuman`;
+
+CREATE TABLE `pengumuman` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `Peserta_Id` int(11) NOT NULL,
+  `TahunAjaran_Id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`Id`),
+  KEY `pengumuman_Peserta_Id_fk` (`Peserta_Id`),
+  CONSTRAINT `pengumuman_Peserta_Id_fk` FOREIGN KEY (`Peserta_Id`) REFERENCES `peserta` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 /*Table structure for table `peserta` */
 
@@ -147,6 +188,21 @@ CREATE TABLE `prestasi` (
   CONSTRAINT `prestasi_Peserta_Id_fk` FOREIGN KEY (`Peserta_Id`) REFERENCES `peserta` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
+/*Table structure for table `siswa` */
+
+DROP TABLE IF EXISTS `siswa`;
+
+CREATE TABLE `siswa` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `Peserta_Id` int(11) NOT NULL,
+  `TahunAjaran_Id` int(11) NOT NULL,
+  PRIMARY KEY (`Id`),
+  KEY `siswa_Peserta_Id_fk` (`Peserta_Id`),
+  KEY `siswa_TahunAjaran_Id_fk` (`TahunAjaran_Id`),
+  CONSTRAINT `siswa_Peserta_Id_fk` FOREIGN KEY (`Peserta_Id`) REFERENCES `peserta` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `siswa_TahunAjaran_Id_fk` FOREIGN KEY (`TahunAjaran_Id`) REFERENCES `tahunajaran` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
 /*Table structure for table `tahunajaran` */
 
 DROP TABLE IF EXISTS `tahunajaran`;
@@ -158,7 +214,7 @@ CREATE TABLE `tahunajaran` (
   `Tahun` datetime NOT NULL,
   `Aktif` smallint(1) NOT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

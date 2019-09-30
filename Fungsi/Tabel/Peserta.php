@@ -99,13 +99,14 @@ function pesertaditerima(){
     $tahunajaran = ambilhanyatahunajaran("WHERE Aktif = 1");
     if(date_create(tanggalSekarang())>= date_create($pengaturan['TglPengumuman'])){
 
-        $qry = " SELECT *, b.Nilai
+        $qry = " SELECT a.*, b.Nilai, CASE WHEN c.Peserta_Id IS NULL THEN 0 ELSE 1 END Daftarulang
         FROM peserta a
         INNER JOIN (
             SELECT Peserta_Id, SUM(Nilai) Nilai
             FROM nilaiujian 
             GROUP BY Peserta_Id
         ) b ON a.Id = b.Peserta_Id
+        LEFT JOIN daftarulang c on c.Peserta_Id = a.Id
         WHERE a.Tahunajaran_Id = {$tahunajaran['Id']}
         ORDER BY b.Nilai  DESC
         LIMIT 0, {$pengaturan['JumlahDiterima']}";
