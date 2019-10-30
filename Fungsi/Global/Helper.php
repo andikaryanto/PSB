@@ -19,4 +19,17 @@
         $now = database_query("SELECT NOW() AS Sekarang;");
         return $now[0]['Sekarang'];
     }
+
+    function uploadFotoPath($files){
+        $date = new DateTime('now', new DateTimeZone('Asia/Jakarta'));
+        $nameex = $date->format("Ymd_His");
+        define("SITE_ROOT", getcwd() . DS);
+        $uploads_dir = SITE_ROOT.'uploads';
+        $tmp_name = $files["file"]["tmp_name"];
+        $name = $files["file"]["name"];
+        move_uploaded_file($tmp_name, "$uploads_dir/$nameex-$name");
+        return "uploads/$nameex-$name";
+
+    }
 ?>
+

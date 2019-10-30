@@ -3,8 +3,8 @@
                 $_POST['agama'], $_POST['alamatasal'], $_POST['rt'], $_POST['rw'], $_POST['kelurahan'], $_POST['kecamatan'],
                 $_POST['kodepos'],$_POST['alamatdiy'],$_POST['nohpsiswa'],$_POST['namasekolahasal'],$_POST['alamatasalsekolah'],
                 $_POST['statussekolah'], $_POST['kartumiskin']);
-    
-    simpanpendaftaran($idpeserta);
+    $uploadedpath = uploadFotoPath($_FILES);
+    uploadFoto($idpeserta, $uploadedpath);
 
     simpanorangtua($idpeserta, $_POST['namaortu'],$_POST['pekerjaan'],$_POST['agamaortu'],$_POST['alamatasalortu'], $_POST['namawali'],
                 $_POST['rtwali'], $_POST['rwwali'], $_POST['kelurahanwali'], $_POST['kecamatanwali'],
@@ -18,8 +18,11 @@
     
     $noreg = buatnoreg($idpeserta);
 
-    $content = $url."pages/daftartab.php?key=".encrypt("edit.".$kuncirahasia.".".$noreg);
+    $content = $url."Pages/daftartab.php?key=".encrypt("edit.".$kuncirahasia.".".$noreg);
     $text = generateQR($url, $content, $noreg.$qrcode['registrasi']);
     $enctext = encrypt($text);
-    header("Location: $url"."pages/daftarberhasil.php?idpeserta={$idpeserta}&content={$enctext}");
+    // echo $idpeserta;
+    header("Location: $url"."Pages/daftarberhasil.php?idpeserta={$idpeserta}&content={$enctext}");
+
+    
 ?>

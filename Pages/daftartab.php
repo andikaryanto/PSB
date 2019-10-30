@@ -21,7 +21,7 @@
     }
 ?>
 
-<div class="container">
+<div class="container" id = "taball">
 		<div class="row">
 			<div class="col-md-8">
 				<div class="box">
@@ -37,7 +37,7 @@
                             
                             
                         </ul>
-                        <form method="POST" action="../Fungsi/Aksi/Peserta_simpan.php" novalidate>
+                        <form method="POST" action="../Fungsi/Aksi/Peserta_simpan.php" novalidate enctype="multipart/form-data">
                             <div class="tab-content">
                             
                                 <div class="tab-pane active" id="tab_1">
@@ -90,6 +90,30 @@
     include 'footer.php';
     // include 'daftar.php'
 ?>
+<script>
+    
+	function loadTab(tabbefore, tabafter) {
+		
+		var before = document.querySelectorAll("a[href='#"+tabbefore+"']");
+		before.forEach(function(t) {
+			t.setAttribute("aria-expanded", "false");
+			var par = t.parentElement;
+			par.removeAttribute("class");
+			tab = document.getElementById(tabbefore);
+			tab.setAttribute("class", "tab-pane");
 
+		});
+		var after = document.querySelectorAll("a[href='#"+tabafter+"']");
+		after.forEach(function(t) {
+			t.setAttribute("aria-expanded", "true");
+			var par = t.parentElement;
+			par.setAttribute("class", 'active');
+			tab = document.getElementById(tabafter);
+			tab.setAttribute("class", "tab-pane active");
+		});
+        document.getElementById('taball').scrollIntoView();
+	}
+</script>
 </body>
 </html>
+

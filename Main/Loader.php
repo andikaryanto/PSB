@@ -9,7 +9,7 @@ include APP_PATH."3rdParty/TCPDF/tcpdf.php";
 
 $load = [
     'Database' => [ 'Config', 'Koneksi' ],
-    'Fungsi/Tabel' => ['Daftarulang','Siswa','Peserta', 'Orangtua', 'Nilaiujian', 'Prestasi', 'Pengguna', 'Tahunajaran', 'Pengaturan', 'Pendaftaran', 'Pengumuman'],
+    'Fungsi/Tabel' => ['Kecamatan','Kelurahan','Daftarulang','Siswa','Peserta', 'Orangtua', 'Nilaiujian', 'Prestasi', 'Pengguna', 'Tahunajaran', 'Pengaturan', 'Pendaftaran', 'Pengumuman'],
     'Fungsi/Global' => ['QR', 'Encrypt', 'Helper'],
     // 'Classes' => ['PDF']
 ];
@@ -30,6 +30,7 @@ foreach($load as $key => $value){
 /**
  * load page
  */
+// echo $_SERVER['PATH_INFO'];
 if($_SERVER['PATH_INFO'] != "/")
     include APP_PATH.$_SERVER['PATH_INFO'];
     

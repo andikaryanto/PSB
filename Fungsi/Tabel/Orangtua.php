@@ -16,8 +16,8 @@ function simpanorangtua($idpeserta, $namalengkap, $pekerjaan, $agama, $alamat,
                                                 NamaWali = '{$namawali}',
                                                 RT = '{$rt}',
                                                 RW = '{$rw}',
-                                                Kelurahan = '{$kelurahan}',
-                                                Kecamatan = '{$kecamatan}',
+                                                Kelurahan_Id = '{$kelurahan}',
+                                                Kecamatan_Id = '{$kecamatan}',
                                                 KodePos = '{$kodepos}'
                                 WHERE id = {$ortu['Id']}
                             ");

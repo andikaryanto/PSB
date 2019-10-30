@@ -24,7 +24,7 @@
 				<label>ILMU PENGETAHUAN ALAM</label>
 				<input type="number" class="form-control" name="ipa" value = "<?= $ipa?>" placeholder="" required>
 			</div>
-			<a class="btn btn-success" href="dataprestasi.php">SELANJUTNYA</a>
+	<a onclick = "loadTab('tab_4','tab_5')" class="btn btn-success" data-toggle="tab">SELANJUTNYA</a>
 		</div>
 	<div class="footer">
 		<div class="container">

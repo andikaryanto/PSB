@@ -5,18 +5,27 @@
             <div class="box">
                 <?php
 
-                $peserta = cekpesertaditerima($_POST['nomorpendaftaran']);
-                
-                if ($peserta){
-                 ?>
+                $pengaturan = ambilpengaturan();
+
+                if(date_create(tanggalSekarang()) >= date_create($pengaturan['TglPengumuman'])){
+
+                    $peserta = cekpesertaditerima($_POST['nomorpendaftaran']);
                     
-					<h3 align="center">SELAMAT ANDA DITERIMA </h3>
-                 <?php   
+                    if ($peserta){
+                     ?>
+                        
+                        <h3 align="center">SELAMAT ANDA DITERIMA </h3>
+                     <?php   
+                    } else {
+                        
+                    ?>
+                        <h3 align="center">TERIMAKASIH ANDA SUDAH MENGIKUT HASIL SELEKSI, ANDA TIDAK LOLOS </h3>
+                    <?php
+                    } 
                 } else {
-                    
-                ?>
-                    <h3 align="center">TERIMAKASIH ANDA SUDAH MENGIKUT HASIL SELEKSI, ANDA TIDAK LOLOS </h3>
-                <?php
+                    ?>
+                     <h3 align="center">BELUM ADA PENGUMUMAN </h3>
+                    <?php
                 }
                 ?>
                 
