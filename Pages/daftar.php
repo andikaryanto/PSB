@@ -10,8 +10,8 @@ $agama = isset($peserta['Agama']) ? $peserta['Agama'] : "";
 $alamatasal = isset($peserta['Alamat']) ? $peserta['Alamat'] : "";
 $rt = isset($peserta['RT']) ? $peserta['RT'] : "";
 $rw = isset($peserta['RW']) ? $peserta['RW'] : "";
-$kelurahan = isset($peserta['Kelurahan']) ? $peserta['Kelurahan'] : "";
-$kecamatan = isset($peserta['Kecamatan']) ? $peserta['Kecamatan'] : "";
+$kabupaten = isset($peserta['Kabupaten_Id']) ? $peserta['Kabupaten_Id'] : "";
+$kecamatan = isset($peserta['Kecamatan_Id']) ? $peserta['Kecamatan_Id'] : "";
 $kodepos = isset($peserta['KodePos']) ? $peserta['KodePos'] : "";
 $domisili = isset($peserta['Domisili']) ? $peserta['Domisili'] : "";
 $notelp = isset($peserta['NoTelp']) ? $peserta['NoTelp'] : "";
@@ -28,7 +28,7 @@ $notelp = isset($peserta['NoTelp']) ? $peserta['NoTelp'] : "";
 	</div>
 	<div class="form-group">
 		<label>Nama Lengkap (Sesuai Ijazah)</label>
-		<input type="text" class="form-control" name="namalengkap" placeholder="Nama Lengkap" value="<?= $namalengkap ?>" required>
+		<input type="text" class="form-control stringonly" name="namalengkap" placeholder="Nama Lengkap" value="<?= $namalengkap ?>" required>
 	</div>
 	<div class="form-group">
 		<label>Jenis Kelamin<br>
@@ -38,7 +38,7 @@ $notelp = isset($peserta['NoTelp']) ? $peserta['NoTelp'] : "";
 	</div>
 	<div class="form-group">
 		<label>Tempat Lahir</label>
-		<input type="text" class="form-control" name="tempatlahir" placeholder="Tempat Lahir" value="<?= $tempatlahir ?>" required>
+		<input type="text" class="form-control stringonly" name="tempatlahir" placeholder="Tempat Lahir" value="<?= $tempatlahir ?>" required>
 	</div>
 	<div class="form-group">
 		<label>Tanggal Lahir</label>
@@ -46,7 +46,7 @@ $notelp = isset($peserta['NoTelp']) ? $peserta['NoTelp'] : "";
 	</div>
 	<div class="form-group">
 		<label>Agama</label>
-		<select class="form-control" name="agama">
+		<select class="form-control" name="agama" required>
 			<option <?php if ($agama == "Islam") echo "selected" ?> value="Islam">Islam</option>
 			<option <?php if ($agama == "Kristen") echo "selected" ?> value="Kristen">Kristen</option>
 			<option <?php if ($agama == "Katolik") echo "selected" ?> value="Katolik">Katolik</option>
@@ -57,47 +57,32 @@ $notelp = isset($peserta['NoTelp']) ? $peserta['NoTelp'] : "";
 	</div>
 	<div class="form-group">
 		<label>Alamat Asal</label>
-		<textarea class="form-control" name="alamatasal" rows="5"><?= $alamatasal ?></textarea>
+		<textarea class="form-control" name="alamatasal" rows="5" required><?= $alamatasal ?></textarea>
 	</div>
 	<div class="form-group">
-		<label>RT</label>
-		<input type="number" class="form-control" name="rt" value="<?= $rt ?>">
-	</div>
-	<div class="form-group">
-		<label>RW</label>
-		<input type="number" class="form-control" name="rw" value="<?= $rw ?>">
-	</div>
-	<!-- <div class="form-group">
-							<label>Kelurahan</label>
-								<input class="form-control" name="kelurahan" value = "<?= $kelurahan ?>">
-						</div>
-						<div class="form-group">
-							<label>Kecamatan</label>
-								<input class="form-control" name="kecamatan" value = "<?= $kecamatan ?>" >
-						</div> -->
-	<div class="form-group">
-		<label>Kecamatan</label>
-		<select id="kecamatan" class="form-control" name="kecamatan">
-			<?php $kecamatan = ambilkecamatan();
-			foreach ($kecamatan as $kec) :
-				?>
-				<option value="<?= $kec['Id'] ?>"><?= $kec['Nama'] ?></option>
+		<label>Kabupaten</label>
+		<select id="kabupaten" class="form-control" name="kabupaten" required>
+			<?php $kabupaten = ambilkabupaten();
+			// echo json_encode($kabupaten);
+			foreach ($kabupaten as $kab) :
+			?>
+				<option value="<?= $kab['Id'] ?>" <?php if($kab['Id'] == $kabupaten) echo "selected" ?>><?= $kab['Nama'] ?></option>
 			<?php endforeach; ?>
 		</select>
 	</div>
 	<div class="form-group">
-		<label>Kelurahan</label>
-		<select id="kelurahan" class="form-control" name="kelurahan">
+		<label>Kecamatan</label>
+		<select id="kecamatan" class="form-control" name="kecamatan" required>
 
 		</select>
 	</div>
 	<div class="form-group">
 		<label>Kode Pos</label>
-		<input type="number" class="form-control" name="kodepos" value="<?= $kodepos ?>">
+		<input type="number" class="form-control" name="kodepos" value="<?= $kodepos ?>" required>
 	</div>
 	<div class="form-group">
 		<label>Alamat di DIY</label>
-		<textarea class="form-control" name="alamatdiy" rows="5"><?= $domisili ?></textarea>
+		<textarea class="form-control" name="alamatdiy" rows="5" required><?= $domisili ?></textarea>
 	</div>
 	<div class="form-group">
 		<label>Nomor Telepon / HP</label>
@@ -117,27 +102,32 @@ $notelp = isset($peserta['NoTelp']) ? $peserta['NoTelp'] : "";
 
 <script>
 	$(document).ready(function() {
-		loadKelurahan();
+		loadKecamatan();
 	});
 	
 
-	$("#kecamatan").on("change", function() {
-		loadKelurahan();
+	$("#kabupaten").on("change", function() {
+		loadKecamatan();
 	});
 
-	function loadKelurahan() {
+	function loadKecamatan() {
+		var kecamatan = '<?= $kecamatan?>';
 		$.ajax({
-			url: "<?= $url . 'Fungsi/Aksi/Kelurahan_json.php' ?>",
+			url: "<?= $url . 'Fungsi/Aksi/Kecamatan_json.php' ?>",
 			type: "POST",
 			data: {
-				kecamatan: $("#kecamatan").val()
+				kabupaten: $("#kabupaten").val()
 			},
 			success: function(d) {
-				var kelurahan = JSON.parse(d);
-				$('#kelurahan option[value!="a"]').remove();
-				for (var i = 0; i < kelurahan.length; i++) {
-					$('#kelurahan').append(`<option value='${kelurahan[i].Id}'> 
-                                       ${kelurahan[i].Nama} 
+				var kecamatan = JSON.parse(d);
+				$('#kecamatan option[value!="a"]').remove();
+				for (var i = 0; i < kecamatan.length; i++) {
+					var selected = "";
+					if(kecamatan == kecamatan[i].Id)
+						selected = "selected";
+
+					$('#kecamatan').append(`<option value='${kecamatan[i].Id} ${selected}'> 
+                                       ${kecamatan[i].Nama} 
                                   </option>`);
 				}
 			}

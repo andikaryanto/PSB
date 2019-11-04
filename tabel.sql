@@ -25,7 +25,30 @@ CREATE TABLE `daftarulang` (
   KEY `daftarulang_TahunAjaran_Id_fk` (`TahunAjaran_Id`),
   CONSTRAINT `daftarulang_Peserta_Id_fk` FOREIGN KEY (`Peserta_Id`) REFERENCES `peserta` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `daftarulang_TahunAjaran_Id_fk` FOREIGN KEY (`TahunAjaran_Id`) REFERENCES `tahunajaran` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/*Table structure for table `kabupaten` */
+
+DROP TABLE IF EXISTS `kabupaten`;
+
+CREATE TABLE `kabupaten` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `Nama` varchar(50) NOT NULL,
+  PRIMARY KEY (`Id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+/*Table structure for table `kecamatan` */
+
+DROP TABLE IF EXISTS `kecamatan`;
+
+CREATE TABLE `kecamatan` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `Nama` varchar(50) NOT NULL,
+  `Kabupaten_Id` int(11) NOT NULL,
+  PRIMARY KEY (`Id`),
+  KEY `kabupaten_kecamatan` (`Kabupaten_Id`),
+  CONSTRAINT `kabupaten_kecamatan` FOREIGN KEY (`Kabupaten_Id`) REFERENCES `kabupaten` (`Id`) ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 /*Table structure for table `matapelajaran` */
 
@@ -46,7 +69,7 @@ CREATE TABLE `migrations` (
   `Version` varchar(50) DEFAULT NULL,
   `ExecutedAt` datetime DEFAULT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
 
 /*Table structure for table `nilaiujian` */
 
@@ -62,7 +85,7 @@ CREATE TABLE `nilaiujian` (
   KEY `nilaiujian_Mapel_Id_fk` (`Mapel_Id`),
   CONSTRAINT `nilaiujian_Mapel_Id_fk` FOREIGN KEY (`Mapel_Id`) REFERENCES `matapelajaran` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `nilaiujian_Peserta_Id_fk` FOREIGN KEY (`Peserta_Id`) REFERENCES `peserta` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=106 DEFAULT CHARSET=utf8;
 
 /*Table structure for table `orangtua` */
 
@@ -80,14 +103,14 @@ CREATE TABLE `orangtua` (
   `AlamatWali` varchar(1000) DEFAULT NULL,
   `RT` varchar(5) NOT NULL,
   `RW` varchar(5) NOT NULL,
-  `Kelurahan` varchar(100) NOT NULL,
-  `Kecamatan` varchar(100) NOT NULL,
+  `Kelurahan_Id` int(11) NOT NULL,
+  `Kecamatan_Id` int(11) NOT NULL,
   `KodePos` varchar(10) NOT NULL,
   `NoTelp` varchar(15) DEFAULT NULL,
   PRIMARY KEY (`Id`),
   KEY `orangtua_Peserta_Id_fk` (`Peserta_Id`),
   CONSTRAINT `orangtua_Peserta_Id_fk` FOREIGN KEY (`Peserta_Id`) REFERENCES `peserta` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8;
 
 /*Table structure for table `pendaftaran` */
 
@@ -158,8 +181,8 @@ CREATE TABLE `peserta` (
   `Alamat` varchar(1000) NOT NULL,
   `RT` varchar(5) NOT NULL,
   `RW` varchar(5) NOT NULL,
-  `Kelurahan` varchar(100) NOT NULL,
-  `Kecamatan` varchar(100) NOT NULL,
+  `Kabupaten_Id` int(11) NOT NULL,
+  `Kecamatan_Id` int(11) NOT NULL,
   `KodePos` varchar(10) NOT NULL,
   `Domisili` varchar(1000) NOT NULL,
   `NoTelp` varchar(15) NOT NULL,
@@ -169,10 +192,11 @@ CREATE TABLE `peserta` (
   `KartuMiskin` tinyint(1) DEFAULT NULL,
   `Status` tinyint(1) DEFAULT NULL,
   `Tahunajaran_Id` int(11) DEFAULT NULL,
+  `UrlPhoto` varchar(1000) DEFAULT NULL,
   PRIMARY KEY (`Id`),
   KEY `peserta_Tahunajaran_Id_fk` (`Tahunajaran_Id`),
-  CONSTRAINT `peserta_Tahunajaran_Id_fk` FOREIGN KEY (`Tahunajaran_Id`) REFERENCES `tahunajaran` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+  CONSTRAINT `peserta_Tahunajaran_Id_fk` FOREIGN KEY (`Tahunajaran_Id`) REFERENCES `tahunajaran` (`Id`) ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8;
 
 /*Table structure for table `prestasi` */
 
@@ -186,7 +210,7 @@ CREATE TABLE `prestasi` (
   PRIMARY KEY (`Id`),
   KEY `prestasi_Peserta_Id_fk` (`Peserta_Id`),
   CONSTRAINT `prestasi_Peserta_Id_fk` FOREIGN KEY (`Peserta_Id`) REFERENCES `peserta` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8;
 
 /*Table structure for table `siswa` */
 
@@ -201,7 +225,7 @@ CREATE TABLE `siswa` (
   KEY `siswa_TahunAjaran_Id_fk` (`TahunAjaran_Id`),
   CONSTRAINT `siswa_Peserta_Id_fk` FOREIGN KEY (`Peserta_Id`) REFERENCES `peserta` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `siswa_TahunAjaran_Id_fk` FOREIGN KEY (`TahunAjaran_Id`) REFERENCES `tahunajaran` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Table structure for table `tahunajaran` */
 

@@ -41,7 +41,7 @@ function simpanpeseta(
     $alamat,
     $rt,
     $rw,
-    $kelurahan,
+    $kabupaten,
     $kecamatan,
     $kodepos,
     $domisili,
@@ -63,7 +63,7 @@ function simpanpeseta(
                             Alamat = '{$alamat}',
                             RT = '{$rt}',
                             RW = '{$rw}',
-                            Kelurahan_Id = '{$kelurahan}',
+                            Kabupaten_Id = '{$kabupaten}',
                             Kecamatan_Id = '{$kecamatan}',
                             KodePos = '{$kodepos}',
                             Domisili = '{$domisili}',
@@ -73,7 +73,7 @@ function simpanpeseta(
         return $id;
     } else {
         $qry = "INSERT INTO peserta VALUES (null, null, '{$nisn}', '{$namalengkap}', '{$jenkel}', 
-        '{$tempatlahir}', '{$tgllahir}', '{$agama}', '{$alamat}', '{$rt}', '{$rw}', '{$kelurahan}',
+        '{$tempatlahir}', '{$tgllahir}', '{$agama}', '{$alamat}', '{$rt}', '{$rw}', '{$kabupaten}',
         '{$kecamatan}', '{$kodepos}', '$domisili', '{$notelp}', '{$asalsekolah}', '{$alamatsekolah}',
         '{$statussekolah}', {$kartumiskin}, {$status}, {$tahunajaran['Id']}, NULL)";
         // echo $qry;

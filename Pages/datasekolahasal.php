@@ -19,7 +19,7 @@ $alamatsekolah = isset($peserta['AlamatSekolah']) ? $peserta['AlamatSekolah'] : 
 	</div>
 	<div class="form-group">
 		<label>Alamat Sekolah Asal</label>
-		<textarea class="form-control" name="alamatasalsekolah" rows="5"><?= $alamatsekolah ?></textarea>
+		<textarea class="form-control" name="alamatasalsekolah" rows="5" required><?= $alamatsekolah ?></textarea>
 	</div>
 	<a onclick="loadTab('tab_3','tab_4')" class="btn btn-success" data-toggle="tab">SELANJUTNYA</a>
 </div>

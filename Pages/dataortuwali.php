@@ -11,8 +11,8 @@ $alamatortu = isset($ortu['Alamat']) ? $ortu['Alamat'] : "";
 $namawali = isset($ortu['NamaWali']) ? $ortu['NamaWali'] : "";
 $rtwali = isset($ortu['RT']) ? $ortu['RT'] : "";
 $rwwali = isset($ortu['RW']) ? $ortu['RW'] : "";
-$kelurahanwali = isset($ortu['Kelurahan']) ? $ortu['Kelurahan'] : "";
-$kecamatanwali = isset($ortu['Kecamatan']) ? $ortu['Kecamatan'] : "";
+$kecamatanwali = isset($ortu['Kelurahan']) ? $ortu['Kelurahan'] : "";
+$kabupatenwali = isset($ortu['Kabupoa']) ? $ortu['Kecamatan'] : "";
 $kodeposwali = isset($ortu['KodePos']) ? $ortu['KodePos'] : "";
 $notelpwali = isset($ortu['NoTelp']) ? $ortu['NoTelp'] : "";
 ?>
@@ -29,7 +29,7 @@ $notelpwali = isset($ortu['NoTelp']) ? $ortu['NoTelp'] : "";
 	</div>
 	<div class="form-group">
 		<label>Agama</label>
-		<select class="form-control" name="agamaortu">
+		<select class="form-control" name="agamaortu" required>
 			<option <?php if ($agamaortu == "Islam") echo "selected" ?> value="Islam">Islam</option>
 			<option <?php if ($agamaortu == "Kristen") echo "selected" ?> value="Kristen">Kristen</option>
 			<option <?php if ($agamaortu == "Katolik") echo "selected" ?> value="Katolik">Katolik</option>
@@ -40,20 +40,20 @@ $notelpwali = isset($ortu['NoTelp']) ? $ortu['NoTelp'] : "";
 	</div>
 	<div class="form-group">
 		<label>Alamat Asal</label>
-		<textarea class="form-control" name="alamatasalortu" rows="5"><?= $alamatortu ?></textarea>
+		<textarea class="form-control" name="alamatasalortu" rows="5" required required><?= $alamatortu ?></textarea>
 	</div>
 	<div class="form-group">
 		<label>Nama Wali</label>
 		<input type="text" class="form-control" name="namawali" placeholder="Nama Wali" value="<?= $namawali ?>" required>
 	</div>
-	<div class="form-group">
+	<!-- <div class="form-group">
 		<label>RT</label>
 		<input class="form-control" name="rtwali" value="<?= $rtwali ?>">
 	</div>
 	<div class="form-group">
 		<label>RW</label>
 		<input class="form-control" name="rwwali" value="<?= $rwwali ?>">
-	</div>
+	</div> -->
 	<!-- <div class="form-group">
 				<label>Kelurahan</label>
 					<input class="form-control" name="kelurahanwali"  value = "<?= $kelurahanwali ?>">
@@ -63,24 +63,24 @@ $notelpwali = isset($ortu['NoTelp']) ? $ortu['NoTelp'] : "";
 					<input class="form-control" name="kecamatanwali" value = "<?= $kecamatanwali ?>">
 			</div> -->
 	<div class="form-group">
-		<label>Kecamatan</label>
-		<select id="kecamatanwali" class="form-control" name="kecamatanwali">
-			<?php $kecamatan = ambilkecamatan();
-			foreach ($kecamatan as $kec) :
+		<label>Kabuaten</label>
+		<select id="kabupatenwali" class="form-control" name="kabupatenwali" required>
+			<?php $kabupaten = ambilkabupaten();
+			foreach ($kabupaten as $kab) :
 				?>
-				<option value="<?= $kec['Id'] ?>"><?= $kec['Nama'] ?></option>
+				<option value="<?= $kab['Id'] ?>"><?= $kab['Nama'] ?></option>
 			<?php endforeach; ?>
 		</select>
 	</div>
 	<div class="form-group">
-		<label>Kelurahan</label>
-		<select id="kelurahanwali" class="form-control" name="kelurahanwali">
+		<label>Kecamatan</label>
+		<select id="kecamatanwali" class="form-control" name="kecamatanwali" required>
 
 		</select>
 	</div>
 	<div class="form-group">
 		<label>Kode Pos</label>
-		<input class="form-control" name="kodeposwali" value="<?= $kodeposwali ?>">
+		<input class="form-control" name="kodeposwali" value="<?= $kodeposwali ?>" required>
 	</div>
 	<div class="form-group">
 		<label>Nomor Telepon / HP</label>
@@ -99,21 +99,21 @@ $notelpwali = isset($ortu['NoTelp']) ? $ortu['NoTelp'] : "";
 		loadKelurahanwali();
 	});
 
-	$("#kecamatanwali").on("change", function(){
+	$("#kabupatenwali").on("change", function(){
 		loadKelurahanwali();
 	});
 
 	function loadKelurahanwali(){
 		$.ajax({
-			url : "<?= $url.'Fungsi/Aksi/Kelurahan_json.php'?>",
+			url : "<?= $url.'Fungsi/Aksi/Kecamatan_json.php'?>",
 			type : "POST",
-			data : { kecamatan : $("#kecamatanwali").val()},
+			data : { kabupaten : $("#kabupatenwali").val()},
 			success : function(d){
-				var kelurahan = JSON.parse(d);
-				$('#kelurahanwali option[value!="a"]').remove();
-				for(var i = 0 ; i < kelurahan.length; i++){
-					$('#kelurahanwali').append(`<option value='${kelurahan[i].Id}'> 
-                                       ${kelurahan[i].Nama} 
+				var kecamatan = JSON.parse(d);
+				$('#kecamatanwali option[value!="a"]').remove();
+				for(var i = 0 ; i < kecamatan.length; i++){
+					$('#kecamatanwali').append(`<option value='${kecamatan[i].Id}'> 
+                                       ${kecamatan[i].Nama} 
                                   </option>`); 
 				}
 			}
