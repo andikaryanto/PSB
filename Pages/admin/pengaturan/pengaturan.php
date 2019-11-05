@@ -1,4 +1,6 @@
-<?php include APP_PATH.'Pages/headeradmin.php';
+<?php 
+    $menuactive = "pengaturan";
+    include APP_PATH.'Pages/headeradmin.php';
     $tglmulai = "";
     $tglselesai = "";
     $tglpengumuman = "";

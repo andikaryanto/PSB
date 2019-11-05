@@ -14,9 +14,9 @@
 	<div class="well">
 		<div class="form-group">
 			<label>PRESTASI / LOMBA</label>
-			<input type="text" class="form-control" name="namaprestasi" placeholder="" value="<?= $namaprestasi ?>" required>
+			<input type="text" class="form-control" name="namaprestasi" placeholder="" value="<?= $namaprestasi ?>">
 			<label>DIAKUI NILAI / JUARA </label>
-			<input type="number" class="form-control" name="nilaiprestasi" placeholder="" value="<?= $nilaiprestasi ?>" required>
+			<input type="number" class="form-control" name="nilaiprestasi" placeholder="" value="<?= $nilaiprestasi ?>">
 		</div>
 		<a onclick="loadTab('tab_5','tab_6')" class="btn btn-success" data-toggle="tab">SELANJUTNYA</a>
 	</div>
