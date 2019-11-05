@@ -1,4 +1,11 @@
-<?php include APP_PATH . 'Pages/headeradmin.php';
+<?php 
+if($_GET['halaman'] == 'siswaditerima')
+    $menuactive = "siswaditerima";
+elseif($_GET['halaman'] == 'siswaditolak')
+    $menuactive = "siswaditolak";
+else
+    $menuactive = "semuasiswa";
+include APP_PATH . 'Pages/headeradmin.php';
 $pengaturan = ambilpengaturan();
 
 ?>

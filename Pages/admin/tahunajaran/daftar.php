@@ -1,4 +1,7 @@
-<?php include APP_PATH.'Pages/headeradmin.php';?>
+<?php 
+
+$menuactive = "tahunajaran";
+include APP_PATH.'Pages/headeradmin.php';?>
 
     <!-- Left side column. contains the logo and sidebar -->
 

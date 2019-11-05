@@ -60,6 +60,10 @@ $notelp = isset($peserta['NoTelp']) ? $peserta['NoTelp'] : "";
 		<textarea class="form-control" name="alamatasal" rows="5" required><?= $alamatasal ?></textarea>
 	</div>
 	<div class="form-group">
+		<label>Alamat di DIY</label>
+		<textarea class="form-control" name="alamatdiy" rows="5" required><?= $domisili ?></textarea>
+	</div>
+	<div class="form-group">
 		<label>Kabupaten</label>
 		<select id="kabupaten" class="form-control" name="kabupaten" required>
 			<?php $kabupaten = ambilkabupaten();
@@ -79,10 +83,6 @@ $notelp = isset($peserta['NoTelp']) ? $peserta['NoTelp'] : "";
 	<div class="form-group">
 		<label>Kode Pos</label>
 		<input type="number" class="form-control" name="kodepos" value="<?= $kodepos ?>" required>
-	</div>
-	<div class="form-group">
-		<label>Alamat di DIY</label>
-		<textarea class="form-control" name="alamatdiy" rows="5" required><?= $domisili ?></textarea>
 	</div>
 	<div class="form-group">
 		<label>Nomor Telepon / HP</label>

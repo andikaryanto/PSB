@@ -1,4 +1,6 @@
-<?php include APP_PATH.'Pages/headeradmin.php';?>
+<?php 
+$menuactive = "pengguna";
+include APP_PATH.'Pages/headeradmin.php';?>
 <div class="content-wrapper">
         <!-- Content Header (Page header) -->
     <section class="content-header">

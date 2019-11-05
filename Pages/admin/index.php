@@ -1,4 +1,6 @@
-<?php include APP_PATH.'Pages/header.php';?>
+<?php 
+
+include APP_PATH.'Pages/header.php';?>
 	<div class="container">
 		<div class="row">
 			<div class="col-md-8">

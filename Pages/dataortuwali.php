@@ -20,12 +20,12 @@ $notelpwali = isset($ortu['NoTelp']) ? $ortu['NoTelp'] : "";
 <h4 align="center">( HARAP MENGISI DATA DENGAN LENGKAP DAN BENAR ! )</h4>
 <div class="well">
 	<div class="form-group">
-		<label>Nama Orang Tua</label>
-		<input type="text" class="form-control" name="namaortu" placeholder="Nama Lengkap Ayah atau Ibu" value="<?= $namaortu ?>" required>
+		<label>Nama Orang Tua / Wali</label>
+		<input type="text" class="form-control stringonly" name="namaortu" placeholder="Nama Lengkap Ayah atau Ibu / Wali" value="<?= $namaortu ?>" required>
 	</div>
 	<div class="form-group">
 		<label>Pekerjaan</label>
-		<input type="text" class="form-control" name="pekerjaan" placeholder="Pekerjaan Ayah atau Ibu" value="<?= $pekerjaan ?>" required>
+		<input type="text" class="form-control stringonly" name="pekerjaan" placeholder="Pekerjaan Ayah atau Ibu / Wali" value="<?= $pekerjaan ?>" required>
 	</div>
 	<div class="form-group">
 		<label>Agama</label>
@@ -39,12 +39,8 @@ $notelpwali = isset($ortu['NoTelp']) ? $ortu['NoTelp'] : "";
 		</select>
 	</div>
 	<div class="form-group">
-		<label>Alamat Asal</label>
+		<label>Alamat Lengkap</label>
 		<textarea class="form-control" name="alamatasalortu" rows="5" required required><?= $alamatortu ?></textarea>
-	</div>
-	<div class="form-group">
-		<label>Nama Wali</label>
-		<input type="text" class="form-control" name="namawali" placeholder="Nama Wali" value="<?= $namawali ?>" required>
 	</div>
 	<!-- <div class="form-group">
 		<label>RT</label>
@@ -80,13 +76,13 @@ $notelpwali = isset($ortu['NoTelp']) ? $ortu['NoTelp'] : "";
 	</div>
 	<div class="form-group">
 		<label>Kode Pos</label>
-		<input class="form-control" name="kodeposwali" value="<?= $kodeposwali ?>" required>
+		<input type="number" class="form-control" name="kodeposwali" value="<?= $kodeposwali ?>" required>
 	</div>
 	<div class="form-group">
 		<label>Nomor Telepon / HP</label>
 		<input type="number" class="form-control" name="nohportuwali" placeholder="Nomor Telepon / HP Orang Tua / Wali" value="<?= $notelpwali ?>" required>
 	</div>
-	<a onclick = "loadTab('tab_2','tab_3')" class="btn btn-success" data-toggle="tab">SELANJUTNYA</a>
+	<a onclick="loadTab('tab_2','tab_3')" class="btn btn-success" data-toggle="tab">SELANJUTNYA</a>
 </div>
 <div class="footer">
 	<div class="container">
@@ -95,29 +91,31 @@ $notelpwali = isset($ortu['NoTelp']) ? $ortu['NoTelp'] : "";
 </div>
 
 <script>
-	$(document).ready(function(){
+	$(document).ready(function() {
 		loadKelurahanwali();
 	});
 
-	$("#kabupatenwali").on("change", function(){
+	$("#kabupatenwali").on("change", function() {
 		loadKelurahanwali();
 	});
 
-	function loadKelurahanwali(){
+	function loadKelurahanwali() {
 		$.ajax({
-			url : "<?= $url.'Fungsi/Aksi/Kecamatan_json.php'?>",
-			type : "POST",
-			data : { kabupaten : $("#kabupatenwali").val()},
-			success : function(d){
+			url: "<?= $url . 'Fungsi/Aksi/Kecamatan_json.php' ?>",
+			type: "POST",
+			data: {
+				kabupaten: $("#kabupatenwali").val()
+			},
+			success: function(d) {
 				var kecamatan = JSON.parse(d);
 				$('#kecamatanwali option[value!="a"]').remove();
-				for(var i = 0 ; i < kecamatan.length; i++){
+				for (var i = 0; i < kecamatan.length; i++) {
 					$('#kecamatanwali').append(`<option value='${kecamatan[i].Id}'> 
                                        ${kecamatan[i].Nama} 
-                                  </option>`); 
+                                  </option>`);
 				}
 			}
-			
+
 		})
 	}
 </script>

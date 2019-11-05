@@ -12,7 +12,7 @@
 				<input type="radio" <?php if($km == 1) echo "checked"?> name="kartumiskin" value="1"> Ya<br>
 				<input type="radio" <?php if($km == 0) echo "checked"?> name="kartumiskin" value="0"> Tidak
 			</div>
-			<button class="btn btn-success" type = "submit" >DAFTAR</button>
+			<button id = "btndaftar" class="btn btn-success" type = "submit" >DAFTAR</button>
 		</div>
 	<div class="footer">
 		<div class="container">

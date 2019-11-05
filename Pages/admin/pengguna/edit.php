@@ -1,4 +1,6 @@
-<?php include APP_PATH.'Pages/headeradmin.php';
+<?php 
+$menuactive = "pengguna";
+include APP_PATH.'Pages/headeradmin.php';
     $pengguna = ambilhanyapengguna("WHERE Id = {$_GET['id']}");
 ?>
 <div class="content-wrapper">

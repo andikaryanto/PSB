@@ -11,7 +11,8 @@
 <link href="<?= $url?>assets/css/admin-lte.css" rel="stylesheet" type="text/css">
 <link href="<?= $url?>assets/css/admin-skin.min.css" rel="stylesheet" type="text/css">
 <link href="<?= $url?>assets/css/admin.css" rel="stylesheet" type="text/css">
-<script src="<?= $url?>assets/js/jquery.js"></script>
+<script src="<?= $url?>assets/js/jquery.min.js"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
 </head>
 <body>
 <div class="top">

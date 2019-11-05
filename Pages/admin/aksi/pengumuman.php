@@ -1,4 +1,7 @@
-<?php include APP_PATH.'Pages/headeradmin.php';
+<?php 
+
+$menuactive = "pengumuman";
+include APP_PATH.'Pages/headeradmin.php';
  
 ?>
 <div class="content-wrapper">

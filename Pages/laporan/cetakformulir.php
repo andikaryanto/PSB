@@ -4,10 +4,17 @@ $mpdf = new \Mpdf\Mpdf();
 
 $pesertaid = $_GET['pesertaid'];
 $peserta = ambilhanyapeserta("WHERE Id=$pesertaid");
+$noreg = $peserta['NoDaftar'];
+$content = $url."Pages/daftartab.php?key=".encrypt("edit.".$kuncirahasia.".".$noreg);
+$text = generateQR($url, $content, $noreg.$qrcode['registrasi']);
+$enctext = encrypt($text);
+$content = decrypt($enctext);
 // echo json_encode($peserta);
-
+$mpdf->WriteHTML('');
+$mpdf->Image('assets/images/logomusati.png', 5, 5, 25, 25, 'jpg', '', true, false);
+$mpdf->Image($content, 180,5, 25, 25, 'jpg', '', true, false);
 $mpdf->WriteHTML('
-<div style="text-align: Center;">
+<div style="text-align: Center; margin-top:-50px">
     PENERIMAAN SISWA BARU SMP MUHAMMADIYAH 1 MLATI
 </div>
 
@@ -20,14 +27,17 @@ Telp. ( 0274 ) 869879
 <hr>');
 
 
+
 //header
 $mpdf->WriteHTML('<div style="text-align: Center;">
 FORMULIR BUKTI REGISTRASI
 </div>');
 
 //content
+$mpdf->WriteHTML('');
+$mpdf->Image($peserta['UrlPhoto'], 140, 50, 60, 80, 'jpg', '', true, false);
 $ttl = $peserta['TempatLahir'].", ".$peserta['TglLahir'];
-$mpdf->WriteHTML("<table style='autosize:2.4; padding:30px 0;'>
+$mpdf->WriteHTML("<table style='autosize:2.4; padding:30px 0; margin-top:-300px'>
     <tr>
         <td style='padding:10px'>No. Pendaftaran</td>
         <td>:</td>
