@@ -97,7 +97,7 @@ include 'footer.php';
 
                 $("form#formdaftar :input").each(function() {
                     if (this.name != "nodaftar" && this.name != "idpeserta" &&  this.name != "namaprestasi" && this.name != "nilaprestasi" && (this.value === "" || this.value === null || this.value === undefined)) {
-                        alert(this.placeholder + " Masih Kosong"); // This is the jquery object of the input, do what you will
+                        alert(this.name + " Masih Kosong"); // This is the jquery object of the input, do what you will
                         return false;
                     }
                     });
