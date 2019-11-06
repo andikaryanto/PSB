@@ -95,35 +95,49 @@ include 'footer.php';
 <script>
     $("#btndaftar").on('click', function() {
 
-                $("form#formdaftar :input").each(function() {
-                    if (this.name != "nodaftar" && this.name != "idpeserta" &&  this.name != "namaprestasi" && this.name != "nilaprestasi" && (this.value === "" || this.value === null || this.value === undefined)) {
-                        alert(this.name + " Masih Kosong"); // This is the jquery object of the input, do what you will
-                        return false;
-                    }
-                    });
-                });
+        $("form#formdaftar :input").each(function() {
+            if (this.name != "nodaftar" && this.name != "idpeserta" && this.name != "namaprestasi" && this.name != "nilaprestasi" && (this.value === "" || this.value === null || this.value === undefined)) {
+                alert(this.name + " Masih Kosong"); // This is the jquery object of the input, do what you will
+                return false;
+            }
+        });
 
-                function loadTab(tabbefore, tabafter) {
+        $("form#formdaftar :textarea").each(function() {
+            if (this.name != "nodaftar" && this.name != "idpeserta" && this.name != "namaprestasi" && this.name != "nilaprestasi" && (this.value === "" || this.value === null || this.value === undefined)) {
+                alert(this.name + " Masih Kosong"); // This is the jquery object of the input, do what you will
+                return false;
+            }
+        });
 
-                    var before = document.querySelectorAll("a[href='#" + tabbefore + "']");
-                    before.forEach(function(t) {
-                        t.setAttribute("aria-expanded", "false");
-                        var par = t.parentElement;
-                        par.removeAttribute("class");
-                        tab = document.getElementById(tabbefore);
-                        tab.setAttribute("class", "tab-pane");
+        $("form#formdaftar :select").each(function() {
+            if (this.name != "nodaftar" && this.name != "idpeserta" && this.name != "namaprestasi" && this.name != "nilaprestasi" && (this.value === "" || this.value === null || this.value === undefined)) {
+                alert(this.name + " Masih Kosong"); // This is the jquery object of the input, do what you will
+                return false;
+            }
+        });
+    });
 
-                    });
-                    var after = document.querySelectorAll("a[href='#" + tabafter + "']");
-                    after.forEach(function(t) {
-                        t.setAttribute("aria-expanded", "true");
-                        var par = t.parentElement;
-                        par.setAttribute("class", 'active');
-                        tab = document.getElementById(tabafter);
-                        tab.setAttribute("class", "tab-pane active");
-                    });
-                    document.getElementById('taball').scrollIntoView();
-                }
+    function loadTab(tabbefore, tabafter) {
+
+        var before = document.querySelectorAll("a[href='#" + tabbefore + "']");
+        before.forEach(function(t) {
+            t.setAttribute("aria-expanded", "false");
+            var par = t.parentElement;
+            par.removeAttribute("class");
+            tab = document.getElementById(tabbefore);
+            tab.setAttribute("class", "tab-pane");
+
+        });
+        var after = document.querySelectorAll("a[href='#" + tabafter + "']");
+        after.forEach(function(t) {
+            t.setAttribute("aria-expanded", "true");
+            var par = t.parentElement;
+            par.setAttribute("class", 'active');
+            tab = document.getElementById(tabafter);
+            tab.setAttribute("class", "tab-pane active");
+        });
+        document.getElementById('taball').scrollIntoView();
+    }
 </script>
 </body>
 
