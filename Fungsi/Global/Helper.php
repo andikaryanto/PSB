@@ -16,8 +16,8 @@
     }
 
     function tanggalSekarang(){
-        $now = database_query("SELECT NOW() AS Sekarang;");
-        return $now[0]['Sekarang'];
+        $now = database_select("SELECT NOW() AS Sekarang;");
+        return $now['Sekarang'];
     }
 
     function uploadFotoPath($files){
