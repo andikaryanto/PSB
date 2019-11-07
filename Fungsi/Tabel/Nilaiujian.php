@@ -6,6 +6,7 @@ function ambilnilaiujian($where = "" ){
 }
 
 function simpannilaiujian($idpeserta, $idmapel, $nilai){
+        $nilai = str_replace(",", ".", $nilai);
         $mapel = ambilnilaiujian("WHERE Peserta_Id = {$idpeserta} AND Mapel_Id = {$idmapel}");
         if($mapel){
             database_query("UPDATE nilaiujian SET Nilai = {$nilai} WHERE WHERE Peserta_Id = {$idpeserta} AND Mapel_Id = {$idmapel}");

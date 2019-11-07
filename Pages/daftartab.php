@@ -67,7 +67,7 @@ if (isset($_GET['key'])) {
                             </div>
                             <!-- /.tab-pane -->
                         </div>
-
+                        <!-- <button id = "btntest"></button> -->
                     </form>
                     <!-- /.tab-content -->
                 </div>
@@ -95,22 +95,25 @@ include 'footer.php';
 <script>
     $("#btndaftar").on('click', function() {
 
-        $("form#formdaftar :input").each(function() {
-            if (this.name != "nodaftar" && this.name != "idpeserta" && this.name != "namaprestasi" && this.name != "nilaprestasi" && (this.value === "" || this.value === null || this.value === undefined)) {
+        $("input").each(function() {
+            if (this.name != "nodaftar" && this.name != "idpeserta" && this.name != "namaprestasi" && this.name != "nilaiprestasi" && (this.value === "" || this.value === null || this.value === undefined)) {
                 alert(this.name + " Masih Kosong"); // This is the jquery object of the input, do what you will
+                // console.log(this.name + " Masih Kosong");
                 return false;
             }
         });
 
-        $("form#formdaftar :textarea").each(function() {
-            if (this.name != "nodaftar" && this.name != "idpeserta" && this.name != "namaprestasi" && this.name != "nilaprestasi" && (this.value === "" || this.value === null || this.value === undefined)) {
+        $("textarea").each(function() {
+            if (this.name != "nodaftar" && this.name != "idpeserta" && this.name != "namaprestasi" && this.name != "nilaiprestasi" && (this.value === "" || this.value === null || this.value === undefined)) {
                 alert(this.name + " Masih Kosong"); // This is the jquery object of the input, do what you will
+                // console.log(this.name + " Masih Kosong");
                 return false;
             }
         });
 
-        $("form#formdaftar :select").each(function() {
-            if (this.name != "nodaftar" && this.name != "idpeserta" && this.name != "namaprestasi" && this.name != "nilaprestasi" && (this.value === "" || this.value === null || this.value === undefined)) {
+        $("select").each(function() {
+            if (this.name != "nodaftar" && this.name != "idpeserta" && this.name != "namaprestasi" && this.name != "nilaiprestasi" && (this.value === "" || this.value === null || this.value === undefined)) {
+                // console.log(this.name + " Masih Kosong");
                 alert(this.name + " Masih Kosong"); // This is the jquery object of the input, do what you will
                 return false;
             }
