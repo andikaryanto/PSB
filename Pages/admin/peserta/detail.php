@@ -26,12 +26,12 @@ $peserta = ambilhanyapeserta("WHERE NoDaftar = '{$noregister}'");
                     <!-- Custom Tabs -->
                     <div class="nav-tabs-custom">
                         <ul class="nav nav-tabs">
-                            <li class="active"><a href="#tab_1" data-toggle="tab">Peserta</a></li>
-                            <li class=""><a href="#tab_2" data-toggle="tab">Orang Tua / Wali</a></li>
-                            <li class=""><a href="#tab_3" data-toggle="tab">Sekolah Asal</a></li>
-                            <li class=""><a href="#tab_4" data-toggle="tab">Nilai Ujian</a></li>
-                            <li class=""><a href="#tab_5" data-toggle="tab">Prestasi</a></li>
-                            <li class=""><a href="#tab_6" data-toggle="tab">Kartu Miskin</a></li>
+                            <li class="active"><a onclick="changetab('tab_1');" href="#tab_1" data-toggle="tab">Peserta</a></li>
+                            <li class=""><a onclick="changetab('tab_2');" href="#tab_2" data-toggle="tab">Orang Tua / Wali</a></li>
+                            <li class=""><a onclick="changetab('tab_3');" href="#tab_3" data-toggle="tab">Sekolah Asal</a></li>
+                            <li class=""><a onclick="changetab('tab_4');" href="#tab_4" data-toggle="tab">Nilai Ujian</a></li>
+                            <li class=""><a onclick="changetab('tab_5');" href="#tab_5" data-toggle="tab">Prestasi</a></li>
+                            <li class=""><a onclick="changetab('tab_6');" href="#tab_6" data-toggle="tab">Kartu Miskin</a></li>
 
 
                         </ul>
@@ -71,6 +71,18 @@ $peserta = ambilhanyapeserta("WHERE NoDaftar = '{$noregister}'");
 include APP_PATH . 'Pages/footeradmin.php';
 // include 'daftar.php'
 ?>
+<script>
+    function changetab(selected) {
+        var selectedpar;
+        $('.nav-tabs a').each(function() {
+            var par = this.parentElement;
+            par.removeAttribute("class");
+            if (this.href.split("#")[1] === selected)
+                selectedpar = this.parentElement;
+        })
+        selectedpar.setAttribute("class","active");
+    }
+</script>
 
 </body>
 

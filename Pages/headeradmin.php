@@ -12,12 +12,12 @@
 <link href="<?= $url?>assets/css/admin-skin.min.css" rel="stylesheet" type="text/css">
 <link href="<?= $url?>assets/css/admin.css" rel="stylesheet" type="text/css">
 <link href="<?= $url?>assets/css/dataTables.bootstrap.min.css" rel="stylesheet" type="text/css">
-<script src="<?= $url?>assets/js/jquery.js" type="text/javascript"></script>  
-<script src="<?= $url?>assets/js/bootstrap.min.js" type="text/javascript"></script>
-<script src="<?= $url?>assets/js/jquery.dataTables.min.js" type="text/javascript"></script>
-<script src="<?= $url?>assets/js/dataTables.bootstrap.min.js" type="text/javascript"></script>
-<!-- <script src="<?= $url?>assets/js/adminlte.min.js" type="text/javascript"></script>   -->
-<script src="<?= $url?>assets/js/jquery.min.js"></script>
+<script src="<?= $url?>assets/js/jquery.js" type="text/javascript"></script>   
+<!-- <script src="<?= $url?>assets/js/jquery.min.js"></script> -->
+<script src="<?= $url ?>assets/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="<?= $url ?>assets/js/jquery.dataTables.min.js" type="text/javascript"></script>
+<script src="<?= $url ?>assets/js/dataTables.bootstrap.min.js" type="text/javascript"></script>
+<script src="<?= $url ?>assets/js/adminlte.min.js" type="text/javascript"></script>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
