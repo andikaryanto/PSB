@@ -2,6 +2,7 @@
 $asalsekolah = isset($peserta['AsalSekolah']) ? $peserta['AsalSekolah'] : "";
 $statussekolah = isset($peserta['StatusSekolah']) ? $peserta['StatusSekolah'] : "Negeri";
 $alamatsekolah = isset($peserta['AlamatSekolah']) ? $peserta['AlamatSekolah'] : "";
+$tahunlulus = isset($peserta['TahunLulus']) ? $peserta['TahunLulus'] : "";
 ?>
 <h3 align="center">DATA SEKOLAH ASAL</h3>
 <h4 align="center">( HARAP MENGISI DATA DENGAN LENGKAP DAN BENAR ! )</h4>
@@ -10,6 +11,10 @@ $alamatsekolah = isset($peserta['AlamatSekolah']) ? $peserta['AlamatSekolah'] : 
 	<div class="form-group">
 		<label>Nama Sekolah</label>
 		<input type="text" class="form-control" name="namasekolahasal" placeholder="Nama Sekolah Asal" value="<?= $asalsekolah ?>" required>
+	</div>
+	<div class="form-group">
+		<label>Tahun Lulus</label>
+		<input id="tahunlulus" type="text" maxlength="4" class="form-control numbered" name="tahunlulus" placeholder="Tahun Lulus" value="<?= $tahunlulus ?>" required>
 	</div>
 	<div class="form-group">
 		<label>Status Sekolah<br>

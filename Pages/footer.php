@@ -20,4 +20,7 @@
             }
     });
 
+    $(".numbered").on("keyup", function(e) {
+        $("#"+this.id).val(this.value.match(/[0-9]*/));
+    });
 </script>

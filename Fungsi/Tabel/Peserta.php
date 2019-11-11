@@ -49,10 +49,12 @@ function simpanpeseta(
     $asalsekolah,
     $alamatsekolah,
     $statussekolah,
+    $tahunlulus,
     $kartumiskin = 0,
     $status = 0
 ) {
     $tahunajaran = ambilhanyatahunajaran("WHERE Aktif = 1");
+    $thlulus = formatTanggal($tahunlulus, "Y");
     if ($id) {
         $qry = "UPDATE peserta SET NISN = '{$nisn}',
                             NamaLengkap = '{$namalengkap}',
@@ -67,7 +69,8 @@ function simpanpeseta(
                             Kecamatan_Id = '{$kecamatan}',
                             KodePos = '{$kodepos}',
                             Domisili = '{$domisili}',
-                            KartuMiskin = {$kartumiskin}
+                            KartuMiskin = {$kartumiskin},
+                            TahunLulus = {$thlulus}
                 WHERE Id = {$id}";
         database_query($qry);
         return $id;
@@ -75,7 +78,7 @@ function simpanpeseta(
         $qry = "INSERT INTO peserta VALUES (null, null, '{$nisn}', '{$namalengkap}', '{$jenkel}', 
         '{$tempatlahir}', '{$tgllahir}', '{$agama}', '{$alamat}', '{$rt}', '{$rw}', '{$kabupaten}',
         '{$kecamatan}', '{$kodepos}', '$domisili', '{$notelp}', '{$asalsekolah}', '{$alamatsekolah}',
-        '{$statussekolah}', {$kartumiskin}, {$status}, {$tahunajaran['Id']}, NULL)";
+        '{$statussekolah}', {$kartumiskin}, {$status}, {$tahunajaran['Id']}, NULL, {$thlulus})";
         // echo $qry;
         return database_simpan($qry);
     }

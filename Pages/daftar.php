@@ -24,7 +24,7 @@ $notelp = isset($peserta['NoTelp']) ? $peserta['NoTelp'] : "";
 	<input hidden name="nodaftar" value="<?= $nodaftar ?>">
 	<div class="form-group">
 		<label>NISN</label>
-		<input type="number" class="form-control" name="nisn" placeholder="Nomor Induk Siswa Nasional" value="<?= $nisn ?>" required>
+		<input id="nisn" maxlength="10" type="text" class="form-control numbered" name="nisn" placeholder="Nomor Induk Siswa Nasional" value="<?= $nisn ?>" required>
 	</div>
 	<div class="form-group">
 		<label>Nama Lengkap (Sesuai Ijazah)</label>
@@ -69,8 +69,8 @@ $notelp = isset($peserta['NoTelp']) ? $peserta['NoTelp'] : "";
 			<?php $kabupaten = ambilkabupaten();
 			// echo json_encode($kabupaten);
 			foreach ($kabupaten as $kab) :
-			?>
-				<option value="<?= $kab['Id'] ?>" <?php if($kab['Id'] == $kabupaten) echo "selected" ?>><?= $kab['Nama'] ?></option>
+				?>
+				<option value="<?= $kab['Id'] ?>" <?php if ($kab['Id'] == $kabupaten) echo "selected" ?>><?= $kab['Nama'] ?></option>
 			<?php endforeach; ?>
 		</select>
 	</div>
@@ -82,17 +82,17 @@ $notelp = isset($peserta['NoTelp']) ? $peserta['NoTelp'] : "";
 	</div>
 	<div class="form-group">
 		<label>Kode Pos</label>
-		<input type="number" class="form-control" name="kodepos" value="<?= $kodepos ?>" required>
+		<input id="kodepos" maxlength="5" type="text" class="form-control numbered" name="kodepos" value="<?= $kodepos ?>" required>
 	</div>
 	<div class="form-group">
 		<label>Nomor Telepon / HP</label>
-		<input type="number" class="form-control" name="nohpsiswa" placeholder="Nomor Telepon / HP Calon Siswa Baru" value="<?= $notelp ?>" required>
+		<input  id="nohpsiswa" maxlength="12" type="text" class="form-control numbered" name="nohpsiswa" placeholder="Nomor Telepon / HP Calon Siswa Baru" value="<?= $notelp ?>" required>
 	</div>
 	<div class="form-group">
 		<label>Pas Foto</label>
 		<input type="file" class="form-control" name="file" accept="image/png, image/jpeg" required>
 	</div>
-	<a onclick = "loadTab('tab_1','tab_2')" class="btn btn-success" data-toggle="tab">SELANJUTNYA</a>
+	<a onclick="loadTab('tab_1','tab_2')" class="btn btn-success" data-toggle="tab">SELANJUTNYA</a>
 </div>
 <div class="footer">
 	<div class="container">
@@ -103,15 +103,16 @@ $notelp = isset($peserta['NoTelp']) ? $peserta['NoTelp'] : "";
 <script>
 	$(document).ready(function() {
 		loadKecamatan();
+		
 	});
-	
+
 
 	$("#kabupaten").on("change", function() {
 		loadKecamatan();
 	});
 
 	function loadKecamatan() {
-		var kecamatan = '<?= $kecamatan?>';
+		var kecamatan = '<?= $kecamatan ?>';
 		$.ajax({
 			url: "<?= $url . 'Fungsi/Aksi/Kecamatan_json.php' ?>",
 			type: "POST",
@@ -123,7 +124,7 @@ $notelp = isset($peserta['NoTelp']) ? $peserta['NoTelp'] : "";
 				$('#kecamatan option[value!="a"]').remove();
 				for (var i = 0; i < kecamatan.length; i++) {
 					var selected = "";
-					if(kecamatan == kecamatan[i].Id)
+					if (kecamatan == kecamatan[i].Id)
 						selected = "selected";
 
 					$('#kecamatan').append(`<option value='${kecamatan[i].Id} ${selected}'> 

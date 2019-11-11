@@ -35,6 +35,7 @@ if (isset($_GET['key'])) {
                         <li class=""><a href="#tab_4" data-toggle="tab">Nilai Ujian</a></li>
                         <li class=""><a href="#tab_5" data-toggle="tab">Prestasi</a></li>
                         <li class=""><a href="#tab_6" data-toggle="tab">Kartu Miskin</a></li>
+                        <!-- <li class=""><a href="#tab_7" data-toggle="tab">Tahun Lulus</a></li> -->
 
 
                     </ul>
@@ -65,6 +66,9 @@ if (isset($_GET['key'])) {
                             <div class="tab-pane" id="tab_6">
                                 <?php include 'konfirmasikkm.php' ?>
                             </div>
+                            <!-- <div class="tab-pane" id="tab_7">
+                                <?php include 'konfirmasikkm.php' ?>
+                            </div> -->
                             <!-- /.tab-pane -->
                         </div>
                         <!-- <button id = "btntest"></button> -->
@@ -92,6 +96,14 @@ if (isset($_GET['key'])) {
 include 'footer.php';
 // include 'daftar.php'
 ?>
+<script src="https://www.google.com/recaptcha/api.js?render=_reCAPTCHA_site_key"></script>
+<script>
+grecaptcha.ready(function() {
+    grecaptcha.execute('_reCAPTCHA_site_key_', {action: 'homepage'}).then(function(token) {
+       ...
+    });
+});
+</script>
 <script>
     $("#btndaftar").on('click', function() {
 
@@ -141,6 +153,7 @@ include 'footer.php';
         });
         document.getElementById('taball').scrollIntoView();
     }
+    
 </script>
 </body>
 
