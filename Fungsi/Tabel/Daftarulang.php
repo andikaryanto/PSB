@@ -27,4 +27,15 @@ function ambildaftarulang($where = ""){
 
     return database_select_daftar($qry);
 }
+
+
+function ambildafhanyatarulang($where = ""){
+    $tahunajaran = ambilhanyatahunajaran("WHERE Aktif = 1");
+    $qry = "SELECT a.NoDaftar, a.NISN, a.NamaLengkap, a.Alamat 
+    FROM peserta a
+    INNER JOIN daftarulang b on b.Peserta_Id = a.Id
+    WHERE a.Tahunajaran_Id = {$tahunajaran['Id']} {$where}";
+
+    return database_select($qry);
+}
 ?>

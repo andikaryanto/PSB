@@ -29,10 +29,16 @@ $pengaturan = ambilpengaturan();
                 <div class="box box-primary">
                     <div class="box-header with-border">
                         <h3 class="box-title">Daftar Peserta</h3>
-                        <?php if (isset($_GET['halaman']) && $_GET['halaman'] == "siswaditerima") { ?>
+                        <?php if (isset($_GET['halaman']) && ($_GET['halaman'] == "siswaditerima" || $_GET['halaman'] == "semuasiswa")) { 
+                                $urlreport = "";
+                                if($_GET['halaman'] == "semuasiswa")
+                                    $urlreport = "cetakpeserta.php";
+                                else 
+                                    $urlreport = "cetakpesertaditerima.php";
+                            ?>
                             <div class="row">
                                 <div class="col-xs-12 text-right">
-                                    <a href = "<?= $url . "Pages/laporan/pesertaditerimaexc.php" ?>" class="btn btn-primary"><i class = "fa fa-file-excel-o"></i> Eksport</a>
+                                    <a href = "<?= $url . "Pages/laporan/$urlreport" ?>" class="btn btn-primary"><i class = "fa fa-file-excel-o"></i> Eksport</a>
                                 </div>
                             </div>
                         <?php } ?>
