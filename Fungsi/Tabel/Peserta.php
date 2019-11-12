@@ -123,7 +123,7 @@ function cekpesertaditerima($nodaftar)
             LIMIT 0, {$pengaturan['JumlahDiterima']}
         ) A WHERE NoDaftar = '{$nodaftar}'";
         // echo $qry;
-        return database_select_daftar($qry);
+        return database_select($qry);
     }
 
     return null;

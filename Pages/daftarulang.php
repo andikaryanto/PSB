@@ -16,12 +16,12 @@
 				<div class="box">
 					<h3 align="center">DAFTAR ULANG</h3>
 					<h4 align="center">( HARAP ISI DENGAN NOMOR PENDAFTARAN UNTUK MELIHAT TELAH TERDAFTAR ULANG ATAU BELUM  ! )</h4>
-					<form class="well" method="POST" action="#">
+					<form class="well" method="POST" action="daftarulangpeserta.php">
 						<div class="form-group">
 							<label>NOMOR PENDAFTARAN</label>
-							<input type="number" class="form-control" name="nomorpendaftaran" placeholder="Nomor Pendaftaran" required>
+							<input type="text" class="form-control" name="nomorpendaftaran" placeholder="Nomor Pendaftaran" required>
 						</div>
-							<a class="btn btn-success" href="#">CEK</a>
+							<button type = "submit" class="btn btn-success">CEK</button>
 							<a class="btn btn-primary" href="index.php">KEMBALI</a>
 					</form>    
 				</div>

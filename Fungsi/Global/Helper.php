@@ -31,5 +31,11 @@
         return "uploads/$nameex-$name";
 
     }
+
+    function randomAlfabet(){
+        $al = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        $ral = str_shuffle($al);
+        return substr($ral,0,1) . substr($ral,1,1);
+    }
 ?>
 

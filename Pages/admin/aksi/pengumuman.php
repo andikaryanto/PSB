@@ -32,8 +32,8 @@ include APP_PATH.'Pages/headeradmin.php';
                             } else {
                                 if(isset($_GET['pesan']))
                                     echo "<h3 >Gagal, Belum Tanggal Pengumuman</h3>" ;
-                                else 
-                                    echo "<h3 >Gagal</h3>" ;
+                                // else 
+                                //     echo "<h3 >Gagal</h3>" ;
                             }
                         } else if ($pengaturan && ( date_create(tanggalSekarang())) < date_create($pengaturan['TglPengumuman'])) {
 

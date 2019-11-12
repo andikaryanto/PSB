@@ -1,7 +1,6 @@
 <?php 
     include 'header.php';
     // include 'daftar.php'
-
     $peserta = ambilhanyapeserta("WHERE Id = {$_GET['idpeserta']}");
     $content = decrypt($_GET['content']);
 ?>
@@ -29,7 +28,10 @@
                         <div class="col-md-2">
                             <img src= "<?= $content ?>" style = "height:120; width:120 !important">
                         </div>
-                        <div class="col-md-10">
+                        <div class="col-md-2">
+                            <img src= "<?= "../".$peserta['UrlPhoto'] ?>" style = "height:120; width:120 !important">
+                        </div>
+                        <div class="col-md-8">
                             <div class = "box-body">
                                 <p> No Registrasi : <b><?= $peserta['NoDaftar']?></b></p>
                                 <p> Nama Peserta : <b><?= $peserta['NamaLengkap']?></b></p>
