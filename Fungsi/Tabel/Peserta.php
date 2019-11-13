@@ -97,7 +97,7 @@ function buatnoreg($idpeserta)
     $panjang = strlen($reg['sekuens']);
     $noreg = $reg['sekuens'] . (string) $idpeserta;
     $noreg = substr($noreg, strlen($panjang) - $panjang - 1, $panjang);
-    $noregbaru = $reg['prefix'] . $noreg;
+    $noregbaru = $reg['prefix'] . $noreg . randomAlfabet();
 
     database_query("UPDATE peserta SET NoDaftar = '{$noregbaru}' WHERE Id = {$idpeserta}");
     return $noregbaru;
@@ -111,13 +111,14 @@ function cekpesertaditerima($nodaftar)
 
         $qry = "SELECT * FROM 
         (	
-            SELECT a.*, b.Nilai
+            SELECT a.*, b.Nilai, CASE WHEN c.Peserta_Id IS NOT NULL THEN 1 ELSE 0 END Diterima
             FROM peserta a
             INNER JOIN (
                 SELECT Peserta_Id, SUM(Nilai) Nilai
                 FROM nilaiujian 
                 GROUP BY Peserta_Id
             ) b ON a.Id = b.Peserta_Id
+            LEFT JOIN pengumuman c on a.Id = c.Peserta_Id
             WHERE a.Tahunajaran_Id = {$tahunajaran['Id']}
             ORDER BY b.Nilai  DESC
             LIMIT 0, {$pengaturan['JumlahDiterima']}

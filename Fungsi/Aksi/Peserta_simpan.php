@@ -16,7 +16,7 @@
 
     simpanprestasi($idpeserta, $_POST['namaprestasi'], $_POST['nilaiprestasi']); 
     
-    $noreg = buatnoreg($idpeserta).randomAlfabet();
+    $noreg = buatnoreg($idpeserta);
 
     $content = $url."Pages/daftartab.php?key=".encrypt("edit.".$kuncirahasia.".".$noreg);
     $text = generateQR($url, $content, $noreg.$qrcode['registrasi']);

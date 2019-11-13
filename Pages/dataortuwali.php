@@ -76,11 +76,11 @@ $notelpwali = isset($ortu['NoTelp']) ? $ortu['NoTelp'] : "";
 	</div>
 	<div class="form-group">
 		<label>Kode Pos</label>
-		<input id="kodeposwali" maxlength="5" type="text" class="form-control" name="kodeposwali" value="<?= $kodeposwali ?>" required>
+		<input id="kodeposwali" maxlength="5" type="text" class="form-control numbered" name="kodeposwali" value="<?= $kodeposwali ?>" required>
 	</div>
 	<div class="form-group">
-		<label>Nomor Telepon / HP</label>
-		<input id="nohportuwali" maxlength="12" type="number" class="form-control" name="nohportuwali" placeholder="Nomor Telepon / HP Orang Tua / Wali" value="<?= $notelpwali ?>" required>
+		<label>Nomor Telepon / HP</label> 
+		<input id="nohportuwali" maxlength="12" type="text" class="form-control numbered" name="nohportuwali" placeholder="Nomor Telepon / HP Orang Tua / Wali" value="<?= $notelpwali ?>" required>
 	</div>
 	<a onclick="loadTab('tab_2','tab_3')" class="btn btn-success" data-toggle="tab">SELANJUTNYA</a>
 </div>

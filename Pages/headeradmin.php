@@ -48,11 +48,11 @@
 
             <ul class="sidebar-menu">
                 <li class="header">MENU UTAMA</li>
-                <li class="<?php if($menuactive == "dashboard") echo "active"?> treeview">
+                <!-- <li class="<?php if($menuactive == "dashboard") echo "active"?> treeview">
                     <a href="<?= $url ?>/Pages/admin/index.php">
                         <i class="fa fa-dashboard"></i> <span>DASHBOARD</span>
                     </a>                   
-                </li>
+                </li> -->
 				<li class="<?php if($menuactive == "pengaturan") echo "active"?> treeview">
                     <a href="<?= $url ?>/Pages/admin/pengaturan/pengaturan.php">
                         <i class="fa fa-user"></i> <span>PENGATURAN</span>
@@ -89,7 +89,7 @@
                     </a>                   
                 </li>
 				<li class="treeview">
-                    <a href="../admin/index.php?halaman=keluar">
+                    <a href="<?= $url."Fungsi/Aksi/Keluar.php"?>">
                         <i class="fa fa-user"></i> <span>KELUAR</span>
                     </a>                   
                 </li>

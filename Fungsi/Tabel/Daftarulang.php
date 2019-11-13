@@ -20,9 +20,9 @@ function simpandaftarulang($idpeserta, $selected){
 
 function ambildaftarulang($where = ""){
     $tahunajaran = ambilhanyatahunajaran("WHERE Aktif = 1");
-    $qry = "SELECT a.NoDaftar, a.NISN, a.NamaLengkap, a.Alamat 
+    $qry = "SELECT a.NoDaftar, a.NISN, a.NamaLengkap, a.Alamat , CASE WHEN b.Peserta_Id IS NOT NULL THEN 1 ELSE 0 END DaftarUlang
     FROM peserta a
-    INNER JOIN daftarulang b on b.Peserta_Id = a.Id
+    LEFT JOIN daftarulang b on b.Peserta_Id = a.Id
     WHERE a.Tahunajaran_Id = {$tahunajaran['Id']} {$where}";
 
     return database_select_daftar($qry);
@@ -31,9 +31,9 @@ function ambildaftarulang($where = ""){
 
 function ambildafhanyatarulang($where = ""){
     $tahunajaran = ambilhanyatahunajaran("WHERE Aktif = 1");
-    $qry = "SELECT a.NoDaftar, a.NISN, a.NamaLengkap, a.Alamat 
+    $qry = "SELECT a.NoDaftar, a.NISN, a.NamaLengkap, a.Alamat , CASE WHEN b.Peserta_Id IS NOT NULL THEN 1 ELSE 0 END DaftarUlang
     FROM peserta a
-    INNER JOIN daftarulang b on b.Peserta_Id = a.Id
+    LEFT JOIN daftarulang b on b.Peserta_Id = a.Id
     WHERE a.Tahunajaran_Id = {$tahunajaran['Id']} {$where}";
 
     return database_select($qry);

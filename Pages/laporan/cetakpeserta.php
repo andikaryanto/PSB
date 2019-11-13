@@ -20,9 +20,11 @@ Telp. ( 0274 ) 869879
 <hr>');
 
 $detail;
+$i = 1;
 foreach ($peserta as $p) {
     $detail .=
         "<tr >
+<td style='padding:0 5px; border:1x solid;'>{$i}</td>
 <td style='padding:0 5px; border:1x solid;'>{$p['NoDaftar']}</td>
 <td style='padding:0 5px; border:1x solid;'>{$p['NISN']}</td>
 <td style='padding:0 5px; border:1x solid;'>{$p['NamaLengkap']}</td>
@@ -33,10 +35,12 @@ foreach ($peserta as $p) {
 <td style='padding:0 5px; border:1x solid;'>{$p['AsalSekolah']}</td>
 </tr>
 ";
+$i++;
 }
 
 $content = "<table style='autosize:2.4; margin:30px 0; border:1x solid;'>
 <tr >
+    <td style='font-weight:bold;padding:0 5px; border:1x solid;'>No.</td>
     <td style='font-weight:bold;padding:0 5px; border:1x solid;'>No. Daftar</td>
     <td style='font-weight:bold;padding:0 5px; border:1x solid;'>NISN</td>
     <td style='font-weight:bold;padding:0 5px; border:1x solid;'>Nama Lengkap</td>

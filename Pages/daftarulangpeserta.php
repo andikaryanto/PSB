@@ -7,17 +7,18 @@
 
                 $peserta = ambilhanyapeserta("WHERE NoDaftar = '{$_POST['nomorpendaftaran']}'");
                 if ($peserta) {
-                    $daftarulang = ambildafhanyatarulang("AND Peserta_Id = {$peserta['Id']}");
+                    $daftarulang = ambildafhanyatarulang("AND a.Id = {$peserta['Id']}");
                     $content = $url . "Pages/daftartab.php?key=" . encrypt("edit." . $kuncirahasia . "." . $peserta['NoDaftar']);
                     $text = generateQR($url, $content, $peserta['NoDaftar'] . $qrcode['registrasi']);
-                    if ($daftarulang) {
+                    if ($daftarulang && $daftarulang['DaftarUlang'] == 1) {
                         ?>
 
                         <h3 align="center">ANDA SUDAH DAFTAR ULANG </h3>
 
                     <?php
 
-                        } else {
+                        } else if ($daftarulang && $daftarulang['DaftarUlang'] == 0) {
+
                             ?>
                         <h3 align="center">ANDA BELUM DAFTAR ULANG </h3>
                     <?php
@@ -43,6 +44,11 @@
                             </div>
                         </div>
                     </div>
+                <?php
+                } else {
+
+                    ?>
+                    <h3 align="center">NOMOR REGISTRASI SALAH </h3>
                 <?php
                 }
                 ?>
