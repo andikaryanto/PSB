@@ -22,6 +22,10 @@
                             ?>
                         <h3 align="center">ANDA BELUM DAFTAR ULANG </h3>
                     <?php
+                        } else {
+                            ?>
+                            <h3 align="center">ANDA TIDAK DITERIMA </h3>
+                            <?php
                         }
                         ?>
                     <div class="callout">
