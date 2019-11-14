@@ -43,7 +43,7 @@
                     <?php
                         } else {
                             
-                            $semuapeserta = ambilhanyapeserta("WHERE a.NoDaftar = '{$_POST['nomorpendaftaran']}'");
+                            $semuapeserta = ambilhanyapeserta("WHERE NoDaftar = '{$_POST['nomorpendaftaran']}'");
                             if($semuapeserta) {
                                 $content = $url."Pages/daftartab.php?key=".encrypt("edit.".$kuncirahasia.".".$semuapeserta['NoDaftar']);
                                 $text = generateQR($url, $content, $semuapeserta['NoDaftar'].$qrcode['registrasi']);
