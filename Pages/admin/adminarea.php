@@ -1,6 +1,5 @@
 <?php 
-if(!isset($_SESSION['pengguna']))
-    header("Location: $url"."pages/admin/index.php");
+
     
 include APP_PATH.'Pages/headeradmin.php';?>
 
