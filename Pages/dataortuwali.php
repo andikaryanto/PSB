@@ -4,17 +4,17 @@ $ortu;
 if ($pesertaid)
 	$ortu = ambilorangtua($pesertaid);
 
-$namaortu = isset($ortu['NamaLengkap']) ? $ortu['NamaLengkap'] : "";
-$pekerjaan = isset($ortu['Pekerjaan']) ? $ortu['Pekerjaan'] : "";
-$agamaortu = isset($ortu['Agama']) ? $ortu['Agama'] : "";
-$alamatortu = isset($ortu['Alamat']) ? $ortu['Alamat'] : "";
+$namaortu = isset($ortu['NamaLengkap']) ? $ortu['NamaLengkap'] : (isset($_SESSION['data']['namaortu']) ? $_SESSION['data']['namaortu'] : "");
+$pekerjaan = isset($ortu['Pekerjaan']) ? $ortu['Pekerjaan'] : (isset($_SESSION['data']['pekerjaan']) ? $_SESSION['data']['pekerjaan'] : "");
+$agamaortu = isset($ortu['Agama']) ? $ortu['Agama'] : (isset($_SESSION['data']['agamortu']) ? $_SESSION['data']['agamortu'] : "");
+$alamatortu = isset($ortu['Alamat']) ? $ortu['Alamat'] : (isset($_SESSION['data']['alamatasalortu']) ? $_SESSION['data']['alamatasalortu'] : "");
 $namawali = isset($ortu['NamaWali']) ? $ortu['NamaWali'] : "";
 $rtwali = isset($ortu['RT']) ? $ortu['RT'] : "";
 $rwwali = isset($ortu['RW']) ? $ortu['RW'] : "";
-$kecamatanwali = isset($ortu['Kelurahan']) ? $ortu['Kelurahan'] : "";
-$kabupatenwali = isset($ortu['Kabupoa']) ? $ortu['Kecamatan'] : "";
-$kodeposwali = isset($ortu['KodePos']) ? $ortu['KodePos'] : "";
-$notelpwali = isset($ortu['NoTelp']) ? $ortu['NoTelp'] : "";
+$kecamatanwali = isset($ortu['Kelurahan']) ? $ortu['Kelurahan'] : (isset($_SESSION['data']['kabupatenwali']) ? $_SESSION['data']['kabupatenwali'] : "");
+$kabupatenwali = isset($ortu['Kecamatan']) ? $ortu['Kecamatan'] : (isset($_SESSION['data']['kecamatanwali']) ? $_SESSION['data']['kecamatanwali'] : "");
+$kodeposwali = isset($ortu['KodePos']) ? $ortu['KodePos'] : (isset($_SESSION['data']['kodeposwali']) ? $_SESSION['data']['kodeposwali'] : "");
+$notelpwali = isset($ortu['NoTelp']) ? $ortu['NoTelp'] : (isset($_SESSION['data']['nohportuwali']) ? $_SESSION['data']['nohportuwali'] : "");
 ?>
 <h3 align="center">DATA ORANG TUA / WALI</h3>
 <h4 align="center">( HARAP MENGISI DATA DENGAN LENGKAP DAN BENAR ! )</h4>

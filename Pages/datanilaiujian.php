@@ -5,9 +5,9 @@
 		if($pesertaid)
 			$nilai = ambilnilaiujian("WHERE Peserta_Id = {$idpeserta} ");
 		
-		$bahasiindonesia = isset($nilai[0]['Nilai']) ? $nilai[0]['Nilai']: NULL;
-		$matik = isset($nilai[1]['Nilai']) ? $nilai[1]['Nilai'] : NULL;
-		$ipa = isset($nilai[2]['Nilai']) ? $nilai[2]['Nilai'] : NULL;
+		$bahasiindonesia = isset($nilai[0]['Nilai']) ? $nilai[0]['Nilai']: (isset($_SESSION['data']['bahasaindonesia']) ? $_SESSION['data']['bahasaindonesia'] : NULL);
+		$matik = isset($nilai[1]['Nilai']) ? $nilai[1]['Nilai'] : (isset($_SESSION['data']['matematika']) ? $_SESSION['data']['matematika'] : NULL);
+		$ipa = isset($nilai[2]['Nilai']) ? $nilai[2]['Nilai'] : (isset($_SESSION['data']['ipa']) ? $_SESSION['data']['ipa'] : "");
 	?>
 	<h3 align="center">DATA NILAI UJIAN NASIONAL / UASBN</h3>
 	<h4 align="center">( HARAP MENGISI DATA DENGAN LENGKAP DAN BENAR ! )</h4>

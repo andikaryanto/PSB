@@ -1,20 +1,20 @@
 <?php
 $idpeserta = isset($peserta['Id']) ? $peserta['Id'] : "";
 $nodaftar = isset($peserta['NoDaftar']) ? $peserta['NoDaftar'] : "";
-$nisn = isset($peserta['NISN']) ? $peserta['NISN'] : "";
-$namalengkap = isset($peserta['NamaLengkap']) ? $peserta['NamaLengkap'] : "";
-$jenkel = isset($peserta['JenisKelamin']) ? $peserta['JenisKelamin'] : "Perempuan";
-$tempatlahir = isset($peserta['TempatLahir']) ? $peserta['TempatLahir'] : "";
-$tgllahir = isset($peserta['TglLahir']) ? $peserta['TglLahir'] : "";
-$agama = isset($peserta['Agama']) ? $peserta['Agama'] : "";
-$alamatasal = isset($peserta['Alamat']) ? $peserta['Alamat'] : "";
+$nisn = isset($peserta['NISN']) ? $peserta['NISN'] : (isset($_SESSION['data']['nisn']) ? $_SESSION['data']['nisn'] : "");
+$namalengkap = isset($peserta['NamaLengkap']) ? $peserta['NamaLengkap'] :  (isset($_SESSION['data']['namalengkap']) ? $_SESSION['data']['namalengkap'] : "");
+$jenkel = isset($peserta['JenisKelamin']) ? $peserta['JenisKelamin'] : (isset($_SESSION['data']['jeniskelamin']) ? $_SESSION['data']['jeniskelamin'] : "Perempuan");
+$tempatlahir = isset($peserta['TempatLahir']) ? $peserta['TempatLahir'] : (isset($_SESSION['data']['tempatlahir']) ? $_SESSION['data']['tempatlahir'] : "");
+$tgllahir = isset($peserta['TglLahir']) ? $peserta['TglLahir'] : (isset($_SESSION['data']['tanggallahir']) ? $_SESSION['data']['tanggallahir'] : "");
+$agama = isset($peserta['Agama']) ? $peserta['Agama'] : (isset($_SESSION['data']['agama']) ? $_SESSION['data']['agama'] : "");
+$alamatasal = isset($peserta['Alamat']) ? $peserta['Alamat'] : (isset($_SESSION['data']['alamatasal']) ? $_SESSION['data']['alamatasal'] : "");
 $rt = isset($peserta['RT']) ? $peserta['RT'] : "";
 $rw = isset($peserta['RW']) ? $peserta['RW'] : "";
-$kabupaten = isset($peserta['Kabupaten_Id']) ? $peserta['Kabupaten_Id'] : "";
-$kecamatan = isset($peserta['Kecamatan_Id']) ? $peserta['Kecamatan_Id'] : "";
-$kodepos = isset($peserta['KodePos']) ? $peserta['KodePos'] : "";
-$domisili = isset($peserta['Domisili']) ? $peserta['Domisili'] : "";
-$notelp = isset($peserta['NoTelp']) ? $peserta['NoTelp'] : "";
+$kabupaten = isset($peserta['Kabupaten_Id']) ? $peserta['Kabupaten_Id'] : (isset($_SESSION['data']['kabupaten']) ? $_SESSION['data']['kabupaten'] : "");
+$kecamatan = isset($peserta['Kecamatan_Id']) ? $peserta['Kecamatan_Id'] : (isset($_SESSION['data']['kecamatan']) ? $_SESSION['data']['kecamatan'] : "");
+$kodepos = isset($peserta['KodePos']) ? $peserta['KodePos'] : (isset($_SESSION['data']['kodepos']) ? $_SESSION['data']['kodepos'] : "");
+$domisili = isset($peserta['Domisili']) ? $peserta['Domisili'] : (isset($_SESSION['data']['alamatdiy']) ? $_SESSION['data']['alamatdiy'] : "");
+$notelp = isset($peserta['NoTelp']) ? $peserta['NoTelp'] : (isset($_SESSION['data']['nohpsiswa']) ? $_SESSION['data']['nohpsiswa'] : "");
 ?>
 
 <h3 align="center">DATA CALON SISWA BARU</h3>
@@ -67,7 +67,6 @@ $notelp = isset($peserta['NoTelp']) ? $peserta['NoTelp'] : "";
 		<label>Kabupaten</label>
 		<select id="kabupaten" class="form-control" name="kabupaten" required>
 			<?php $kabupaten = ambilkabupaten();
-			// echo json_encode($kabupaten);
 			foreach ($kabupaten as $kab) :
 				?>
 				<option value="<?= $kab['Id'] ?>" <?php if ($kab['Id'] == $kabupaten) echo "selected" ?>><?= $kab['Nama'] ?></option>

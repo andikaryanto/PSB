@@ -1,8 +1,8 @@
 <?php
-$asalsekolah = isset($peserta['AsalSekolah']) ? $peserta['AsalSekolah'] : "";
-$statussekolah = isset($peserta['StatusSekolah']) ? $peserta['StatusSekolah'] : "Negeri";
-$alamatsekolah = isset($peserta['AlamatSekolah']) ? $peserta['AlamatSekolah'] : "";
-$tahunlulus = isset($peserta['TahunLulus']) ? $peserta['TahunLulus'] : "";
+$asalsekolah = isset($peserta['AsalSekolah']) ? $peserta['AsalSekolah'] : (isset($_SESSION['data']['namasekolahasal']) ? $_SESSION['data']['namasekolahasal'] : "");
+$statussekolah = isset($peserta['StatusSekolah']) ? $peserta['StatusSekolah'] : (isset($_SESSION['data']['statussekolah']) ? $_SESSION['status']['statussekolah'] : "Negeri");
+$alamatsekolah = isset($peserta['AlamatSekolah']) ? $peserta['AlamatSekolah'] : (isset($_SESSION['data']['alamatasalsekolah']) ? $_SESSION['data']['alamatasalsekolah'] : "");
+$tahunlulus = isset($peserta['TahunLulus']) ? $peserta['TahunLulus'] : (isset($_SESSION['data']['tahunlulus']) ? $_SESSION['data']['tahunlulus'] : "");
 ?>
 <h3 align="center">DATA SEKOLAH ASAL</h3>
 <h4 align="center">( HARAP MENGISI DATA DENGAN LENGKAP DAN BENAR ! )</h4>

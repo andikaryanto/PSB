@@ -5,8 +5,8 @@
 		$presatasi = ambilprestasi("WHERE Peserta_Id = {$idpeserta} ");
 
 
-	$namaprestasi = isset($presatasi['NamaPrestasi']) ? $presatasi['NamaPrestasi'] : "";
-	$nilaiprestasi = isset($presatasi['Nilai']) ? $presatasi['Nilai'] : "";
+	$namaprestasi = isset($presatasi['NamaPrestasi']) ? $presatasi['NamaPrestasi'] : (isset($_SESSION['data']['namaprestasi']) ? $_SESSION['data']['namaprestasi'] : "");
+	$nilaiprestasi = isset($presatasi['Nilai']) ? $presatasi['Nilai'] : (isset($_SESSION['data']['nilaiprestasi']) ? $_SESSION['data']['nilaiprestasi'] : "");
 	?>
 	<h3 align="center">DATA NILAI PRESTASI BIDANG AKADEMIK / NON AKADEMIK (JIKA MEMILIKI)</h3>
 	<h4 align="center">( HARAP MENGISI DATA DENGAN LENGKAP DAN BENAR ! )</h4>

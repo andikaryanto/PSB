@@ -86,8 +86,6 @@ if (isset($_GET['key'])) {
                         <li class=""><a href="#tab_5" data-toggle="tab">Prestasi</a></li>
                         <li class=""><a href="#tab_6" data-toggle="tab">Kartu Miskin</a></li>
                         <!-- <li class=""><a href="#tab_7" data-toggle="tab">Tahun Lulus</a></li> -->
-
-
                     </ul>
                     <form id="formdaftar" method="POST" action="../Fungsi/Aksi/Peserta_simpan.php" enctype="multipart/form-data">
                         <div class="tab-content">
@@ -155,6 +153,15 @@ grecaptcha.ready(function() {
 });
 </script> -->
 <script>
+    <?php if(isset($_SESSION['message']))
+    {
+        ?>
+            alert("<?= $_SESSION['message']?>");
+        <?php
+        
+        unset($_SESSION['message']);
+    }?>
+
     $("#btndaftar").on('click', function() {
 
         $("input").each(function() {
