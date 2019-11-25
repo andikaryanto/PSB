@@ -31,6 +31,9 @@ Telp. ( 0274 ) 869879
 //header
 $mpdf->WriteHTML('<div style="text-align: Center;">
 FORMULIR BUKTI REGISTRASI
+</div>
+<div style="text-align: Center;">
+TAHUN AJARAN 2019/2020
 </div>');
 
 //content

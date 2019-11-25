@@ -67,3 +67,4 @@ function createCaptcha()
     imagepng($gbr, "assets/img/image.png");
     imagedestroy($gbr);
 }
+

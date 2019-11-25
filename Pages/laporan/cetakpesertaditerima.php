@@ -58,7 +58,10 @@ $content = "<table style='autosize:2.4; margin:30px 0; border:1x solid;'>
 
 //header
 $mpdf->WriteHTML('<div style="text-align: Center;">
-PESERTA DITERIMA
+PESERTA DITERIMA PENDAFTARAN SELEKSI MASUK
+</div>
+<div style="text-align: Center;">
+TAHUN AJARAN 2019/2020
 </div>');
 
 //content

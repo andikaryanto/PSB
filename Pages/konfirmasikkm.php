@@ -18,9 +18,11 @@
 		</div>
 		<div class="form-group">
 			<label>Masukkan Captcha</label>
-			<input type="text" class="form-control" name="captcha" required>
+			<input id = "capt" type="text" class="form-control" name="captcha" required>
 		</div>
-		<button id="btndaftar" class="btn btn-success" type="submit">DAFTAR</button>
+		
+		<a id="cekcaptcha" class="btn btn-success">CEK</a>
+		<button disabled id="btndaftar" class="btn btn-success" type="submit">DAFTAR</button>
 	</div>
 	<div class="footer">
 		<div class="container">
@@ -37,4 +39,23 @@
 			// let the browser natively reset defaults
 			form[0].reset();
 		});
+		$("#cekcaptcha").on("click", function(){
+			$.ajax({
+				url:"<?= $url."Fungsi/Global/CekCaptcha.php"?>",
+				type:"POST",
+				data:{capt : $("#capt").val()},
+				success:function(res){
+					console.log(res);
+					var btn = document.getElementById("btndaftar");
+					if(res == 1){
+						alert("Captcha Benar");
+						btn.disabled = false;
+					} else {
+						alert("Captcha Salah");
+						btn.disabled = true;
+
+					}
+				}
+			})
+		})
 	</script>
