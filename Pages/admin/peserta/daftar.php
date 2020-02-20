@@ -152,7 +152,7 @@ $pengaturan = ambilpengaturan();
         }
 
         $.ajax({
-            url: '<?= "/Fungsi/Aksi/Daftarulang.php" ?>',
+            url: '<?= "<?= $url ?>Fungsi/Aksi/Daftarulang.php" ?>',
             type: "POST",
             data: {
                 Id: this.id,

@@ -21,7 +21,7 @@ $tahun = ambilhanyatahunajaran("WHERE Id = {$_GET['id']}");
                     <div class="box-header with-border">
                         <h3 class="box-title">Tambah Pengguna</h3>
                     </div>
-                    <form role="form" action="/Fungsi/Aksi/Tahunajaran_edit.php" method="POST">
+                    <form role="form" action="<?= $url ?>Fungsi/Aksi/Tahunajaran_edit.php" method="POST">
                         <input hidden id="id" name="id" value="<?= $tahun['Id'] ?>">
                         <div class="box-body">
                             <div class="form-group">

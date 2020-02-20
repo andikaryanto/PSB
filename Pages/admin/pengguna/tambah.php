@@ -18,7 +18,7 @@ include APP_PATH.'Pages/headeradmin.php';?>
                     <div class="box-header with-border">
                         <h3 class="box-title">Tambah Pengguna</h3>
                     </div>
-                    <form role = "form" action = "/Fungsi/Aksi/Pengguna_simpan.php" method = "POST" enctype="multipart/form-data">
+                    <form role = "form" action = "<?= $url ?>Fungsi/Aksi/Pengguna_simpan.php" method = "POST" enctype="multipart/form-data">
                         <div class="box-body">
                         <div class="form-group">
                             <label for="pengguna">Pengguna</label>

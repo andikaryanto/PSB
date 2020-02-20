@@ -20,7 +20,7 @@ include APP_PATH.'Pages/headeradmin.php';
                     <div class="box-header with-border">
                         <h3 class="box-title">Tambah Pengguna</h3>
                     </div>
-                    <form role = "form" action = "/Fungsi/Aksi/Pengguna_edit.php" method = "POST">
+                    <form role = "form" action = "<?= $url ?>Fungsi/Aksi/Pengguna_edit.php" method = "POST">
                     <div class="box-body">
                         <input hidden name = "id" value = "<?= $pengguna['Id']?>">
                         <div class="form-group">

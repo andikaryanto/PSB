@@ -31,7 +31,7 @@
                     <div class="box-header with-border">
                         <h3 class="box-title">Pengaturan</h3>
                     </div>
-                    <form role = "form" action = "/Fungsi/Aksi/Pengaturan_simpan.php" method = "POST">
+                    <form role = "form" action = "<?= $url ?>Fungsi/Aksi/Pengaturan_simpan.php" method = "POST">
                         <div class="box-body">
                             <div class="form-group">
                                 <label for="tgmulai">Tgl Mulai Daftar</label>
