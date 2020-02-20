@@ -1,24 +1,36 @@
 <?php
-if (!isset($_SESSION['pengguna']))
-    header("Location : <?= $url ?>Pages/admin/index.php");
+if (!isset($_SESSION['pengguna'])){
+    // header("Location : {$url}/Pages/admin/index.php");
+    // header("Location : {$url}Pages/forbidden.php");
+    // echo "hahahah";
     
+    // include APP_PATH . 'Pages/header.php';
+    include APP_PATH . 'Pages/admin/index.php';
+    die;
+} else {
+    echo "hahahah";
+}
+
 if(!isset($menuactive)){
 
 }
 else {
     if($menuactive == "pengaturan" || $menuactive == "tahunajaran" || $menuactive == "pengguna" || $menuactive == "pengumuman"){
-        if($_SESSION['level'] != 0)
-            header("Location : <?= $url ?>Pages/forbidden.php");
+        if($_SESSION['level'] != 0){
+            header("Location : {$url}Pages/forbidden.php");
+        }
     }
     
     if($menuactive == "semuasiswa"){
-        if($_SESSION['level'] != 0 && $_SESSION['level'] != 1)
-            header("Location : <?= $url ?>Pages/forbidden.php");
+        if($_SESSION['level'] != 0 && $_SESSION['level'] != 1){
+            header("Location : {$url}Pages/forbidden.php");
+        }
     }
     
-    if($menuactive == "siswaditolak"){
-        if($_SESSION['level'] != 0 && $_SESSION['level'] != 1)
-            header("Location : <?= $url ?>Pages/forbidden.php");
+    if($menuactive == "siswaditolak"){  
+        if($_SESSION['level'] != 0 && $_SESSION['level'] != 1){
+            header("Location : {$url}Pages/forbidden.php");
+        }
     }
 }
 

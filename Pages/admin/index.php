@@ -1,6 +1,7 @@
 <?php 
-if(isset($_SESSION['pengguna']))
+if(isset($_SESSION['pengguna'])){
 	header("Location:{$url}Pages/admin/pengaturan/pengaturan.php");
+}
 
 include APP_PATH.'Pages/header.php';?>
 	<div class="container">
