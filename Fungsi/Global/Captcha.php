@@ -39,7 +39,8 @@ function createCaptcha()
 
 
     // menentukan session
-    $_SESSION["Captcha"] = "";
+    if(isset($_SESSION["Captcha"]))
+        unset($_SESSION["Captcha"]);
 
     // membuat gambar dengan menentukan ukuran
     $gbr = imagecreate(200, 50);
@@ -53,16 +54,19 @@ function createCaptcha()
     $ukuran_font = 20;
     $posisi = 32;
     // membuat nomor acak dan ditampilkan pada gambar
+    $ses = "";
     for ($i = 0; $i <= 5; $i++) {
         // jumlah karakter
         $angka = rand(0, 9);
 
-        $_SESSION["Captcha"] .= $angka;
+        $ses .= $angka;
 
         $kemiringan = rand(20, 20);
+        echo "<script>console.log(".$angka.")</script>";
 
         imagettftext($gbr, $ukuran_font, $kemiringan, 8 + 15 * $i, $posisi, $color, $font, $angka);
     }
+    $_SESSION["Captcha"] = $ses;
     //untuk membuat gambar 
     imagepng($gbr, "assets/img/image.png");
     imagedestroy($gbr);

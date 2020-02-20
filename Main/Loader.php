@@ -18,7 +18,7 @@ $load = [
 foreach($load as $key => $value){
     foreach ($value as $v){
         // echo APP_PATH.$key."\\".$v.".php";
-        include APP_PATH.$key."\\".$v.".php";
+        include APP_PATH.$key."/".$v.".php";
 
     }
 }
@@ -30,7 +30,8 @@ foreach($load as $key => $value){
 /**
  * load page
  */
-// echo $_SERVER['PATH_INFO'];
+// echo APP_PATH;
+// echo json_encode($_SERVER);
 if($_SERVER['PATH_INFO'] != "/")
     include APP_PATH.$_SERVER['PATH_INFO'];
     

@@ -1,9 +1,15 @@
 <script src="<?= $url ?>assets/js/popper.min.js"></script>
 <script src="<?= $url ?>assets/js/bootstrap.js"></script>
-<script src="<?= $url ?>assets/js/jasny-bootstrap.min.js"></script>
+<!--<script src="/assets/js/jasny-bootstrap.min.js"></script>-->
 <script src="<?= $url ?>assets/js/adminlte.min.js"></script>
+<script src="<?= $url ?>assets/js/jquery.mask.js"></script>
 
 <script>
+    $('.grade').mask('099,0', {
+        reverse: true
+    });
+    
+  
     $("input").on("keyup", function(e) {
         var oldvalue = this.value;
         var validtoregex = false;

@@ -15,12 +15,13 @@ $kecamatan = isset($peserta['Kecamatan_Id']) ? $peserta['Kecamatan_Id'] : (isset
 $kodepos = isset($peserta['KodePos']) ? $peserta['KodePos'] : (isset($_SESSION['data']['kodepos']) ? $_SESSION['data']['kodepos'] : "");
 $domisili = isset($peserta['Domisili']) ? $peserta['Domisili'] : (isset($_SESSION['data']['alamatdiy']) ? $_SESSION['data']['alamatdiy'] : "");
 $notelp = isset($peserta['NoTelp']) ? $peserta['NoTelp'] : (isset($_SESSION['data']['nohpsiswa']) ? $_SESSION['data']['nohpsiswa'] : "");
+$photopath = isset($peserta['UrlPhoto']) ? $peserta['UrlPhoto'] : "";
 ?>
 
 <h3 align="center">DATA CALON SISWA BARU</h3>
 <h4 align="center">( HARAP MENGISI DATA DENGAN LENGKAP DAN BENAR ! )</h4>
 <div class="well">
-	<input hidden name="idpeserta" value="<?= $idpeserta ?>">
+	<input hidden id = "idpeserta" name="idpeserta" value="<?= $idpeserta ?>">
 	<input hidden name="nodaftar" value="<?= $nodaftar ?>">
 	<div class="form-group">
 		<label>NISN</label>
@@ -40,9 +41,13 @@ $notelp = isset($peserta['NoTelp']) ? $peserta['NoTelp'] : (isset($_SESSION['dat
 		<label>Tempat Lahir</label>
 		<input type="text" class="form-control stringonly" name="tempatlahir" placeholder="Tempat Lahir" value="<?= $tempatlahir ?>" required>
 	</div>
+	<?php
+	    $minyear = ((int)date_create('now')->format('Y') - 18)."-01-01";
+	    $maxyear = ((int)date_create('now')->format('Y') - 15)."-01-01";
+	?>
 	<div class="form-group">
 		<label>Tanggal Lahir</label>
-		<input type="date" class="form-control" name="tanggallahir" placeholder="Tanggal Lahir" value="<?= $tgllahir ?>" required>
+		<input type="date" min="<?= $minyear ?>" max="<?= $maxyear ?>" class="form-control" name="tanggallahir" placeholder="Tanggal Lahir" value="<?= $tgllahir ?>" required>
 	</div>
 	<div class="form-group">
 		<label>Agama</label>
@@ -57,11 +62,11 @@ $notelp = isset($peserta['NoTelp']) ? $peserta['NoTelp'] : (isset($_SESSION['dat
 	</div>
 	<div class="form-group">
 		<label>Alamat Asal</label>
-		<textarea class="form-control" name="alamatasal" rows="5" required><?= $alamatasal ?></textarea>
+		<textarea class="form-control" name="alamatasal" rows="5" placeholder="Kosongkan jika domisili Yogyakarta"><?= $alamatasal ?></textarea>
 	</div>
 	<div class="form-group">
 		<label>Alamat di DIY</label>
-		<textarea class="form-control" name="alamatdiy" rows="5" required><?= $domisili ?></textarea>
+		<textarea class="form-control" name="alamatdiy" rows="5" required placeholder="Alamat di DIY"><?= $domisili ?></textarea>
 	</div>
 	<div class="form-group">
 		<label>Kabupaten</label>
@@ -89,8 +94,15 @@ $notelp = isset($peserta['NoTelp']) ? $peserta['NoTelp'] : (isset($_SESSION['dat
 	</div>
 	<div class="form-group">
 		<label>Pas Foto</label>
-		<input type="file" class="form-control" name="file" accept="image/png, image/jpeg" required>
+		<input id="photo" type="file" class="form-control" name="file" data-max-size="200" accept="image/png, image/jpeg" <?php if(empty($idpeserta)) {echo "required"; }?>>
 	</div>
+	<?php if($photopath):?>
+	<div class="form-group">
+	    <div class="col-md-2">
+            <img src= "<?= "/" . $photopath ?>" style = "height:200; width:150 !important">
+        </div>
+	</div>
+	<?php endif;?>
 	<a onclick="loadTab('tab_1','tab_2')" class="btn btn-success" data-toggle="tab">SELANJUTNYA</a>
 </div>
 <div class="footer">
@@ -113,7 +125,7 @@ $notelp = isset($peserta['NoTelp']) ? $peserta['NoTelp'] : (isset($_SESSION['dat
 	function loadKecamatan() {
 		var kecamatan = '<?= $kecamatan ?>';
 		$.ajax({
-			url: "<?= $url . 'Fungsi/Aksi/Kecamatan_json.php' ?>",
+			url: "/Fungsi/Aksi/Kecamatan_json.php",
 			type: "POST",
 			data: {
 				kabupaten: $("#kabupaten").val()

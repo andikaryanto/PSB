@@ -12,7 +12,7 @@
 		$namawali = isset($ortu['NamaWali']) ? $ortu['NamaWali'] : "";
 		$rtwali = isset($ortu['RT']) ? $ortu['RT'] : "";
 		$rwwali = isset($ortu['RW']) ? $ortu['RW'] : "";
-		$kelurahanwali = isset($ortu['Kelurahan']) ? $ortu['Kelurahan'] : "";
+		$kabupatenwali = isset($ortu['Kabupaten']) ? $ortu['Kabupaten'] : "";
 		$kecamatanwali = isset($ortu['Kecamatan']) ? $ortu['Kecamatan'] : "";
 		$kodeposwali = isset($ortu['KodePos']) ? $ortu['KodePos'] : "";
 		$notelpwali = isset($ortu['NoTelp']) ? $ortu['NoTelp'] : "";
@@ -47,16 +47,8 @@
 				<input type="text" class="form-control" name="namawali" placeholder="Nama Wali" value = "<?= $namawali ?>" required>
 			</div>
 			<div class="form-group">
-				<label>RT</label>
-					<input class="form-control" name="rtwali"  value = "<?= $rtwali ?>">
-			</div>
-			<div class="form-group">
-				<label>RW</label>
-					<input class="form-control" name="rwwali" value = "<?= $rwwali ?>" >
-			</div>
-			<div class="form-group">
-				<label>Kelurahan</label>
-					<input class="form-control" name="kelurahanwali"  value = "<?= $kelurahanwali ?>">
+				<label>Kabupaten</label>
+					<input class="form-control" name="kabupatenwali"  value = "<?= $kabupatenwali ?>">
 			</div>
 			<div class="form-group">
 				<label>Kecamatan</label>

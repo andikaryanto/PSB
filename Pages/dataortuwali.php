@@ -39,27 +39,12 @@ $notelpwali = isset($ortu['NoTelp']) ? $ortu['NoTelp'] : (isset($_SESSION['data'
 		</select>
 	</div>
 	<div class="form-group">
-		<label>Alamat Lengkap</label>
+		<label>Alamat Lengkap di DIY</label>
 		<textarea class="form-control" name="alamatasalortu" rows="5" required required><?= $alamatortu ?></textarea>
 	</div>
-	<!-- <div class="form-group">
-		<label>RT</label>
-		<input class="form-control" name="rtwali" value="<?= $rtwali ?>">
-	</div>
+
 	<div class="form-group">
-		<label>RW</label>
-		<input class="form-control" name="rwwali" value="<?= $rwwali ?>">
-	</div> -->
-	<!-- <div class="form-group">
-				<label>Kelurahan</label>
-					<input class="form-control" name="kelurahanwali"  value = "<?= $kelurahanwali ?>">
-			</div>
-			<div class="form-group">
-				<label>Kecamatan</label>
-					<input class="form-control" name="kecamatanwali" value = "<?= $kecamatanwali ?>">
-			</div> -->
-	<div class="form-group">
-		<label>Kabuaten</label>
+		<label>Kabupaten</label>
 		<select id="kabupatenwali" class="form-control" name="kabupatenwali" required>
 			<?php $kabupaten = ambilkabupaten();
 			foreach ($kabupaten as $kab) :
@@ -101,7 +86,7 @@ $notelpwali = isset($ortu['NoTelp']) ? $ortu['NoTelp'] : (isset($_SESSION['data'
 
 	function loadKelurahanwali() {
 		$.ajax({
-			url: "<?= $url . 'Fungsi/Aksi/Kecamatan_json.php' ?>",
+			url: '/Fungsi/Aksi/Kecamatan_json.php',
 			type: "POST",
 			data: {
 				kabupaten: $("#kabupatenwali").val()

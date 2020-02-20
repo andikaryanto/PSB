@@ -11,6 +11,7 @@
         $tglselesai = formatTanggal($pengaturan['TglSelesaiPendaftaran'], "Y-m-d", ["-","P1D"] );
         $tglpengumuman = formatTanggal($pengaturan['TglPengumuman'], "Y-m-d");
         $jmlditerima = $pengaturan['JumlahDiterima'];
+        $kepsek = $pengaturan['KepalaSekolah'];
     }
 ?>
 <div class="content-wrapper">
@@ -30,7 +31,7 @@
                     <div class="box-header with-border">
                         <h3 class="box-title">Pengaturan</h3>
                     </div>
-                    <form role = "form" action = "<?= $url?>Fungsi/Aksi/Pengaturan_simpan.php" method = "POST">
+                    <form role = "form" action = "/Fungsi/Aksi/Pengaturan_simpan.php" method = "POST">
                         <div class="box-body">
                             <div class="form-group">
                                 <label for="tgmulai">Tgl Mulai Daftar</label>
@@ -47,6 +48,10 @@
                             <div class="form-group">
                                 <label for="jmlditerima">Jumlah Diterima</label>
                                 <input type="number" class="form-control" id="jmlditerima" placeholder="Jumlah Diterima" name = "jmlditerima" value = "<?= $jmlditerima?>" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="kepsek">Kepala Sekolah</label>
+                                <input type="text" class="form-control" id="kepsek" placeholder="Kepala Sekolah" name = "kepsek" value = "<?= $kepsek?>" required>
                             </div>
                         <!-- /.box-body -->
                         </div>

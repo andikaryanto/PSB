@@ -3,13 +3,14 @@
         $pengguna = loginadmin($_POST['username'], $_POST['password']);
         if($pengguna){
              $_SESSION['pengguna'] = $_POST['username'];
-            header("Location: $url"."Pages/admin/pengaturan/pengaturan.php");
+             $_SESSION['level'] = $pengguna['Level'];
+            header("Location: {$url}Pages/admin/pengaturan/pengaturan.php");
         }
         else {
             
-            header("Location: $url"."pages/admin/index.php");
+            header("Location: {$url}Pages/admin/index.php");
         }
     } else {
-        header("Location: $url"."pages/admin/index.php");
+        header("Location: {$url}Pages/admin/index.php");
     }
 ?>

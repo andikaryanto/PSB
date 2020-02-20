@@ -67,4 +67,20 @@ TAHUN AJARAN 2019/2020
 //content
 
 $mpdf->WriteHTML($content);
+$mpdf->WriteHTML("<table style='autosize:2.4; padding:30px 0;'>
+    <tr >
+        <td style='padding:10px 70% 20px 10px'></td>
+        <td>Kepala Sekolah</td>
+    </tr>
+    <tr >
+        <td style='padding:50px 70% 20px 10px'></td>
+        <td style='padding:50px 0 20px 0px'>Moch Yusuf Sugeng.S., M.Si</td>
+    </tr>
+    <tr >
+        <td style='padding:5px 70% 20px 10px'></td>
+        <td>NBM. 962852</td>
+    </tr>
+    
+    
+</table>");
 $mpdf->Output();

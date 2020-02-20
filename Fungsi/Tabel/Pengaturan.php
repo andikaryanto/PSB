@@ -5,15 +5,16 @@
         return $pengaturan;
     }
 
-    function simpanpengaturan($tglmulaidaftar, $tglselesaidaftar, $tglpengumuman, $jmlditerima){
+    function simpanpengaturan($tglmulaidaftar, $tglselesaidaftar, $tglpengumuman, $jmlditerima, $kepsek){
         $pengaturan = ambilpengaturan();
         if(count($pengaturan) > 0)
             database_query("UPDATE pengaturan SET TglMulaiPendaftaran = '{$tglmulaidaftar}',
                                                     TglSelesaiPendaftaran = '{$tglselesaidaftar}',
                                                     TglPengumuman = '{$tglpengumuman}',
-                                                    JumlahDiterima = {$jmlditerima}");
+                                                    JumlahDiterima = {$jmlditerima},
+                                                    KepalaSekolah = '{$kepsek}'");
         else 
-            database_simpan("INSERT INTO pengaturan VALUES (null, '', '{$tglmulaidaftar}', '{$tglselesaidaftar}', '{$tglpengumuman}', {$jmlditerima}, 1)");
+            database_simpan("INSERT INTO pengaturan VALUES (null, '', '{$tglmulaidaftar}', '{$tglselesaidaftar}', '{$tglpengumuman}', {$jmlditerima}, 1, '{$kepsek}')");
 
     }
 ?>

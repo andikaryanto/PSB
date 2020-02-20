@@ -22,7 +22,7 @@
               
                     <div class="row">
                         <div class="col-xs-12 text-right">
-                            <a href = "<?= $url?>Pages/admin/tahunajaran/tambah.php" class = "btn btn-primary">+</a>
+                            <a href = "<?= $url ?>Pages/admin/tahunajaran/tambah.php" class = "btn btn-primary">+</a>
                         </div>
                     </div>
                 </div>

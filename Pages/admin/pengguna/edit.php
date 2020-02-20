@@ -20,7 +20,7 @@ include APP_PATH.'Pages/headeradmin.php';
                     <div class="box-header with-border">
                         <h3 class="box-title">Tambah Pengguna</h3>
                     </div>
-                    <form role = "form" action = "<?= $url?>Fungsi/Aksi/Pengguna_edit.php" method = "POST">
+                    <form role = "form" action = "/Fungsi/Aksi/Pengguna_edit.php" method = "POST">
                     <div class="box-body">
                         <input hidden name = "id" value = "<?= $pengguna['Id']?>">
                         <div class="form-group">
@@ -35,8 +35,8 @@ include APP_PATH.'Pages/headeradmin.php';
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="password">Password</label>
-                            <input type="password" class="form-control" id="password" placeholder="Password" name = "password" value="<?= $pengguna['Password']?>" required>
+                            <label for="password">Password  (10 karakter maksimal)</label>
+                            <input type="password" class="form-control" id="password" placeholder="Password" name = "password" maxlength="10" value="<?= $pengguna['Password']?>" required>
                         </div>
                         <!-- /.box-body -->
                         </div>

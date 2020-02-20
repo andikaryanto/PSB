@@ -37,5 +37,11 @@
         $ral = str_shuffle($al);
         return substr($ral,0,1) . substr($ral,1,1);
     }
+    
+    function yearRange(){
+        $year = (int)date_create('now')->format('Y');
+        $number = range($year - 4,$year);
+        return $number;
+    }
 ?>
 

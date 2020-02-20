@@ -11,8 +11,8 @@ if ($_SESSION['Captcha'] == $_POST['captcha']) {
         $_POST['tanggallahir'],
         $_POST['agama'],
         $_POST['alamatasal'],
-        $_POST['rt'],
-        $_POST['rw'],
+        NULL,
+        NULL,
         $_POST['kabupaten'],
         $_POST['kecamatan'],
         $_POST['kodepos'],
@@ -24,8 +24,13 @@ if ($_SESSION['Captcha'] == $_POST['captcha']) {
         $_POST['tahunlulus'],
         $_POST['kartumiskin']
     );
-    $uploadedpath = uploadFotoPath($_FILES);
-    uploadFoto($idpeserta, $uploadedpath);
+    echo json_encode($_FILES);
+    
+    if(!empty($_FILES['file']['name'])){
+        $uploadedpath = uploadFotoPath($_FILES);
+        uploadFoto($idpeserta, $uploadedpath);
+    }
+    
 
     simpanorangtua(
         $idpeserta,
@@ -48,15 +53,18 @@ if ($_SESSION['Captcha'] == $_POST['captcha']) {
 
     simpanprestasi($idpeserta, $_POST['namaprestasi'], $_POST['nilaiprestasi']);
 
-    $noreg = buatnoreg($idpeserta);
-
-    $content = $url . "Pages/daftartab.php?key=" . encrypt("edit." . $kuncirahasia . "." . $noreg);
-    $text = generateQR($url, $content, $noreg . $qrcode['registrasi']);
+    if(empty($_POST['nodaftar']))
+        $noreg = buatnoreg($idpeserta);
+    else 
+        $noreg = $_POST['nodaftar'];
+        
+    $content = "{$url}Pages/daftartab.php?key=" . encrypt("edit." . $kuncirahasia . "." . $noreg);
+    $text = generateQR(null, $content, $noreg . $qrcode['registrasi']);
     $enctext = encrypt($text);
     // echo $idpeserta;
     unset($_SESSION['data']);
-    header("Location: $url" . "Pages/daftarberhasil.php?idpeserta={$idpeserta}&content={$enctext}");
+    header("Location: {$url}Pages/daftarberhasil.php?idpeserta={$idpeserta}&content={$enctext}");
 } else {
     $_SESSION['message'] = "Captcha Salah";
-    header("Location: $url" . "Pages/daftartab.php");
+    header("Location: {$url}Pages/daftartab.php");
 }

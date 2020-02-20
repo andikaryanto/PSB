@@ -14,15 +14,15 @@
 		<div class = "well">
 			<div class="form-group">
 				<label>BAHASA INDONESIA</label>
-				<input type="text" class="form-control nilai" data-mask="9,99" name="bahasaindonesia" value = "<?= $bahasiindonesia?>" placeholder="" required>
+				<input type="text" class="form-control nilai grade" name="bahasaindonesia" value = "<?= $bahasiindonesia?>" placeholder="" required>
 			</div>
 			<div class="form-group">
 				<label>MATEMATIKA</label>
-				<input type="text" class="form-control nilai" data-mask="9,99" name="matematika" value = "<?= $matik?>" placeholder="" required>
+				<input type="text" class="form-control nilai grade" name="matematika" value = "<?= $matik?>" placeholder="" required>
 			</div>
 			<div class="form-group">
 				<label>ILMU PENGETAHUAN ALAM</label>
-				<input type="text" class="form-control nilai" data-mask="9,99" name="ipa" value = "<?= $ipa?>" placeholder="" required>
+				<input type="text" class="form-control nilai grade" name="ipa" value = "<?= $ipa?>" placeholder="" required>
 			</div>
 	<a onclick = "loadTab('tab_4','tab_5')" class="btn btn-success" data-toggle="tab">SELANJUTNYA</a>
 		</div>

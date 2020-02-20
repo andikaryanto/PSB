@@ -18,7 +18,7 @@ include APP_PATH.'Pages/headeradmin.php';?>
                     <div class="box-header with-border">
                         <h3 class="box-title">Tambah Pengguna</h3>
                     </div>
-                    <form role = "form" action = "<?= $url?>Fungsi/Aksi/Pengguna_simpan.php" method = "POST">
+                    <form role = "form" action = "/Fungsi/Aksi/Pengguna_simpan.php" method = "POST" enctype="multipart/form-data">
                         <div class="box-body">
                         <div class="form-group">
                             <label for="pengguna">Pengguna</label>
@@ -32,9 +32,10 @@ include APP_PATH.'Pages/headeradmin.php';?>
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="password">Password</label>
-                            <input type="password" class="form-control" id="password" placeholder="Password" name = "password" required>
+                            <label for="password">Password (10 karakter maksimal):</label>
+                            <input type="password" class="form-control" id="password" placeholder="Password" name = "password" maxlength = "10" required>
                         </div>
+                    	
                         <!-- /.box-body -->
                         </div>
 

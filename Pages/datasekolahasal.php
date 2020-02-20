@@ -14,7 +14,12 @@ $tahunlulus = isset($peserta['TahunLulus']) ? $peserta['TahunLulus'] : (isset($_
 	</div>
 	<div class="form-group">
 		<label>Tahun Lulus</label>
-		<input id="tahunlulus" type="text" maxlength="4" class="form-control numbered" name="tahunlulus" placeholder="Tahun Lulus" value="<?= $tahunlulus ?>" required>
+		
+	    <select id="tahunlulus" name="tahunlulus" class="form-control"required>
+	        <?php foreach(yearRange() as $d):?>
+	            <option value="<?=$d?>"><?=$d?></option>
+	        <?php endforeach;?>
+        </select>
 	</div>
 	<div class="form-group">
 		<label>Status Sekolah<br>

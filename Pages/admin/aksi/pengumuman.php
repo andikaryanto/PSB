@@ -21,7 +21,7 @@ include APP_PATH.'Pages/headeradmin.php';
                     <div class="box-header with-border">
                         <h3 class="box-title">Lakukan Pengumuman</h3>
                     </div>
-                    <form role = "form" action = "<?= $url?>Fungsi/Aksi/Pengumuman.php" method = "POST">
+                    <form role = "form" action = "/Fungsi/Aksi/Pengumuman.php" method = "POST">
                         
                         <?php
                         $pengaturan = ambilpengaturan();

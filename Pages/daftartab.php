@@ -20,7 +20,8 @@ if (
             <div class="box">
 
 
-                <h3 align="center">PENDAFTARAN BELUM DIBUKA </h3>
+                <h3 align="center">PENDAFTARAN BELUM DIBUKA</h3>
+                <h4 align="center">PENDAFTARAN AKAN DIBUKA PADA TANGGAL 1 - 30 JULI 2019</h4>
                 <!-- <div class="callout">
 
                     <div class="row">
@@ -50,10 +51,11 @@ if (
             <div class="box">
                 <div>Informasi Terkini</div>
                 <ul>
-                    <li><a href="#">Pendaftaran Siswa Baru Tahun Pelajaran 2016/2017 telah dibuka</a></li>
-                    <li><a href="#">Syarat Pendaftaran Siswa Baru Tahun Pelajaran 2016/2017</a></li>
-                    <li><a href="#">Seleksi Administrasi Siswa Baru Tahun Pelajaran 2016/2017</a></li>
+                    <li><a href="#">Pendaftaran Siswa Baru Tahun Pelajaran 2019/2020 telah dibuka</a></li>
+                    <li><a href="#">Syarat Pendaftaran Siswa Baru Tahun Pelajaran 2019/2020</a></li>
+                    <li><a href="#">Seleksi Administrasi Siswa Baru Tahun Pelajaran 2019/2020</a></li>
                 </ul>
+                <center><a class="btn btn-primary" href="index.php">KEMBALI KE BERANDA</a></center>
             </div>
         </div>
     </div>
@@ -87,7 +89,7 @@ if (isset($_GET['key'])) {
                         <li class=""><a href="#tab_6" data-toggle="tab">Kartu Miskin</a></li>
                         <!-- <li class=""><a href="#tab_7" data-toggle="tab">Tahun Lulus</a></li> -->
                     </ul>
-                    <form id="formdaftar" method="POST" action="../Fungsi/Aksi/Peserta_simpan.php" enctype="multipart/form-data">
+                    <form method="POST" action="/Fungsi/Aksi/Peserta_simpan.php" enctype="multipart/form-data">
                         <div class="tab-content">
 
                             <div class="tab-pane active" id="tab_1">
@@ -114,9 +116,7 @@ if (isset($_GET['key'])) {
                             <div class="tab-pane" id="tab_6">
                                 <?php include 'konfirmasikkm.php' ?>
                             </div>
-                            <!-- <div class="tab-pane" id="tab_7">
-                                <?php include 'konfirmasikkm.php' ?>
-                            </div> -->
+                          
                             <!-- /.tab-pane -->
                         </div>
                         <!-- <button id = "btntest"></button> -->
@@ -165,15 +165,24 @@ grecaptcha.ready(function() {
     $("#btndaftar").on('click', function() {
 
         $("input").each(function() {
-            if (this.name != "nodaftar" && this.name != "idpeserta" && this.name != "namaprestasi" && this.name != "nilaiprestasi" && (this.value === "" || this.value === null || this.value === undefined)) {
+            if (this.name != "nodaftar" && this.name != "idpeserta" && this.name != "namaprestasi" && this.name != "nilaiprestasi" && this.name != "file" && (this.value === "" || this.value === null || this.value === undefined)) {
                 alert(this.name + " Masih Kosong"); // This is the jquery object of the input, do what you will
                 // console.log(this.name + " Masih Kosong");
                 return false;
             }
         });
-
+        
+        
+        var idpeserta = $("#idpeserta").val();
+        console.log(idpeserta);
+        if(idpeserta == 0){
+            console.log("a");
+            if( document.getElementById("photo").files.length == 0 ){
+                alert("Pas Foto Masih Kosong");
+            } 
+        } 
         $("textarea").each(function() {
-            if (this.name != "nodaftar" && this.name != "idpeserta" && this.name != "namaprestasi" && this.name != "nilaiprestasi" && (this.value === "" || this.value === null || this.value === undefined)) {
+            if (this.name != "nodaftar" && this.name != "idpeserta" && this.name != "namaprestasi" && this.name != "alamatasal" && this.name != "nilaiprestasi" && (this.value === "" || this.value === null || this.value === undefined)) {
                 alert(this.name + " Masih Kosong"); // This is the jquery object of the input, do what you will
                 // console.log(this.name + " Masih Kosong");
                 return false;

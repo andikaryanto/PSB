@@ -14,7 +14,7 @@
                     <div class="icon">
                         <i class=""></i>
                     </div>
-                    <a href="<?= $url?>Pages/tatacara.php" class="small-box-footer">INFO SELENGKAPNYA <i class="fa fa-arrow-circle-right"></i></a>
+                    <a href="<?= $url ?>Pages/tatacara.php" class="small-box-footer">INFO SELENGKAPNYA <i class="fa fa-arrow-circle-right"></i></a>
                 </div>
             </div><!-- ./col -->
             <div class="col-lg-3 col-xs-6">
@@ -27,7 +27,7 @@
                     <div class="icon">
                         <i class=""></i>
                     </div>
-                    <a href="<?= $url?>Pages/daftartab.php" class="small-box-footer">DAFTAR <i class="fa fa-arrow-circle-right"></i></a>
+                    <a href="<?= $url ?>Pages/daftartab.php" class="small-box-footer">DAFTAR <i class="fa fa-arrow-circle-right"></i></a>
                 </div>
             </div><!-- ./col -->
             <div class="col-lg-3 col-xs-6">
@@ -40,7 +40,7 @@
                     <div class="icon">
                         <i class=""></i>
                     </div>
-                    <a href="<?= $url?>Pages/pengumuman.php" class="small-box-footer">INFO SELENGKAPNYA <i class="fa fa-arrow-circle-right"></i></a>
+                    <a href="<?= $url ?>Pages/pengumuman.php" class="small-box-footer">INFO SELENGKAPNYA <i class="fa fa-arrow-circle-right"></i></a>
                 </div>
             </div><!-- ./col -->
             <div class="col-lg-3 col-xs-6">
@@ -53,7 +53,7 @@
                     <div class="icon">
                         <i class=""></i>
                     </div>
-                    <a href="<?= $url?>Pages/daftarulang.php" class="small-box-footer">INFO SELENGKAPNYA <i class="fa fa-arrow-circle-right"></i></a>
+                    <a href="<?= $url ?>Pages/daftarulang.php" class="small-box-footer">INFO SELENGKAPNYA <i class="fa fa-arrow-circle-right"></i></a>
                 </div>
             </div><!-- ./col -->
             <br>

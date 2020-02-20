@@ -1,7 +1,11 @@
 <?php
 
 function ambilorangtua($idpeserta){
-    $peserta = database_select("SELECT * FROM orangtua where Peserta_id = {$idpeserta}");
+    $q = 'SELECT a.*, b.Nama Kabupaten, c.Nama Kecamatan 
+    FROM orangtua a
+    LEFT JOIN kabupaten b on b.Id = a.Kabupaten_Id
+    LEFT JOIN kecamatan c on c.Id = a.Kecamatan_Id';
+    $peserta = database_select("{$q} where Peserta_id = {$idpeserta}");
     return $peserta;
 }
 

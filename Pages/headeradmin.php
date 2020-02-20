@@ -1,11 +1,33 @@
 <?php
 if (!isset($_SESSION['pengguna']))
-    header("Location: $url" . "pages/admin/index.php");
+    header("Location : <?= $url ?>Pages/admin/index.php");
+    
+if(!isset($menuactive)){
+
+}
+else {
+    if($menuactive == "pengaturan" || $menuactive == "tahunajaran" || $menuactive == "pengguna" || $menuactive == "pengumuman"){
+        if($_SESSION['level'] != 0)
+            header("Location : <?= $url ?>Pages/forbidden.php");
+    }
+    
+    if($menuactive == "semuasiswa"){
+        if($_SESSION['level'] != 0 && $_SESSION['level'] != 1)
+            header("Location : <?= $url ?>Pages/forbidden.php");
+    }
+    
+    if($menuactive == "siswaditolak"){
+        if($_SESSION['level'] != 0 && $_SESSION['level'] != 1)
+            header("Location : <?= $url ?>Pages/forbidden.php");
+    }
+}
+
+
 ?>
 <!DOCTYPE>
 <html>
 
-<head>
+<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>SELAMAT DATANG CALON SISWA BARU</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link media="all" type="text/css" rel="stylesheet" href="<?= $url ?>assets/css/bootstrap.min.css">
@@ -44,7 +66,7 @@ if (!isset($_SESSION['pengguna']))
             <section class="sidebar">
                 <div class="user-panel">
                     <div class="pull-left image">
-                        <img src="<?= $url ?>/assets/images/logomusati.png" class="img-circle" alt="User Image">
+                        <img src="<?= $url ?>assets/images/logomusati.png" class="img-circle" alt="User Image">
                     </div>
                     <div class="pull-left info">
                         <p>PANITIA</p>
@@ -54,48 +76,44 @@ if (!isset($_SESSION['pengguna']))
 
                 <ul class="sidebar-menu">
                     <li class="header">MENU UTAMA</li>
-                    <!-- <li class="<?php if ($menuactive == "dashboard") echo "active" ?> treeview">
-                    <a href="<?= $url ?>/Pages/admin/index.php">
-                        <i class="fa fa-dashboard"></i> <span>DASHBOARD</span>
-                    </a>                   
-                </li> -->
+                   
                     <li class="<?php if ($menuactive == "pengaturan") echo "active" ?> treeview">
-                        <a href="<?= $url ?>/Pages/admin/pengaturan/pengaturan.php">
+                        <a href="<?= $url ?>Pages/admin/pengaturan/pengaturan.php">
                             <i class="fa fa-user"></i> <span>PENGATURAN</span>
                         </a>
                     </li>
                     <li class="<?php if ($menuactive == "semuasiswa") echo "active" ?> treeview">
-                        <a href="<?= $url ?>/Pages/admin/peserta/daftar.php?halaman=semuasiswa">
+                        <a href="<?= $url ?>Pages/admin/peserta/daftar.php?halaman=semuasiswa">
                             <i class="fa fa-user"></i> <span>DATA PESERTA</span>
                         </a>
                     </li>
                     <li class="<?php if ($menuactive == "siswaditerima") echo "active" ?> treeview">
-                        <a href="<?= $url ?>/Pages/admin/peserta/daftar.php?halaman=siswaditerima">
+                        <a href="<?= $url ?>Pages/admin/peserta/daftar.php?halaman=siswaditerima">
                             <i class="fa fa-user"></i> <span>DATA PESERTA DITERIMA</span>
                         </a>
                     </li>
                     <li class="<?php if ($menuactive == "siswaditolak") echo "active" ?> treeview">
-                        <a href="<?= $url ?>/Pages/admin/peserta/daftar.php?halaman=siswaditolak">
+                        <a href="<?= $url ?>Pages/admin/peserta/daftar.php?halaman=siswaditolak">
                             <i class="fa fa-user"></i> <span>DATA PESERTA DITOLAK</span>
                         </a>
                     </li>
                     <li class="<?php if ($menuactive == "tahunajaran") echo "active" ?> treeview">
-                        <a href="<?= $url ?>/Pages/admin/tahunajaran/daftar.php">
+                        <a href="<?= $url ?>Pages/admin/tahunajaran/daftar.php">
                             <i class="fa fa-user"></i> <span>TAHUN AJARAN</span>
                         </a>
                     </li>
                     <li class="<?php if ($menuactive == "pengguna") echo "active" ?> treeview">
-                        <a href="<?= $url ?>/Pages/admin/pengguna/daftar.php">
+                        <a href="<?= $url ?>Pages/admin/pengguna/daftar.php">
                             <i class="fa fa-user"></i> <span>PENGGUNA</span>
                         </a>
                     </li>
                     <li class="<?php if ($menuactive == "pengumuman") echo "active" ?> treeview">
-                        <a href="<?= $url ?>/Pages/admin/aksi/pengumuman.php">
+                        <a href="<?= $url ?>Pages/admin/aksi/pengumuman.php">
                             <i class="fa fa-user"></i> <span>PENGUMUMAN</span>
                         </a>
                     </li>
                     <li class="treeview">
-                        <a href="<?= $url . "Fungsi/Aksi/Keluar.php" ?>">
+                        <a href="<?= "{$url}Fungsi/Aksi/Keluar.php" ?>">
                             <i class="fa fa-user"></i> <span>KELUAR</span>
                         </a>
                     </li>

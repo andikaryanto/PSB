@@ -10,7 +10,7 @@ $agama = isset($peserta['Agama']) ? $peserta['Agama'] : "";
 $alamatasal = isset($peserta['Alamat']) ? $peserta['Alamat'] : "";
 $rt = isset($peserta['RT']) ? $peserta['RT'] : "";
 $rw = isset($peserta['RW']) ? $peserta['RW'] : "";
-$kelurahan = isset($peserta['Kelurahan']) ? $peserta['Kelurahan'] : "";
+$kabupaten = isset($peserta['Kabupaten']) ? $peserta['Kabupaten'] : "";
 $kecamatan = isset($peserta['Kecamatan']) ? $peserta['Kecamatan'] : "";
 $kodepos = isset($peserta['KodePos']) ? $peserta['KodePos'] : "";
 $domisili = isset($peserta['Domisili']) ? $peserta['Domisili'] : "";
@@ -59,16 +59,8 @@ $notelp = isset($peserta['NoTelp']) ? $peserta['NoTelp'] : "";
         <textarea class="form-control" name="alamatasal" rows="5"><?= $alamatasal ?></textarea>
     </div>
     <div class="form-group">
-        <label>RT</label>
-        <input class="form-control" name="rt" value="<?= $rt ?>">
-    </div>
-    <div class="form-group">
-        <label>RW</label>
-        <input class="form-control" name="rw" value="<?= $rw ?>">
-    </div>
-    <div class="form-group">
-        <label>Kelurahan</label>
-        <input class="form-control" name="kelurahan" value="<?= $kelurahan ?>">
+        <label>Kabupaten</label>
+        <input class="form-control" name="kabupaten" value="<?= $kabupaten ?>">
     </div>
     <div class="form-group">
         <label>Kecamatan</label>

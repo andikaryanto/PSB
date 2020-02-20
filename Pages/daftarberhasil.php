@@ -1,7 +1,7 @@
 <?php 
     include 'header.php';
     // include 'daftar.php'
-    $peserta = ambilhanyapeserta("WHERE Id = {$_GET['idpeserta']}");
+    $peserta = ambilhanyapeserta("WHERE a.Id = {$_GET['idpeserta']}");
     $content = decrypt($_GET['content']);
 ?>
 
@@ -18,7 +18,7 @@
                         <div class="col-md-12">
                             <div class = "box-body">
                                 <p style = "color:red;">PENTING!! SEGEREA PRINT / TANGKAP LAYAR HALAMAN  INI</p>
-                                <p style = "color:red;"> JAGALAH INFORMASI INI, JANGAN SAMAPI ORANG LAIN MENGETAHUINYA</p>
+                                <p style = "color:red;"> JAGALAH INFORMASI INI, JANGAN SAMPAI ORANG LAIN MENGETAHUINYA</p>
                                 <p>GUNAKAN QR CODE DIBAWAH UNTUK MENGEDIT DATA PRIBADI ANDA</p>
                             </div>
                             </div>
@@ -26,10 +26,7 @@
                     
                     <div class="row">
                         <div class="col-md-2">
-                            <img src= "<?= $content ?>" style = "height:120; width:120 !important">
-                        </div>
-                        <div class="col-md-2">
-                            <img src= "<?= "../".$peserta['UrlPhoto'] ?>" style = "height:120; width:120 !important">
+                            <img src= "<?= "/".$peserta['UrlPhoto'] ?>" style = "height:200; width:150 !important">
                         </div>
                         <div class="col-md-8">
                             <div class = "box-body">
@@ -38,6 +35,9 @@
                                 <p> TTL : <b><?= $peserta['TempatLahir'].", ". $peserta['TglLahir']?></b></p>
                                 <p> Jenis Kelamin : <b><?= $peserta['JenisKelamin']?></b></p>
                             </div>
+                        </div>
+                        <div class="col-md-2">
+                            <p align="left"><img src= "<?= $content ?>" style = "height:150; width:150 !important"></p>
                         </div>
                     </div>
                 </div>

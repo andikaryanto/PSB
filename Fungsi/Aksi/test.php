@@ -1,6 +1,6 @@
 <?php
-$content = $url."pages/daftartab.php?key=".encrypt("edit.mlatipsb.REG0038");
-$text = generateQR($url, $content, "REG0038RegistQrCode.JPEG");
+$content = "{$url}Pages/daftartab.php?key=".encrypt("edit.mlatipsb.REG0060WQ");
+$text = generateQR(null, $content, "REG0060WQRegistQrCode.JPEG");
 $enctext = encrypt($text);
-header("Location: $url"."pages/daftarberhasil.php?idpeserta=38&content={$enctext}");
+header("Location: {$url}Pages/daftarberhasil.php?idpeserta=60&content={$enctext}");
 ?>

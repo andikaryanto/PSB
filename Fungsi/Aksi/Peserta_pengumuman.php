@@ -1,9 +1,9 @@
 <?php
     
 if($peserta){
-    header("Location: $url"."pages/pesertaditerima.php");
+    header("Location: {$url}Pages/pesertaditerima.php");
 } else {
-    header("Location: $url"."pages/pesertaditolak.php");
+    header("Location: {$url}Pages/pesertaditolak.php");
 }
 
 ?>

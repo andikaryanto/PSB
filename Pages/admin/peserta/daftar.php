@@ -38,7 +38,7 @@ $pengaturan = ambilpengaturan();
                             ?>
                             <div class="row">
                                 <div class="col-xs-12 text-right">
-                                    <a href = "<?= $url . "Pages/laporan/$urlreport" ?>" class="btn btn-primary"><i class = "fa fa-file-excel-o"></i> Eksport</a>
+                                    <a href = "<?= "<?= $url ?>Pages/laporan/$urlreport" ?>" class="btn btn-primary"><i class = "fa fa-file-excel-o"></i> Eksport</a>
                                 </div>
                             </div>
                         <?php } ?>
@@ -101,7 +101,7 @@ $pengaturan = ambilpengaturan();
                                                     else
                                                         echo "<td><input id='{$p['Id']}' type='checkbox' class='minimal'></td>";
                                                 } ?>
-                                            <td><a href="<?= $url . "Pages/admin/peserta/detail.php?NoRegist={$p['NoDaftar']}" ?>"><i class="fa fa-info"></i></a></td>
+                                            <td><a href="<?= "<?= $url ?>Pages/admin/peserta/detail.php?NoRegist={$p['NoDaftar']}" ?>"><i class="fa fa-info"></i></a></td>
                                         </tr>
                                     <?php
                                     }
@@ -152,7 +152,7 @@ $pengaturan = ambilpengaturan();
         }
 
         $.ajax({
-            url: '<?= $url . "Fungsi/Aksi/Daftarulang.php" ?>',
+            url: '<?= "/Fungsi/Aksi/Daftarulang.php" ?>',
             type: "POST",
             data: {
                 Id: this.id,
@@ -167,7 +167,7 @@ $pengaturan = ambilpengaturan();
 
     // $("#export").on("click", function(){
     //     $.ajax({
-    //         url: '<?= $url . "Pages/laporan/pesertaditerimaexc.php" ?>',
+    //         url: '<?= "<?= $url ?>Pages/laporan/pesertaditerimaexc.php" ?>',
     //         type: "POST",
     //         success : function(result){
     //             console.log(result);

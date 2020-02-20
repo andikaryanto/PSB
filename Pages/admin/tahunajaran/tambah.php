@@ -17,9 +17,9 @@ include APP_PATH.'Pages/headeradmin.php';?>
             <div class="col-xs-12">
                 <div class="box box-primary">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Tambah Pengguna</h3>
+                        <h3 class="box-title">Tambah Tahun Ajaran</h3>
                     </div>
-                    <form role = "form" action = "<?= $url?>Fungsi/Aksi/Tahunajaran_simpan.php" method = "POST">
+                    <form role = "form" action = "/Fungsi/Aksi/Tahunajaran_simpan.php" method = "POST">
                         <div class="box-body">
                             <div class="form-group">
                                 <label for="pengguna">Nama</label>

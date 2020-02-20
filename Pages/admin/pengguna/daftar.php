@@ -25,7 +25,7 @@ include APP_PATH.'Pages/headeradmin.php';?>
               
                     <div class="row">
                         <div class="col-xs-12 text-right">
-                            <a href = "<?= $url?>Pages/admin/pengguna/tambah.php" class = "btn btn-primary">+</a>
+                            <a href = "<?= $url ?>Pages/admin/pengguna/tambah.php" class = "btn btn-primary">+</a>
                         </div>
                     </div>
                 </div>
@@ -46,10 +46,10 @@ include APP_PATH.'Pages/headeradmin.php';?>
                                 foreach($pengguna as $admin){
                             ?>
                             <tr>
-                                <td><a href= "<?= $url."Pages/admin/pengguna/edit.php?id={$admin['Id']}"?>"><?= $admin['Pengguna']?></a></td>
+                                <td><a href= "<?= "<?= $url ?>Pages/admin/pengguna/edit.php?id={$admin['Id']}"?>"><?= $admin['Pengguna']?></a></td>
                                 <td><?= $admin['Level'] == 1 ?  "Sekertaris" : "Tata Usaha"?></td>
                                 <td class = "text-right">
-                                    <a href = "<?= $url."Fungsi/Aksi/Pengguna_hapus.php?id={$admin['Id']}"?>"><i class='fa fa-trash'></i></a>
+                                    <a href = "<?= "/Fungsi/Aksi/Pengguna_hapus.php?id={$admin['Id']}"?>"><i class='fa fa-trash'></i></a>
                                 </td>
                             </tr>
                             <?php

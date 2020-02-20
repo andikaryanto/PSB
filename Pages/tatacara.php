@@ -2,6 +2,7 @@
 <!DOCTYPE>
 <html>
 <head>
+<?php include 'header.php'; ?>
 <title>SELAMAT DATANG CALON SISWA BARU</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link media="all" type="text/css" rel="stylesheet" href="assets/css/bootstrap.min.css">
@@ -35,6 +36,7 @@
                             <li>Beasiswa dari institusi Pemerintah maupun swasta</li>
                         </ul>
                     </div>
+                    <center><a class="btn btn-primary" href="index.php">KEMBALI KE BERANDA</a></center>
                 </div>          
             </div>
         </div>

@@ -5,6 +5,15 @@
     <strong>Copyright &copy; Panitia PSB MUSATI 2019</strong>. All rights reserved.
 </footer>
 
+<script>
+<?php if(isset($_SESSION['alert'])):?>
+    console.log("<?= $_SESSION['alert']?>");
+    alert("<?= $_SESSION['alert']?>")
+<?php 
+    unset($_SESSION['alert']);
+endif;?>
+</script>
+
 </div><!-- ./wrapper -->
 
 </body>

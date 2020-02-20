@@ -1,25 +1,25 @@
 <?php 
 if(isset($_SESSION['pengguna']))
-	header("Location: $url"."Pages/admin/pengaturan/pengaturan.php");
+	header("Location:{$url}Pages/admin/pengaturan/pengaturan.php");
 
 include APP_PATH.'Pages/header.php';?>
 	<div class="container">
 		<div class="row">
 			<div class="col-md-8">
 				<div class="box">
-				<img src="<?= $url ?>/assets/images/front-img.jpg">
+				<img src="<?= $url ?>assets/images/front-img.jpg">
 				</div>
 			</div>
 			<div class="col-md-4">
 				<div class="box">
-					<form role="form" method="POST" action="../../Fungsi/Aksi/Login.php">
+					<form role="form" method="POST" action="<?= $url ?>Fungsi/Aksi/Login.php">
 						<div class="form-group">
 						<label>Username</label>
-							<input type="text" class="form-control" name="username" value="" placeholder="Username">
+							<input type="text" class="form-control" name="username" value="" placeholder="Username" required>
 						</div>
 						<div class="form-group">
 						<label>Password</label>
-							<input type="password" class="form-control" name="password" placeholder="Password">
+							<input type="password" class="form-control" name="password" placeholder="Password" required>
 						</div>
 						<div class="form-group">	
 							<button class="btn btn-primary" type="submit">Masuk</button>

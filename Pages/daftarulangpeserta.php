@@ -11,8 +11,8 @@
                     $peserta = ambilhanyapeserta("WHERE NoDaftar = '{$_POST['nomorpendaftaran']}'");
                     if ($peserta) {
                         $daftarulang = ambildafhanyatarulang("AND a.Id = {$peserta['Id']}");
-                        $content = $url . "Pages/daftartab.php?key=" . encrypt("edit." . $kuncirahasia . "." . $peserta['NoDaftar']);
-                        $text = generateQR($url, $content, $peserta['NoDaftar'] . $qrcode['registrasi']);
+                        $content = $url."Pages/daftartab.php?key=" . encrypt("edit." . $kuncirahasia . "." . $peserta['NoDaftar']);
+                        $text = generateQR(null, $content, $peserta['NoDaftar'] . $qrcode['registrasi']);
                         if ($daftarulang && $daftarulang['DaftarUlang'] == 1) {
                             ?>
 
@@ -23,7 +23,8 @@
                                 } else if ($daftarulang && $daftarulang['DaftarUlang'] == 0) {
 
                                     ?>
-                            <h3 align="center">ANDA BELUM DAFTAR ULANG </h3>
+                            <h3 align="center">ANDA BELUM DAFTAR ULANG</h3>
+                            <h4 align="center">SILAKAN LAKUKAN DAFTAR ULANG KE PANITIA DI SMP MUHAMMADIYAH 1 MLATI</h4>
                         <?php
                                 } else {
                                     ?>
@@ -35,10 +36,7 @@
 
                             <div class="row">
                                 <div class="col-md-2">
-                                    <img src="<?= $text ?>" style="height:120; width:120 !important">
-                                </div>
-                                <div class="col-md-2">
-                                    <img src="<?= "../" . $peserta['UrlPhoto'] ?>" style="height:120; width:120 !important">
+                                    <img src="<?= "../" . $peserta['UrlPhoto'] ?>" style="height:166; width:120 !important">
                                 </div>
                                 <div class="col-md-8">
                                     <div class="box-body">
@@ -48,6 +46,9 @@
                                         <p> Jenis Kelamin : <b><?= $peserta['JenisKelamin'] ?></b></p>
                                         <p> Sekolah Asal : <b><?= $peserta['AsalSekolah'] ?></b></p>
                                     </div>
+                                </div>
+                                 <div class="col-md-2">
+                                    <img src="<?= $text ?>" style="height:120; width:120 !important">
                                 </div>
                             </div>
                         </div>
@@ -70,10 +71,11 @@
             <div class="box">
                 <div>Informasi Terkini</div>
                 <ul>
-                    <li><a href="#">Pendaftaran Siswa Baru Tahun Pelajaran 2016/2017 telah dibuka</a></li>
-                    <li><a href="#">Syarat Pendaftaran Siswa Baru Tahun Pelajaran 2016/2017</a></li>
-                    <li><a href="#">Seleksi Administrasi Siswa Baru Tahun Pelajaran 2016/2017</a></li>
+                    <li><a href="#">Pendaftaran Siswa Baru Tahun Pelajaran 2019/2020 telah dibuka</a></li>
+                    <li><a href="#">Syarat Pendaftaran Siswa Baru Tahun Pelajaran 2019/2020</a></li>
+                    <li><a href="#">Seleksi Administrasi Siswa Baru Tahun Pelajaran 2019/2020</a></li>
                 </ul>
+                <center><a class="btn btn-primary" href="index.php">KEMBALI KE BERANDA</a></center>
             </div>
         </div>
     </div>

@@ -3,6 +3,7 @@
 $mpdf = new \Mpdf\Mpdf();
 // echo json_encode($peserta);
 $peserta = pesertaditerima();
+$pengaturan = ambilpengaturan();
 $mpdf->AddPage('L');
 $mpdf->WriteHTML('');
 $mpdf->Image('assets/images/logomusati.png', 5, 5, 25, 25, 'jpg', '', true, false);
@@ -67,4 +68,20 @@ TAHUN AJARAN 2019/2020
 //content
 
 $mpdf->WriteHTML($content);
+$mpdf->WriteHTML("<table style='autosize:2.4; padding:30px 0;'>
+    <tr >
+        <td style='padding:10px 70% 20px 10px'></td>
+        <td>Kepala Sekolah</td>
+    </tr>
+    <tr >
+        <td style='padding:50px 70% 20px 10px'></td>
+        <td style='padding:50px 0 20px 0px'>{$pengaturan['KepalaSekolah']}</td>
+    </tr>
+    <tr >
+        <td style='padding:5px 70% 20px 10px'></td>
+        <td>NBM. 962852</td>
+    </tr>
+    
+    
+</table>");
 $mpdf->Output();

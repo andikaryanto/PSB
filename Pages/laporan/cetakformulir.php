@@ -3,10 +3,10 @@
 $mpdf = new \Mpdf\Mpdf();
 
 $pesertaid = $_GET['pesertaid'];
-$peserta = ambilhanyapeserta("WHERE Id=$pesertaid");
+$peserta = ambilhanyapeserta("WHERE a.Id=$pesertaid");
 $noreg = $peserta['NoDaftar'];
-$content = $url."Pages/daftartab.php?key=".encrypt("edit.".$kuncirahasia.".".$noreg);
-$text = generateQR($url, $content, $noreg.$qrcode['registrasi']);
+$content = $url."/Pages/daftartab.php?key=".encrypt("edit.".$kuncirahasia.".".$noreg);
+$text = generateQR(null, $content, $noreg.$qrcode['registrasi']);
 $enctext = encrypt($text);
 $content = decrypt($enctext);
 // echo json_encode($peserta);
@@ -74,6 +74,12 @@ $mpdf->WriteHTML("<table style='autosize:2.4; padding:30px 0; margin-top:-300px'
         <td style='padding:10px'>Alamat</td>
         <td>:</td>
         <td>{$peserta['Alamat']}</td>
+    </tr>
+
+    <tr>
+        <td style='padding:10px'>Alamat DIY</td>
+        <td>:</td>
+        <td>{$peserta['Domisili']}</td>
     </tr>
     
     <tr>

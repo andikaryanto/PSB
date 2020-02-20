@@ -7,5 +7,6 @@
     // echo $tahun;
 
     simpantahunajaran($nama, $deskripsi, $tahun, $aktif);
+    $_SESSION['alert'] = 'data tersimpan';
     header("location:{$url}Pages/admin/tahunajaran/daftar.php");
 ?>

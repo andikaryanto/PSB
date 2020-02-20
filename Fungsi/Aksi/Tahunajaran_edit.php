@@ -7,5 +7,7 @@
 
     // echo $tahun;
     updatetahunajaran($id, $nama, $deskripsi, $tahun, $aktif);
+    
+    $_SESSION['alert'] = 'data terupdate';
     header("location:{$url}Pages/admin/tahunajaran/daftar.php");
 ?>

@@ -9,8 +9,13 @@ function ambilhanyapeserta($where = "")
         $cond = "AND Tahunajaran_Id = " . $tahunajaran['Id'];
     else
         $cond = "WHERE Tahunajaran_Id = " . $tahunajaran['Id'];
+        
+    $q = 'SELECT a.*, b.Nama as Kabupaten , c.Nama as Kecamatan 
+    FROM peserta a
+    LEFT JOIN kabupaten b on b.Id = a.Kabupaten_Id
+    LEFT JOIN kecamatan c on c.id = a.Kecamatan_Id';
 
-    $peserta = database_select("SELECT * FROM peserta {$where} $cond");
+    $peserta = database_select("{$q} {$where} {$cond}");
     return $peserta;
 }
 
