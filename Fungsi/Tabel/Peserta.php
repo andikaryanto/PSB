@@ -6,14 +6,14 @@ function ambilhanyapeserta($where = "")
     $cond = "";
     $tahunajaran = ambilhanyatahunajaran("WHERE Aktif = 1");
     if (!empty($where))
-        $cond = "AND Tahunajaran_Id = " . $tahunajaran['Id'];
+        $cond = "AND Tahunajaran_Id = " . $tahunajaran['Tahunajaran_Id'];
     else
-        $cond = "WHERE Tahunajaran_Id = " . $tahunajaran['Id'];
+        $cond = "WHERE Tahunajaran_Id = " . $tahunajaran['Tahunajaran_Id'];
         
     $q = 'SELECT a.*, b.Nama as Kabupaten , c.Nama as Kecamatan 
     FROM peserta a
-    LEFT JOIN kabupaten b on b.Id = a.Kabupaten_Id
-    LEFT JOIN kecamatan c on c.id = a.Kecamatan_Id';
+    LEFT JOIN kabupaten b on b.Kabupaten_Id = a.Kabupaten_Id
+    LEFT JOIN kecamatan c on c.Kabupaten_Id = a.Kecamatan_Id';
 
     $peserta = database_select("{$q} {$where} {$cond}");
     return $peserta;
@@ -25,9 +25,9 @@ function ambilpeserta($where = "")
     $tahunajaran = ambilhanyatahunajaran("WHERE Aktif = 1");
     if ($tahunajaran) {
         if (!empty($where))
-            $cond = "AND Tahunajaran_Id = " . $tahunajaran['Id'];
+            $cond = "AND Tahunajaran_Id = " . $tahunajaran['Tahunajaran_Id'];
         else
-            $cond = "WHERE Tahunajaran_Id = " . $tahunajaran['Id'];
+            $cond = "WHERE Tahunajaran_Id = " . $tahunajaran['Tahunajaran_Id'];
     }
 
     $peserta = database_select_daftar("SELECT * FROM peserta {$where} $cond");
@@ -76,14 +76,14 @@ function simpanpeseta(
                             Domisili = '{$domisili}',
                             KartuMiskin = {$kartumiskin},
                             TahunLulus = {$thlulus}
-                WHERE Id = {$id}";
+                WHERE Peserta_Id = {$id}";
         database_query($qry);
         return $id;
     } else {
         $qry = "INSERT INTO peserta VALUES (null, null, '{$nisn}', '{$namalengkap}', '{$jenkel}', 
         '{$tempatlahir}', '{$tgllahir}', '{$agama}', '{$alamat}', '{$rt}', '{$rw}', '{$kabupaten}',
         '{$kecamatan}', '{$kodepos}', '$domisili', '{$notelp}', '{$asalsekolah}', '{$alamatsekolah}',
-        '{$statussekolah}', {$kartumiskin}, {$status}, {$tahunajaran['Id']}, NULL, {$thlulus})";
+        '{$statussekolah}', {$kartumiskin}, {$status}, {$tahunajaran['Tahunajaran_Id']}, NULL, {$thlulus})";
         // echo $qry;
         return database_simpan($qry);
     }
@@ -91,7 +91,7 @@ function simpanpeseta(
 
 function uploadFoto($id, $url)
 {
-    $qry = "UPDATE peserta SET UrlPhoto = '{$url}' WHERE Id = $id";
+    $qry = "UPDATE peserta SET UrlPhoto = '{$url}' WHERE Peserta_Id = $id";
     database_query($qry);
     return $id;
 }
@@ -118,8 +118,8 @@ function cekpesertaditerima($nodaftar)
         (	
             SELECT a.*,  CASE WHEN c.Peserta_Id IS NOT NULL THEN 1 ELSE 0 END Diterima
             FROM peserta a
-            LEFT JOIN pengumuman c on a.Id = c.Peserta_Id
-            WHERE a.Tahunajaran_Id = {$tahunajaran['Id']}
+            LEFT JOIN pengumuman c on a.Peserta_Id = c.Peserta_Id
+            WHERE a.Tahunajaran_Id = {$tahunajaran['Tahunajaran_Id']}
         ) A WHERE NoDaftar = '{$nodaftar}'";
         // echo $qry;
         return database_select($qry);
@@ -140,10 +140,10 @@ function pesertaditerima()
             SELECT Peserta_Id, SUM(Nilai) Nilai
             FROM nilaiujian 
             GROUP BY Peserta_Id
-        ) b ON a.Id = b.Peserta_Id
-        INNER JOIN pengumuman c on a.Id = c.Peserta_Id
-        LEFT JOIN daftarulang d on a.id = d.Peserta_Id 
-        WHERE a.Tahunajaran_Id = {$tahunajaran['Id']}
+        ) b ON a.Peserta_Id = b.Peserta_Id
+        INNER JOIN pengumuman c on a.Peserta_Id = c.Peserta_Id
+        LEFT JOIN daftarulang d on a.Peserta_Id = d.Peserta_Id 
+        WHERE a.Tahunajaran_Id = {$tahunajaran['Tahunajaran_Id']}
         ORDER BY b.Nilai  DESC
         LIMIT 0, {$pengaturan['JumlahDiterima']}";
 
@@ -162,8 +162,8 @@ function pesertaditolak()
 
         $qry = " SELECT a.*
         FROM peserta a
-        LEFT JOIN pengumuman c on a.Id = c.Peserta_Id
-        WHERE a.Tahunajaran_Id = {$tahunajaran['Id']}
+        LEFT JOIN pengumuman c on a.Peserta_Id = c.Peserta_Id
+        WHERE a.Tahunajaran_Id = {$tahunajaran['Tahunajaran_Id']}
         AND c.Peserta_Id IS NULL
         -- ORDER BY b.Nilai DESC
         -- LIMIT $limit, {$pengaturan['JumlahDiterima']}";

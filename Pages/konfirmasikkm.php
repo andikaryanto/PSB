@@ -13,7 +13,7 @@
 			<input type="radio" <?php if ($km == 0) echo "checked" ?> name="kartumiskin" value="0"> Tidak
 		</div>
 		<div class="form-group">
-			<img style="width: 150px;" src="/assets/img/image.png?dummy<?= time()?>" alt="gambar" />
+			<img style="width: 150px;" src="<?= $url ?>/assets/img/image.png?dummy=<?= time()?>" alt="gambar" />
 		</div>
 		<div class="form-group">
 			<label>Masukkan Captcha</label>
@@ -40,7 +40,7 @@
 		});
 		$("#cekcaptcha").on("click", function(){
 			$.ajax({
-				url:"/Fungsi/Global/CekCaptcha.php",
+				url:"<?= $url ?>Fungsi/Global/CekCaptcha.php",
 				type:"POST",
 				data:{capt : $("#capt").val()},
 				success:function(res){

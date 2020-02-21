@@ -32,13 +32,13 @@ $pengaturan = ambilpengaturan();
                         <?php if (isset($_GET['halaman']) && ($_GET['halaman'] == "siswaditerima" || $_GET['halaman'] == "semuasiswa")) { 
                                 $urlreport = "";
                                 if($_GET['halaman'] == "semuasiswa")
-                                    $urlreport = "cetakpeserta.php";
+                                    $urlreport = "{$url}Pages/laporan/cetakpeserta.php";
                                 else 
-                                    $urlreport = "cetakpesertaditerima.php";
+                                    $urlreport = "{$url}Pages/laporan/cetakpesertaditerima.php";
                             ?>
                             <div class="row">
                                 <div class="col-xs-12 text-right">
-                                    <a href = "<?= "<?= $url ?>Pages/laporan/$urlreport" ?>" class="btn btn-primary"><i class = "fa fa-file-excel-o"></i> Eksport</a>
+                                    <a href = "<?= $urlreport ?>" class="btn btn-primary"><i class = "fa fa-file-excel-o"></i> Eksport</a>
                                 </div>
                             </div>
                         <?php } ?>
@@ -97,9 +97,9 @@ $pengaturan = ambilpengaturan();
                                             <?php if (isset($_GET['halaman']) && $_GET['halaman'] == "siswaditerima") {
                                                     // echo "<th>{$p['Daftarulang']}</th>";
                                                     if ($p['Daftarulang'] == 1)
-                                                        echo "<td><input id='{$p['Id']}' type='checkbox' class='minimal' checked></td>";
+                                                        echo "<td><input id='{$p['Peserta_Id']}' type='checkbox' class='minimal' checked></td>";
                                                     else
-                                                        echo "<td><input id='{$p['Id']}' type='checkbox' class='minimal'></td>";
+                                                        echo "<td><input id='{$p['Peserta_Id']}' type='checkbox' class='minimal'></td>";
                                                 } ?>
                                             <td><a href="<?= "<?= $url ?>Pages/admin/peserta/detail.php?NoRegist={$p['NoDaftar']}" ?>"><i class="fa fa-info"></i></a></td>
                                         </tr>
@@ -152,7 +152,7 @@ $pengaturan = ambilpengaturan();
         }
 
         $.ajax({
-            url: '<?= "<?= $url ?>Fungsi/Aksi/Daftarulang.php" ?>',
+            url: "<?= $url ?>" + "Fungsi/Aksi/Daftarulang.php",
             type: "POST",
             data: {
                 Id: this.id,

@@ -1,6 +1,6 @@
 
 	<?php 
-		$pesertaid = isset($peserta['Id']) ? $peserta['Id'] : "";
+		$pesertaid = isset($peserta['Peserta_Id']) ? $peserta['Peserta_Id'] : "";
 		$ortu;
 		if($pesertaid)
 			$ortu = ambilorangtua($pesertaid);

@@ -22,11 +22,11 @@ function updatetahunajaran($id, $nama, $deskripsi, $tahun, $aktif){
     if($aktif == 1){
         nonaktiftahunajaran();
     }
-    return database_query("UPDATE tahunajaran set Nama = '{$nama}', Deskripsi = '{$deskripsi}', Tahun = '{$tahun}', Aktif = {$aktif} WHERE Id = {$id}");
+    return database_query("UPDATE tahunajaran set Nama = '{$nama}', Deskripsi = '{$deskripsi}', Tahun = '{$tahun}', Aktif = {$aktif} WHERE Tahunajaran_Id = {$id}");
 }
 
 function deletetahunajaran($id){
-    database_query("DELETE FROM tahunajaran WHERE Id = {$id}");
+    database_query("DELETE FROM tahunajaran WHERE Tahunajaran_Id = {$id}");
 }
 
 

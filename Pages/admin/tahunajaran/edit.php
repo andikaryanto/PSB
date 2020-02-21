@@ -2,7 +2,7 @@
 
 $menuactive = "tahunajaran";
 include APP_PATH . 'Pages/headeradmin.php';
-$tahun = ambilhanyatahunajaran("WHERE Id = {$_GET['id']}");
+$tahun = ambilhanyatahunajaran("WHERE Tahunajaran_Id = {$_GET['id']}");
 ?>
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -22,7 +22,7 @@ $tahun = ambilhanyatahunajaran("WHERE Id = {$_GET['id']}");
                         <h3 class="box-title">Tambah Pengguna</h3>
                     </div>
                     <form role="form" action="<?= $url ?>Fungsi/Aksi/Tahunajaran_edit.php" method="POST">
-                        <input hidden id="id" name="id" value="<?= $tahun['Id'] ?>">
+                        <input hidden id="id" name="id" value="<?= $tahun['Tahunajaran_Id'] ?>">
                         <div class="box-body">
                             <div class="form-group">
                                 <label for="pengguna">Nama</label>

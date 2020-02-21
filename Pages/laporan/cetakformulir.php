@@ -6,12 +6,12 @@ $pesertaid = $_GET['pesertaid'];
 $peserta = ambilhanyapeserta("WHERE a.Id=$pesertaid");
 $noreg = $peserta['NoDaftar'];
 $content = $url."/Pages/daftartab.php?key=".encrypt("edit.".$kuncirahasia.".".$noreg);
-$text = generateQR(null, $content, $noreg.$qrcode['registrasi']);
+$text = generateQR($url, $content, $noreg.$qrcode['registrasi']);
 $enctext = encrypt($text);
 $content = decrypt($enctext);
 // echo json_encode($peserta);
 $mpdf->WriteHTML('');
-$mpdf->Image('assets/images/logomusati.png', 5, 5, 25, 25, 'jpg', '', true, false);
+$mpdf->Image($url.'assets/images/logomusati.png', 5, 5, 25, 25, 'jpg', '', true, false);
 $mpdf->Image($content, 180,5, 25, 25, 'jpg', '', true, false);
 $mpdf->WriteHTML('
 <div style="text-align: Center; margin-top:-50px">

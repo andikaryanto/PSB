@@ -3,6 +3,7 @@
 $mpdf = new \Mpdf\Mpdf();
 // echo json_encode($peserta);
 $peserta = ambilpeserta();
+$pengaturan = ambilpengaturan();
 $mpdf->AddPage('L');
 $mpdf->WriteHTML('');
 $mpdf->Image('assets/images/logomusati.png', 5, 5, 25, 25, 'jpg', '', true, false);
@@ -74,7 +75,7 @@ $mpdf->WriteHTML("<table style='autosize:2.4; padding:30px 0;'>
     </tr>
     <tr >
         <td style='padding:50px 70% 20px 10px'></td>
-        <td style='padding:50px 0 20px 0px'>Moch Yusuf Sugeng.S., M.Si</td>
+        <td style='padding:50px 0 20px 0px'>{$pengaturan['KepalaSekolah']}</td>
     </tr>
     <tr >
         <td style='padding:5px 70% 20px 10px'></td>

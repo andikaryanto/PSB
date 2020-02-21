@@ -7,8 +7,8 @@ function ambilpendaftaran($where = "" ){
 function simpanpendaftaran($idpeserta){
         $mapel = ambilpendaftaran("WHERE Peserta_Id = {$idpeserta} ");
         if($mapel){
-            database_query("UPDATE pendaftaran SET Nilai = {$nilai} WHERE WHERE Peserta_Id = {$idpeserta} ");
-            return $mapel['Id'];
+            database_query("UPDATE pendaftaran SET Nilai = {$nilai} WHERE  Peserta_Id = {$idpeserta} ");
+            return $mapel['Pendaftaran_Id'];
         }
 
         return database_simpan("INSERT INTO pendaftaran VALUES (null,  NOW(), {$idpeserta})");

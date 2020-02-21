@@ -47,11 +47,11 @@ include APP_PATH.'Pages/headeradmin.php';?>
                                 foreach($tahunajaran as $tahun){
                             ?>
                             <tr>
-                                <td><a href= "<?= "<?= $url ?>Pages/admin/tahunajaran/edit.php?id={$tahun['Id']}"?>"><?= $tahun['Nama']?></a></td>
+                                <td><a href= "<?= $url .'Pages/admin/tahunajaran/edit.php?id='.$tahun['Tahunajaran_Id'] ?>"><?= $tahun['Nama']?></a></td>
                                 <td><?= $tahun['Deskripsi'] ?></td>
                                 <td><?= $tahun['Aktif'] == 1 ?  "Ya" : "Tidak"?></td>
                                 <td class = "text-right">
-                                    <a href = "<?= "<?= $url ?>Fungsi/Aksi/Tahunajaran_hapus.php?id={$tahun['Id']}"?>"><i class='fa fa-trash'></i></a>
+                                    <a href = "<?= $url .'Fungsi/Aksi/Tahunajaran_hapus.php?id='.$tahun['Tahunajaran_Id']?>"><i class='fa fa-trash'></i></a>
                                 </td>
                             </tr>
                             <?php

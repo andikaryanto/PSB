@@ -14,7 +14,7 @@
                     if ($peserta && $peserta['Diterima'] == 1) {
 
                         $content = $url . "Pages/daftartab.php?key=" . encrypt("edit." . $kuncirahasia . "." . $peserta['NoDaftar']);
-                        $text = generateQR(null, $content, $peserta['NoDaftar'] . $qrcode['registrasi']);
+                        $text = generateQR($url, $content, $peserta['NoDaftar'] . $qrcode['registrasi']);
                         // $enctext = encrypt($text);  
                         // $content = decrypt($_GET['content']);
                         ?>
@@ -25,7 +25,7 @@
 
                             <div class="row">
                                 <div class="col-md-2">
-                                    <img src="<?= "../" . $peserta['UrlPhoto'] ?>" style="height:160; width:120 !important">
+                                    <img src="<?= $url . $peserta['UrlPhoto'] ?>" style="height:160; width:120 !important">
                                 </div>
                                 <div class="col-md-8">
                                     <div class="box-body">
@@ -47,7 +47,7 @@
                                 $semuapeserta = ambilhanyapeserta("WHERE NoDaftar = '{$_POST['nomorpendaftaran']}'");
                                 if ($semuapeserta) {
                                     $content = $url . "Pages/daftartab.php?key=" . encrypt("edit." . $kuncirahasia . "." . $semuapeserta['NoDaftar']);
-                                    $text = generateQR(null, $content, $semuapeserta['NoDaftar'] . $qrcode['registrasi']);
+                                    $text = generateQR($url, $content, $semuapeserta['NoDaftar'] . $qrcode['registrasi']);
                                     ?>
                             <h3 align="center">TERIMAKASIH ANDA SUDAH MENGIKUTI SELEKSI ONLINE</h3>
                             <h4 align="center">ANDA TIDAK LOLOS</h4>
@@ -55,7 +55,7 @@
 
                                 <div class="row">
                                     <div class="col-md-2">
-                                        <img src="<?= "/" . $peserta['UrlPhoto'] ?>" style="height:160; width:120 !important">
+                                        <img src="<?= $url . $peserta['UrlPhoto'] ?>" style="height:160; width:120 !important">
                                     </div>
                                     <div class="col-md-8">
                                         <div class="box-body">

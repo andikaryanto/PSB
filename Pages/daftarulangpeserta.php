@@ -10,9 +10,9 @@
 
                     $peserta = ambilhanyapeserta("WHERE NoDaftar = '{$_POST['nomorpendaftaran']}'");
                     if ($peserta) {
-                        $daftarulang = ambildafhanyatarulang("AND a.Id = {$peserta['Id']}");
+                        $daftarulang = ambildafhanyatarulang("AND a.Daftarulang_Id = {$peserta['Peserta_Id']}");
                         $content = $url."Pages/daftartab.php?key=" . encrypt("edit." . $kuncirahasia . "." . $peserta['NoDaftar']);
-                        $text = generateQR(null, $content, $peserta['NoDaftar'] . $qrcode['registrasi']);
+                        $text = generateQR($url, $content, $peserta['NoDaftar'] . $qrcode['registrasi']);
                         if ($daftarulang && $daftarulang['DaftarUlang'] == 1) {
                             ?>
 
@@ -36,7 +36,7 @@
 
                             <div class="row">
                                 <div class="col-md-2">
-                                    <img src="<?= "../" . $peserta['UrlPhoto'] ?>" style="height:166; width:120 !important">
+                                    <img src="<?= $url . $peserta['UrlPhoto'] ?>" style="height:166; width:120 !important">
                                 </div>
                                 <div class="col-md-8">
                                     <div class="box-body">

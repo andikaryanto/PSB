@@ -1,5 +1,5 @@
 <?php
-$idpeserta = isset($peserta['Id']) ? $peserta['Id'] : "";
+$idpeserta = isset($peserta['Peserta_Id']) ? $peserta['Peserta_Id'] : "";
 $nodaftar = isset($peserta['NoDaftar']) ? $peserta['NoDaftar'] : "";
 $nisn = isset($peserta['NISN']) ? $peserta['NISN'] : (isset($_SESSION['data']['nisn']) ? $_SESSION['data']['nisn'] : "");
 $namalengkap = isset($peserta['NamaLengkap']) ? $peserta['NamaLengkap'] :  (isset($_SESSION['data']['namalengkap']) ? $_SESSION['data']['namalengkap'] : "");
@@ -74,7 +74,7 @@ $photopath = isset($peserta['UrlPhoto']) ? $peserta['UrlPhoto'] : "";
 			<?php $kabupaten = ambilkabupaten();
 			foreach ($kabupaten as $kab) :
 				?>
-				<option value="<?= $kab['Id'] ?>" <?php if ($kab['Id'] == $kabupaten) echo "selected" ?>><?= $kab['Nama'] ?></option>
+				<option value="<?= $kab['Kabupaten_Id'] ?>" <?php if ($kab['Kabupaten_Id'] == $kabupaten) echo "selected" ?>><?= $kab['Nama'] ?></option>
 			<?php endforeach; ?>
 		</select>
 	</div>
@@ -125,7 +125,7 @@ $photopath = isset($peserta['UrlPhoto']) ? $peserta['UrlPhoto'] : "";
 	function loadKecamatan() {
 		var kecamatan = '<?= $kecamatan ?>';
 		$.ajax({
-			url: "/Fungsi/Aksi/Kecamatan_json.php",
+			url: "<?= $url ?>Fungsi/Aksi/Kecamatan_json.php",
 			type: "POST",
 			data: {
 				kabupaten: $("#kabupaten").val()
@@ -135,10 +135,10 @@ $photopath = isset($peserta['UrlPhoto']) ? $peserta['UrlPhoto'] : "";
 				$('#kecamatan option[value!="a"]').remove();
 				for (var i = 0; i < kecamatan.length; i++) {
 					var selected = "";
-					if (kecamatan == kecamatan[i].Id)
+					if (kecamatan == kecamatan[i].Kecamatan_Id)
 						selected = "selected";
 
-					$('#kecamatan').append(`<option value='${kecamatan[i].Id} ${selected}'> 
+					$('#kecamatan').append(`<option value='${kecamatan[i].Kecamatan_Id} ${selected}'> 
                                        ${kecamatan[i].Nama} 
                                   </option>`);
 				}

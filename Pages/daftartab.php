@@ -89,7 +89,7 @@ if (isset($_GET['key'])) {
                         <li class=""><a href="#tab_6" data-toggle="tab">Kartu Miskin</a></li>
                         <!-- <li class=""><a href="#tab_7" data-toggle="tab">Tahun Lulus</a></li> -->
                     </ul>
-                    <form method="POST" action="/Fungsi/Aksi/Peserta_simpan.php" enctype="multipart/form-data">
+                    <form method="POST" action="<?= $url ?>Fungsi/Aksi/Peserta_simpan.php" enctype="multipart/form-data">
                         <div class="tab-content">
 
                             <div class="tab-pane active" id="tab_1">

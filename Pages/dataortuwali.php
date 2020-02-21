@@ -1,5 +1,5 @@
 <?php
-$pesertaid = isset($peserta['Id']) ? $peserta['Id'] : "";
+$pesertaid = isset($peserta['Peserta_Id']) ? $peserta['Peserta_Id'] : "";
 $ortu;
 if ($pesertaid)
 	$ortu = ambilorangtua($pesertaid);
@@ -49,7 +49,7 @@ $notelpwali = isset($ortu['NoTelp']) ? $ortu['NoTelp'] : (isset($_SESSION['data'
 			<?php $kabupaten = ambilkabupaten();
 			foreach ($kabupaten as $kab) :
 				?>
-				<option value="<?= $kab['Id'] ?>"><?= $kab['Nama'] ?></option>
+				<option value="<?= $kab['Kabupaten_Id'] ?>"><?= $kab['Nama'] ?></option>
 			<?php endforeach; ?>
 		</select>
 	</div>
@@ -86,7 +86,7 @@ $notelpwali = isset($ortu['NoTelp']) ? $ortu['NoTelp'] : (isset($_SESSION['data'
 
 	function loadKelurahanwali() {
 		$.ajax({
-			url: '/Fungsi/Aksi/Kecamatan_json.php',
+			url: '<?= $url ?>Fungsi/Aksi/Kecamatan_json.php',
 			type: "POST",
 			data: {
 				kabupaten: $("#kabupatenwali").val()
@@ -95,7 +95,7 @@ $notelpwali = isset($ortu['NoTelp']) ? $ortu['NoTelp'] : (isset($_SESSION['data'
 				var kecamatan = JSON.parse(d);
 				$('#kecamatanwali option[value!="a"]').remove();
 				for (var i = 0; i < kecamatan.length; i++) {
-					$('#kecamatanwali').append(`<option value='${kecamatan[i].Id}'> 
+					$('#kecamatanwali').append(`<option value='${kecamatan[i].Kecamatan_Id}'> 
                                        ${kecamatan[i].Nama} 
                                   </option>`);
 				}

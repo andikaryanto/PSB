@@ -11,7 +11,7 @@ function simpanprestasi($idpeserta, $namaprestasi, $nilai){
             database_query("UPDATE prestasi SET NamaPrestasi = '{$namaprestasi}',
                                                 Nilai = {$nilai}
                             ");
-            return $prestasi['Id'];
+            return $prestasi['Prestasi_Id'];
         }
         return database_simpan("INSERT INTO prestasi VALUES (null, {$idpeserta},'{$namaprestasi}', {$nilai})");
         

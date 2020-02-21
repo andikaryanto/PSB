@@ -3,8 +3,8 @@
 function ambilorangtua($idpeserta){
     $q = 'SELECT a.*, b.Nama Kabupaten, c.Nama Kecamatan 
     FROM orangtua a
-    LEFT JOIN kabupaten b on b.Id = a.Kabupaten_Id
-    LEFT JOIN kecamatan c on c.Id = a.Kecamatan_Id';
+    LEFT JOIN kabupaten b on b.Kabupaten_Id = a.Kabupaten_Id
+    LEFT JOIN kecamatan c on c.Kecamatan_Id = a.Kecamatan_Id';
     $peserta = database_select("{$q} where Peserta_id = {$idpeserta}");
     return $peserta;
 }
@@ -23,9 +23,9 @@ function simpanorangtua($idpeserta, $namalengkap, $pekerjaan, $agama, $alamat,
                                                 Kabupaten_Id = '{$kabupaten}',
                                                 Kecamatan_Id = '{$kecamatan}',
                                                 KodePos = '{$kodepos}'
-                                WHERE id = {$ortu['Id']}
+                                WHERE id = {$ortu['Orangtua_Id']}
                             ");
-            return $ortu['Id'];
+            return $ortu['Orangtua_Id'];
         }
         return database_simpan("INSERT INTO orangtua VALUES (null, {$idpeserta},'{$namalengkap}', '{$pekerjaan}', 
                     '{$agama}', '{$alamat}', '{$namawali}', null, null, '{$rt}', '{$rw}', '{$kabupaten}',

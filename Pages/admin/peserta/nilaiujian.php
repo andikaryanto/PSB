@@ -1,6 +1,6 @@
 
 	<?php
-		$pesertaid = isset($peserta['Id']) ? $peserta['Id'] : "";
+		$pesertaid = isset($peserta['Peserta_Id']) ? $peserta['Peserta_Id'] : "";
 		$nilai;
 		if($pesertaid)
 			$nilai = ambilnilaiujian("WHERE Peserta_Id = {$idpeserta} ");

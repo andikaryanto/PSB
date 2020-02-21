@@ -1,7 +1,7 @@
 <?php 
 $menuactive = "pengguna";
 include APP_PATH.'Pages/headeradmin.php';
-    $pengguna = ambilhanyapengguna("WHERE Id = {$_GET['id']}");
+    $pengguna = ambilhanyapengguna("WHERE Admin_Id = {$_GET['id']}");
 ?>
 <div class="content-wrapper">
         <!-- Content Header (Page header) -->
@@ -22,7 +22,7 @@ include APP_PATH.'Pages/headeradmin.php';
                     </div>
                     <form role = "form" action = "<?= $url ?>Fungsi/Aksi/Pengguna_edit.php" method = "POST">
                     <div class="box-body">
-                        <input hidden name = "id" value = "<?= $pengguna['Id']?>">
+                        <input hidden name = "id" value = "<?= $pengguna['Admin_Id']?>">
                         <div class="form-group">
                             <label for="pengguna">Pengguna</label>
                             <input type="text" class="form-control" id="pengguna" placeholder="Pengguna" name = "pengguna" value="<?= $pengguna['Pengguna']?>" required>

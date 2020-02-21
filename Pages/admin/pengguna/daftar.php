@@ -46,10 +46,10 @@ include APP_PATH.'Pages/headeradmin.php';?>
                                 foreach($pengguna as $admin){
                             ?>
                             <tr>
-                                <td><a href= "<?= "<?= $url ?>Pages/admin/pengguna/edit.php?id={$admin['Id']}"?>"><?= $admin['Pengguna']?></a></td>
+                                <td><a href= "<?= $url .'Pages/admin/pengguna/edit.php?id='. $admin['Admin_Id'] ?>"><?= $admin['Pengguna']?></a></td>
                                 <td><?= $admin['Level'] == 1 ?  "Sekertaris" : "Tata Usaha"?></td>
                                 <td class = "text-right">
-                                    <a href = "<?= "<?= $url ?>Fungsi/Aksi/Pengguna_hapus.php?id={$admin['Id']}"?>"><i class='fa fa-trash'></i></a>
+                                    <a href = "<?= $url .'Fungsi/Aksi/Pengguna_hapus.php?id='.$admin['Admin_Id'] ?>"><i class='fa fa-trash'></i></a>
                                 </td>
                             </tr>
                             <?php

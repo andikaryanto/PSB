@@ -1,38 +1,10 @@
 <?php
 if (!isset($_SESSION['pengguna'])){
-    // header("Location : {$url}/Pages/admin/index.php");
-    // header("Location : {$url}Pages/forbidden.php");
-    // echo "hahahah";
-    
     // include APP_PATH . 'Pages/header.php';
     include APP_PATH . 'Pages/admin/index.php';
     die;
-} else {
-    echo "hahahah";
-}
+} 
 
-if(!isset($menuactive)){
-
-}
-else {
-    if($menuactive == "pengaturan" || $menuactive == "tahunajaran" || $menuactive == "pengguna" || $menuactive == "pengumuman"){
-        if($_SESSION['level'] != 0){
-            header("Location : {$url}Pages/forbidden.php");
-        }
-    }
-    
-    if($menuactive == "semuasiswa"){
-        if($_SESSION['level'] != 0 && $_SESSION['level'] != 1){
-            header("Location : {$url}Pages/forbidden.php");
-        }
-    }
-    
-    if($menuactive == "siswaditolak"){  
-        if($_SESSION['level'] != 0 && $_SESSION['level'] != 1){
-            header("Location : {$url}Pages/forbidden.php");
-        }
-    }
-}
 
 
 ?>
@@ -58,6 +30,8 @@ else {
     <script src="<?= $url ?>assets/js/dataTables.bootstrap.min.js" type="text/javascript"></script>
     <script src="<?= $url ?>assets/js/adminlte.min.js" type="text/javascript"></script>
 </head>
+
+
 
 <body class="hold-transition skin-blue sidebar-mini">
     <div class="wrapper">
@@ -132,3 +106,33 @@ else {
                 </ul>
             </section>
         </aside>
+<?php       
+if(!isset($menuactive)){
+
+}
+else {
+    if($menuactive == "pengaturan" || $menuactive == "tahunajaran" || $menuactive == "pengguna" || $menuactive == "pengumuman"){
+        if($_SESSION['level'] != 0){
+            // echo 0;
+           include APP_PATH . 'Pages/forbidden.php';
+            die;
+            // 
+        }
+    }
+    
+    if($menuactive == "semuasiswa"){
+        if($_SESSION['level'] != 0 && $_SESSION['level'] != 1){
+            include APP_PATH . 'Pages/forbidden.php';
+            die;
+            // header("Location : {$url}Pages/forbidden.php");
+        }
+    }
+    
+    if($menuactive == "siswaditolak"){  
+        if($_SESSION['level'] != 0 && $_SESSION['level'] != 1){
+            include APP_PATH . 'Pages/forbidden.php';
+            die; 
+        }
+    }
+}
+?>

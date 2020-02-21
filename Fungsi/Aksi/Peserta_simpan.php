@@ -58,8 +58,8 @@ if ($_SESSION['Captcha'] == $_POST['captcha']) {
     else 
         $noreg = $_POST['nodaftar'];
         
-    $content = "{$url}Pages/daftartab.php?key=" . encrypt("edit." . $kuncirahasia . "." . $noreg);
-    $text = generateQR(null, $content, $noreg . $qrcode['registrasi']);
+    $content = $url."Pages/daftartab.php?key=" . encrypt("edit." . $kuncirahasia . "." . $noreg);
+    $text = generateQR($url, $content, $noreg . $qrcode['registrasi']);
     $enctext = encrypt($text);
     // echo $idpeserta;
     unset($_SESSION['data']);

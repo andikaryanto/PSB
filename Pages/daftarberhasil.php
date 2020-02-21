@@ -1,7 +1,7 @@
 <?php 
     include 'header.php';
     // include 'daftar.php'
-    $peserta = ambilhanyapeserta("WHERE a.Id = {$_GET['idpeserta']}");
+    $peserta = ambilhanyapeserta("WHERE a.Peserta_Id = {$_GET['idpeserta']}");
     $content = decrypt($_GET['content']);
 ?>
 
@@ -26,7 +26,7 @@
                     
                     <div class="row">
                         <div class="col-md-2">
-                            <img src= "<?= "/".$peserta['UrlPhoto'] ?>" style = "height:200; width:150 !important">
+                            <img src= "<?= $url.$peserta['UrlPhoto'] ?>" style = "height:200; width:150 !important">
                         </div>
                         <div class="col-md-8">
                             <div class = "box-body">

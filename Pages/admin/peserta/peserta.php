@@ -1,5 +1,5 @@
 <?php
-$idpeserta = isset($peserta['Id']) ? $peserta['Id'] : "";
+$idpeserta = isset($peserta['Peserta_Id']) ? $peserta['Peserta_Id'] : "";
 $nodaftar = isset($peserta['NoDaftar']) ? $peserta['NoDaftar'] : "";
 $nisn = isset($peserta['NISN']) ? $peserta['NISN'] : "";
 $namalengkap = isset($peserta['NamaLengkap']) ? $peserta['NamaLengkap'] : "";

@@ -1,5 +1,5 @@
 	<?php
-		$pesertaid = isset($peserta['Id']) ? $peserta['Id'] : "";
+		$pesertaid = isset($peserta['Peserta_Id']) ? $peserta['Peserta_Id'] : "";
 		$presatasi;
 		if($pesertaid)
 			$presatasi = ambilprestasi("WHERE Peserta_Id = {$idpeserta} ");

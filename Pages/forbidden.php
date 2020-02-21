@@ -1,5 +1,5 @@
 <?php 
-    include APP_PATH.'Pages/headeradmin.php'; ?>
+    // include APP_PATH.'Pages/headeradmin.php'; ?>
     
 <div class="content-wrapper">
     <section class="content">
