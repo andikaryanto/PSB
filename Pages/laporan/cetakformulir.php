@@ -3,7 +3,7 @@
 $mpdf = new \Mpdf\Mpdf();
 
 $pesertaid = $_GET['pesertaid'];
-$peserta = ambilhanyapeserta("WHERE a.Id=$pesertaid");
+$peserta = ambilhanyapeserta("WHERE a.Peserta_Id=$pesertaid");
 $noreg = $peserta['NoDaftar'];
 $content = $url."/Pages/daftartab.php?key=".encrypt("edit.".$kuncirahasia.".".$noreg);
 $text = generateQR($url, $content, $noreg.$qrcode['registrasi']);

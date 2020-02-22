@@ -23,11 +23,11 @@
     }
 
     function udatepengguna($id, $pengguna, $password, $level){
-        return database_query("UPDATE `admin` SET Pengguna = '{$pengguna}', Password = '{$password}', Level = {$level} WHERE Id = {$id}");
+        return database_query("UPDATE `admin` SET Pengguna = '{$pengguna}', Password = '{$password}', Level = {$level} WHERE Admin_Id = {$id}");
 
     }
 
     function deletepengguna($id){
-        database_query("DELETE FROM `admin` WHERE Id = {$id}");
+        database_query("DELETE FROM `admin` WHERE Admin_Id = {$id}");
     }
 ?>

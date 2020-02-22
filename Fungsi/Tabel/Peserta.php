@@ -104,7 +104,7 @@ function buatnoreg($idpeserta)
     $noreg = substr($noreg, strlen($panjang) - $panjang - 1, $panjang);
     $noregbaru = $reg['prefix'] . $noreg . randomAlfabet();
 
-    database_query("UPDATE peserta SET NoDaftar = '{$noregbaru}' WHERE Id = {$idpeserta}");
+    database_query("UPDATE peserta SET NoDaftar = '{$noregbaru}' WHERE Peserta_Id = {$idpeserta}");
     return $noregbaru;
 }
 

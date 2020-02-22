@@ -13,7 +13,7 @@ function pengumuman()
                 FROM nilaiujian 
                 GROUP BY Peserta_Id
             ) b ON a.Peserta_Id = b.Peserta_Id
-            WHERE a.Tahunajaran_Id = {$tahunajaran['Id']}
+            WHERE a.Tahunajaran_Id = {$tahunajaran['Tahunajaran_Id']}
             ORDER BY b.Nilai  DESC
             LIMIT 0, {$pengaturan['JumlahDiterima']}";
 
