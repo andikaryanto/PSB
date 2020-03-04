@@ -16,7 +16,12 @@
 			<label>PRESTASI / LOMBA</label>
 			<input type="text" class="form-control" name="namaprestasi" placeholder="" value="<?= $namaprestasi ?>">
 			<label>DIAKUI NILAI / JUARA </label>
-			<input type="number" class="form-control" name="nilaiprestasi" placeholder="" value="<?= $nilaiprestasi ?>">
+			<select name="nilaiprestasi">
+				<option value = "1">Juara 1</option>
+				<option value = "2">Juara 2</option>
+				<option value = "3">Juara 3</option>
+			</select>
+			<!-- <input type="number" class="form-control" name="nilaiprestasi" placeholder="" value="<?= $nilaiprestasi ?>"> -->
 		</div>
 		<a onclick="loadTab('tab_5','tab_6')" class="btn btn-success" data-toggle="tab">SELANJUTNYA</a>
 	</div>

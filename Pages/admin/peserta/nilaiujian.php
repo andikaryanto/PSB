@@ -13,15 +13,15 @@
 		<div class = "well">
 			<div class="form-group">
 				<label>BAHASA INDONESIA</label>
-				<input type="number" class="form-control" name="bahasaindonesia" value = "<?= $bahasiindonesia?>" placeholder="" required>
+				<input type="number" class="form-control" name="bahasaindonesia" value = "<?= number_format($bahasiindonesia,1)?>" placeholder="" required>
 			</div>
 			<div class="form-group">
 				<label>MATEMATIKA</label>
-				<input type="number" class="form-control" name="matematika" value = "<?= $matik?>" placeholder="" required>
+				<input type="number" class="form-control" name="matematika" value = "<?= number_format($matik,1)?>" placeholder="" required>
 			</div>
 			<div class="form-group">
 				<label>ILMU PENGETAHUAN ALAM</label>
-				<input type="number" class="form-control" name="ipa" value = "<?= $ipa?>" placeholder="" required>
+				<input type="number" class="form-control" name="ipa" value = "<?= number_format($ipa,1)?>" placeholder="" required>
 			</div>
 			<!-- <a class="btn btn-success" href="dataprestasi.php">SELANJUTNYA</a> -->
 		</div>

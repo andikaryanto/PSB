@@ -48,7 +48,7 @@ $content = "<table style='autosize:2.4; margin:30px 0; border:1x solid;'>
     <td style='font-weight:bold;padding:0 5px; border:1x solid;'>Jenis Kelamin</td>
     <td style='font-weight:bold;padding:0 5px; border:1x solid;'>Tempat Lahir</td>
     <td style='font-weight:bold;padding:0 5px; border:1x solid;'>Agama</td>
-    <td style='font-weight:bold;padding:0 5px; border:1x solid;'>Alamat</td>
+    <td style='font-weight:bold;padding:0 5px; border:1x solid;'>Alamat Asal</td>
     <td style='font-weight:bold;padding:0 5px; border:1x solid;'>Asal Sekolah</td>
 </tr>
 " . $detail . "
@@ -79,7 +79,7 @@ $mpdf->WriteHTML("<table style='autosize:2.4; padding:30px 0;'>
     </tr>
     <tr >
         <td style='padding:5px 70% 20px 10px'></td>
-        <td>NBM. 962852</td>
+        
     </tr>
     
     

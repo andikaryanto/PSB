@@ -83,6 +83,11 @@ if (!isset($_SESSION['pengguna'])){
                             <i class="fa fa-user"></i> <span>DATA PESERTA DITOLAK</span>
                         </a>
                     </li>
+                    <li class="<?php if ($menuactive == "gelombang") echo "active" ?> treeview">
+                        <a href="<?= $url ?>Pages/admin/gelombang/daftar.php">
+                            <i class="fa fa-user"></i> <span>GELOMBANG</span>
+                        </a>
+                    </li>
                     <li class="<?php if ($menuactive == "tahunajaran") echo "active" ?> treeview">
                         <a href="<?= $url ?>Pages/admin/tahunajaran/daftar.php">
                             <i class="fa fa-user"></i> <span>TAHUN AJARAN</span>
@@ -111,7 +116,7 @@ if(!isset($menuactive)){
 
 }
 else {
-    if($menuactive == "pengaturan" || $menuactive == "tahunajaran" || $menuactive == "pengguna" || $menuactive == "pengumuman"){
+    if($menuactive == "pengaturan" || $menuactive == "tahunajaran" || $menuactive == "gelombang" || $menuactive == "pengguna" || $menuactive == "pengumuman"){
         if($_SESSION['level'] != 0){
             // echo 0;
            include APP_PATH . 'Pages/forbidden.php';

@@ -29,8 +29,15 @@ function ambilpeserta($where = "")
         else
             $cond = "WHERE Tahunajaran_Id = " . $tahunajaran['Tahunajaran_Id'];
     }
+    $qry =  "SELECT a.*, b.Nilai, d.NamaPrestasi FROM peserta a
+    INNER JOIN (
+            SELECT Peserta_Id, SUM(Nilai) Nilai
+            FROM nilaiujian 
+            GROUP BY Peserta_Id
+        ) b ON a.Peserta_Id = b.Peserta_Id
 
-    $peserta = database_select_daftar("SELECT * FROM peserta {$where} $cond");
+        LEFT JOIN prestasi d on d.Peserta_Id = a.Peserta_Id";
+    $peserta = database_select_daftar("{$qry} {$where} $cond");
     return $peserta;
 }
 
@@ -59,6 +66,7 @@ function simpanpeseta(
     $status = 0
 ) {
     $tahunajaran = ambilhanyatahunajaran("WHERE Aktif = 1");
+    $gelombang = ambilaktifgelombang();
     $thlulus = formatTanggal($tahunlulus, "Y");
     if ($id) {
         $qry = "UPDATE peserta SET NISN = '{$nisn}',
@@ -83,7 +91,7 @@ function simpanpeseta(
         $qry = "INSERT INTO peserta VALUES (null, null, '{$nisn}', '{$namalengkap}', '{$jenkel}', 
         '{$tempatlahir}', '{$tgllahir}', '{$agama}', '{$alamat}', '{$rt}', '{$rw}', '{$kabupaten}',
         '{$kecamatan}', '{$kodepos}', '$domisili', '{$notelp}', '{$asalsekolah}', '{$alamatsekolah}',
-        '{$statussekolah}', {$kartumiskin}, {$status}, {$tahunajaran['Tahunajaran_Id']}, NULL, {$thlulus})";
+        '{$statussekolah}', {$kartumiskin}, {$status}, {$tahunajaran['Tahunajaran_Id']}, {$gelombang['Gelombang_Id']}, NULL, {$thlulus})";
         // echo $qry;
         return database_simpan($qry);
     }
@@ -134,7 +142,7 @@ function pesertaditerima()
     $tahunajaran = ambilhanyatahunajaran("WHERE Aktif = 1");
     if (date_create(tanggalSekarang()) >= date_create($pengaturan['TglPengumuman'])) {
 
-        $qry = " SELECT a.*, b.Nilai, CASE WHEN d.Peserta_Id IS NULL THEN 0 ELSE 1 END Daftarulang
+        $qry = " SELECT a.*, b.Nilai, e.NamaPrestasi ,CASE WHEN d.Peserta_Id IS NULL THEN 0 ELSE 1 END Daftarulang
         FROM peserta a
         INNER JOIN (
             SELECT Peserta_Id, SUM(Nilai) Nilai
@@ -143,6 +151,7 @@ function pesertaditerima()
         ) b ON a.Peserta_Id = b.Peserta_Id
         INNER JOIN pengumuman c on a.Peserta_Id = c.Peserta_Id
         LEFT JOIN daftarulang d on a.Peserta_Id = d.Peserta_Id 
+        LEFT JOIN prestasi e on e.Peserta_Id = a.Peserta_Id
         WHERE a.Tahunajaran_Id = {$tahunajaran['Tahunajaran_Id']}
         ORDER BY b.Nilai  DESC
         LIMIT 0, {$pengaturan['JumlahDiterima']}";
@@ -160,9 +169,15 @@ function pesertaditolak()
     $limit = 1 * $pengaturan['JumlahDiterima'];
     if (date_create(tanggalSekarang()) >= date_create($pengaturan['TglPengumuman'])) {
 
-        $qry = " SELECT a.*
+        $qry = " SELECT a.*, b.Nilai, d.NamaPrestasi
         FROM peserta a
+        INNER JOIN (
+            SELECT Peserta_Id, SUM(Nilai) Nilai
+            FROM nilaiujian 
+            GROUP BY Peserta_Id
+        ) b ON a.Peserta_Id = b.Peserta_Id
         LEFT JOIN pengumuman c on a.Peserta_Id = c.Peserta_Id
+        LEFT JOIN prestasi d on d.Peserta_Id = a.Peserta_Id
         WHERE a.Tahunajaran_Id = {$tahunajaran['Tahunajaran_Id']}
         AND c.Peserta_Id IS NULL
         -- ORDER BY b.Nilai DESC

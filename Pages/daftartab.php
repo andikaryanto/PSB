@@ -21,7 +21,7 @@ if (
 
 
                 <h3 align="center">PENDAFTARAN BELUM DIBUKA</h3>
-                <h4 align="center">PENDAFTARAN AKAN DIBUKA PADA TANGGAL 1 - 30 JULI 2019</h4>
+                <h4 align="center"></h4>
                 <!-- <div class="callout">
 
                     <div class="row">
@@ -66,6 +66,7 @@ die();
 }
 
 
+// $gelombang = ambilaktifgelombang();
 if (isset($_GET['key'])) {
     $key = $_GET['key'];
     $decrypt = decrypt($key);
@@ -79,6 +80,8 @@ if (isset($_GET['key'])) {
         <div class="col-md-8">
             <div class="box">
                 <!-- Custom Tabs -->
+
+                <!-- <h3 align="center"><?= $gelombang['Nama']?></h3> -->
                 <div class="nav-tabs-custom">
                     <ul class="nav nav-tabs">
                         <li class="active"><a href="#tab_1" data-toggle="tab">Peserta</a></li>
@@ -199,7 +202,7 @@ grecaptcha.ready(function() {
     });
 
     function loadTab(tabbefore, tabafter) {
-
+        console.log(tabbefore);
         var before = document.querySelectorAll("a[href='#" + tabbefore + "']");
         before.forEach(function(t) {
             t.setAttribute("aria-expanded", "false");

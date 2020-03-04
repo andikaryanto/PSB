@@ -71,7 +71,7 @@ $mpdf->WriteHTML("<table style='autosize:2.4; padding:30px 0; margin-top:-300px'
     </tr>
     
     <tr>
-        <td style='padding:10px'>Alamat</td>
+        <td style='padding:10px'>Alamat Asal</td>
         <td>:</td>
         <td>{$peserta['Alamat']}</td>
     </tr>
@@ -116,7 +116,7 @@ $mpdf->WriteHTML("<table style='autosize:2.4; padding:30px 0;'>
 
 $mpdf->WriteHTML('
 <div style="text-align: Left;">
-    *Syarat berkas yang harus d penuhi
+    *Syarat berkas yang harus dipenuhi
 </div>
 
 <div style="text-align: Left;">

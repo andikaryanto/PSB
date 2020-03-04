@@ -68,7 +68,8 @@ function createCaptcha()
     }
     $_SESSION["Captcha"] = $ses;
     //untuk membuat gambar 
-    imagepng($gbr, "assets/img/image.png");
+    imagepng($gbr, 
+        "assets/img/image.png");
     imagedestroy($gbr);
 }
 

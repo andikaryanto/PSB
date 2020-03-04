@@ -51,11 +51,16 @@ $pengaturan = ambilpengaturan();
                             <thead>
                                 <tr>
                                     <th>No Daftar</th>
+                                    <?php if (isset($_GET['halaman']) && ($_GET['halaman'] == "siswaditerima" || $_GET['halaman'] == "siswaditolak")) {
+                                        echo "<th>Status</th>";
+                                    } ?>
                                     <th>NISN</th>
                                     <th>Nama Lengkap</th>
                                     <th>JenKel</th>
                                     <th>No Telp</th>
                                     <th>Asal Sekolah</th>
+                                    <th>Jumlah Nilai</th>
+                                    <th>Prestasi</th>
                                     <?php if (isset($_GET['halaman']) && $_GET['halaman'] == "siswaditerima") {
                                         echo "<th>Daftar Ulang?</th>";
                                     } ?>
@@ -68,16 +73,21 @@ $pengaturan = ambilpengaturan();
 
                                 if (isset($_GET['halaman'])) {
 
-
-                                    switch ($_GET['halaman']) {
+                                    $status = "";
+                                    switch ($_GET['halaman']){
 
                                         case "siswaditerima":
-                                            if (date_create(tanggalSekarang()) >= date_create($pengaturan['TglPengumuman']))
+                                            if (date_create(tanggalSekarang()) >= date_create($pengaturan['TglPengumuman'])){
                                                 $peserta = pesertaditerima();
+                                                $status = "Diterima";
+                                            }
                                             break;
                                         case "siswaditolak":
-                                            if (date_create(tanggalSekarang()) >= date_create($pengaturan['TglPengumuman']))
+                                            if (date_create(tanggalSekarang()) >= date_create($pengaturan['TglPengumuman'])){
                                                 $peserta = pesertaditolak();
+
+                                                $status = "Tidak Diterima";
+                                            }
                                             break;
                                         default:
                                             $peserta = ambilpeserta();
@@ -89,11 +99,17 @@ $pengaturan = ambilpengaturan();
                                     ?>
                                         <tr>
                                             <td><?= $p['NoDaftar'] ?></a></td>
+                                            <?php if (isset($_GET['halaman']) &&( $_GET['halaman'] == "siswaditerima" || $_GET['halaman'] == 'siswaditolak')) {
+                                                    echo "<td>{$status}</a></td>";
+                                                }
+                                            ?>  
                                             <td><?= $p['NISN'] ?></a></td>
                                             <td><?= $p['NamaLengkap'] ?></td>
                                             <td><?= $p['JenisKelamin'] ?></td>
                                             <td><?= $p['NoTelp'] ?></td>
                                             <td><?= $p['AsalSekolah'] ?></td>
+                                            <td><?= number_format($p['Nilai'],1) ?></td>
+                                            <td><?= $p['NamaPrestasi'] ?></td>
                                             <?php if (isset($_GET['halaman']) && $_GET['halaman'] == "siswaditerima") {
                                                     // echo "<th>{$p['Daftarulang']}</th>";
                                                     if ($p['Daftarulang'] == 1)
@@ -101,7 +117,7 @@ $pengaturan = ambilpengaturan();
                                                     else
                                                         echo "<td><input id='{$p['Peserta_Id']}' type='checkbox' class='minimal'></td>";
                                                 } ?>
-                                            <td><a href="<?= "<?= $url ?>Pages/admin/peserta/detail.php?NoRegist={$p['NoDaftar']}" ?>"><i class="fa fa-info"></i></a></td>
+                                            <td><a href="<?= $url ?>Pages/admin/peserta/detail.php?NoRegist=<?= $p['NoDaftar'] ?>"><i class="fa fa-info"></i></a></td>
                                         </tr>
                                     <?php
                                     }
@@ -110,16 +126,11 @@ $pengaturan = ambilpengaturan();
                             </tbody>
                             <tfoot>
                                 <tr>
-                                    <th>No Daftar</th>
-                                    <th>NISN</th>
-                                    <th>Nama Lengkap</th>
-                                    <th>JenKel</th>
-                                    <th>No Telp</th>
-                                    <th>Asal Sekolah</th>
+                                    
                                     <?php if (isset($_GET['halaman']) && $_GET['halaman'] == "siswaditerima") {
-                                        echo "<th>Daftar Ulang?</th>";
+                                        echo "<th></th>";
                                     } ?>
-                                    <th class="disabled-sorting text-right">Aksi</th>
+                                    <th class="disabled-sorting text-right"></th>
                                 </tr>
                             </tfoot>
                         </table>
