@@ -70,7 +70,7 @@ if (!isset($_SESSION['pengguna'])){
                     </li>
                     <li class="<?php if ($menuactive == "semuasiswa") echo "active" ?> treeview">
                         <a href="<?= $url ?>Pages/admin/peserta/daftar.php?halaman=semuasiswa">
-                            <i class="fa fa-user"></i> <span>DATA PESERTA</span>
+                            <i class="fa fa-user"></i> <span>DATA PESERTA DAFTAR</span>
                         </a>
                     </li>
                     <li class="<?php if ($menuactive == "siswaditerima") echo "active" ?> treeview">
@@ -100,7 +100,7 @@ if (!isset($_SESSION['pengguna'])){
                     </li>
                     <li class="<?php if ($menuactive == "pengumuman") echo "active" ?> treeview">
                         <a href="<?= $url ?>Pages/admin/aksi/pengumuman.php">
-                            <i class="fa fa-user"></i> <span>PENGUMUMAN</span>
+                            <i class="fa fa-user"></i> <span>SELEKSI & PENGUMUMAN</span>
                         </a>
                     </li>
                     <li class="treeview">

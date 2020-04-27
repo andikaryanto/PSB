@@ -93,6 +93,7 @@ function simpanpeseta(
         '{$kecamatan}', '{$kodepos}', '$domisili', '{$notelp}', '{$asalsekolah}', '{$alamatsekolah}',
         '{$statussekolah}', {$kartumiskin}, {$status}, {$tahunajaran['Tahunajaran_Id']}, {$gelombang['Gelombang_Id']}, NULL, {$thlulus})";
         // echo $qry;
+        echo "<script>console.log(".$qry.")</script>";
         return database_simpan($qry);
     }
 }

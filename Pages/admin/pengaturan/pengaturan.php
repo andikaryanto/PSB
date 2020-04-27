@@ -12,6 +12,7 @@
         $tglpengumuman = formatTanggal($pengaturan['TglPengumuman'], "Y-m-d");
         $jmlditerima = $pengaturan['JumlahDiterima'];
         $kepsek = $pengaturan['KepalaSekolah'];
+        $info = $pengaturan['Info'];
     }
 ?>
 <div class="content-wrapper">
@@ -52,6 +53,10 @@
                             <div class="form-group">
                                 <label for="kepsek">Kepala Sekolah</label>
                                 <input type="text" class="form-control" id="kepsek" placeholder="Kepala Sekolah" name = "kepsek" value = "<?= $kepsek?>" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="kepsek">Informasi</label>
+                                <textarea type="text" class="form-control" id="info"  name = "info"  required><?= $info?></textarea>
                             </div>
                         <!-- /.box-body -->
                         </div>

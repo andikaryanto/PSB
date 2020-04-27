@@ -2,7 +2,7 @@
 /**
  * alamat url aplikasi, ganti sesuai direktori anda ex: http://localhost/Direktori_Anda/
  */
-$url = "http://localhost/PSB/";
+$url = "http://localhost:8889/PSB/";
 // $url = "/home/psbmusat/public_html";
 /**
  * digunakan untuk generate QR Code

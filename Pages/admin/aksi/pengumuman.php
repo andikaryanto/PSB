@@ -19,7 +19,7 @@ include APP_PATH.'Pages/headeradmin.php';
             <div class="col-xs-12">
                 <div class="box box-primary">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Lakukan Pengumuman</h3>
+                        <h3 class="box-title">Lakukan Seleksi</h3>
                     </div>
                     <form role = "form" action = "<?= $url ?>Fungsi/Aksi/Pengumuman.php" method = "POST">
                         
@@ -42,7 +42,7 @@ include APP_PATH.'Pages/headeradmin.php';
                         }
                         ?>
                         <div class="box-footer">
-                            <button type="submit" class="btn btn-primary">Pengumuman</button>
+                            <button type="submit" class="btn btn-primary">SELEKSI</button>
                         </div>
                     </form>
                 <!-- /.box -->

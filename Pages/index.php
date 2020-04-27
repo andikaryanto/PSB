@@ -1,5 +1,6 @@
-
-<?php include 'header.php';?>
+<?php 
+include 'header.php';
+?>
 <!-- Main content -->
     <section class="content">
         <!-- Small boxes (Stat box) -->
@@ -60,8 +61,8 @@
         <div class="col-md-6 col-xs-6">
             <div class="box">
                 <div><strong>Informasi Terkini</strong></div>
-                    <ul>                                                
-                        <li><a href="#">Pendaftaran Siswa Baru Tahun Pelajaran 2019 / 2020 telah dibuka</a></li>
+                    <ul>       
+                        <li><a href="#"><?= $pengaturan['Info']?></a></li>
                     </ul>
                 </div>
             </div>          

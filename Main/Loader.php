@@ -27,11 +27,11 @@ foreach($load as $key => $value){
  * load QR lib
  */
 
+$pengaturan = ambilpengaturan();
 /**
  * load page
  */
 // echo APP_PATH;
-// echo json_encode($_SERVER);
 if($_SERVER['PATH_INFO'] != "/")
     include APP_PATH.$_SERVER['PATH_INFO'];
     

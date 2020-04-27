@@ -1,5 +1,5 @@
 <?php
-global $conn;
+// global $conn;
 $conn = mysqli_connect($db['default']['host'], $db['default']['user'], $db['default']['password'], $db['default']['dbname']) or die('Database connection error');
 
 function database_query($sql){

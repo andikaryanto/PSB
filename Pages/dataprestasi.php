@@ -15,7 +15,7 @@
 		<div class="form-group">
 			<label>PRESTASI / LOMBA</label>
 			<input type="text" class="form-control" name="namaprestasi" placeholder="" value="<?= $namaprestasi ?>">
-			<label>DIAKUI NILAI / JUARA </label>
+			<label>DIAKUI NILAI / JUARA </label><br>
 			<select name="nilaiprestasi">
 				<option value = "1">Juara 1</option>
 				<option value = "2">Juara 2</option>
